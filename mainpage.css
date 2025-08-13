@@ -1,0 +1,7150 @@
+/* Universal reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('fonts/Cairo-Regular.woff2') format('woff2'),
+        url('fonts/Cairo-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('fonts/Cairo-Bold.woff2') format('woff2'),
+        url('fonts/Cairo-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Base styles (for desktop and larger screens) */
+.main_top_head {
+
+    width: 100%;
+    display: flex;
+    background-color: #f8f8f8;
+    padding-left: 4%;
+    padding-right: 2%;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+
+}
+
+.main_top_head h1 {
+
+    width: 70%;
+    text-align: center;
+    font-size: 5em;
+    padding-top: 3%;
+
+
+}
+
+.main_top_head img {
+
+    width: 13%;
+
+
+
+}
+
+.btns {
+    width: 100%;
+    background-color: rgb(221, 217, 225);
+    text-align: center;
+    padding-top: 0.25%;
+    padding-bottom: 0.25%;
+}
+
+.btns button {
+    font-size: 1.5em;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 0.5%;
+    border: 50px rgb(113, 6, 6) bold;
+    border-radius: 50px;
+
+}
+
+.page_label {
+    background-color: antiquewhite;
+    text-align: center;
+    margin-bottom: 0.5%;
+}
+
+.btns {
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid rgb(224, 137, 15);
+    background-color: rgb(212, 208, 151);
+    margin-top: 1%;
+
+
+
+}
+
+.main_btns {
+    display: flex;
+    width: 100%;
+
+    text-align: center;
+    padding-top: 0.25%;
+    padding-bottom: 0.25%;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid rgb(224, 137, 15);
+    background-color: rgb(212, 208, 151);
+
+
+}
+
+.main_btns button {
+    font-size: 1em;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 0.1%;
+    padding-bottom: 0.1%;
+    border: 50px rgb(113, 6, 6) bold;
+    border-radius: 50px;
+    width: 15%;
+    display: flex;
+
+}
+
+.main_btns .form {
+    display: flex;
+
+    width: 100%;
+    background-color: rgb(212, 208, 151);
+}
+
+.main_btns .form form {
+    display: flex;
+    margin-left: 5%;
+    padding-left: 0.5%;
+    width: 35%;
+    background-color: rgb(212, 208, 151);
+
+}
+
+.main_btns .form form button {
+    display: flex;
+    width: 40%;
+    font-size: 1em;
+    margin-left: 2%;
+    margin-right: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border: 50px rgb(113, 6, 6) bold;
+    border-radius: 50px;
+
+
+}
+
+
+
+
+#dateshow {
+    visibility: hidden;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    width: fit-content;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.calendar-nav button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-nav button:hover {
+    background-color: #0056b3;
+}
+
+.calendar-nav h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.calendars-container {
+    display: flex;
+    gap: 20px;
+    /* مسافة بين التقويمين */
+    justify-content: center;
+}
+
+.calendar {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.calendar h4 {
+    text-align: center;
+    margin-top: 0;
+    color: #555;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar th,
+.calendar td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #eee;
+    width: calc(100% / 7);
+    /* توزيع متساو للخلايا */
+}
+
+.calendar th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #666;
+}
+
+.calendar td {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.calendar td:hover:not(:empty) {
+    background-color: #e6f7ff;
+}
+
+.calendar-day.selected {
+    background-color: #007bff;
+    color: white;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.yemen_company {
+    width: 100%;
+    display: flex;
+    background-color: #f8f8f8;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+}
+
+.yemen_company .h {
+    width: 100%;
+    display: block;
+    padding-top: 3%;
+
+}
+
+.yemen_company .h h1 {
+
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: 0.1%;
+}
+
+.yemen_company .h h2 {
+
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    padding-top: 0.1%;
+
+}
+
+.yemen_company img {
+
+    width: 10%;
+
+
+}
+
+.yemen_company2 {
+    width: inherit;
+    display: flex;
+    background-color: #f8f8f8;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+}
+
+.yemen_company2 .h {
+    width: 100%;
+    display: block;
+    padding-top: 3%;
+
+}
+
+.yemen_company2 .h h1 {
+
+    width: 100%;
+    text-align: center;
+    font-size: 1.8em;
+    padding-top: 0.1%;
+}
+
+.yemen_company2 .h h2 {
+
+    width: 100%;
+    text-align: center;
+    font-size: 1.4em;
+    padding-top: 0.1%;
+
+}
+
+.oneline {
+    font-size: 0.7em;
+    padding-left: 25%;
+
+    display: flex;
+
+}
+
+.oneline #Periodic_date {
+
+    color: #2609cb;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline #day_label {
+
+    color: #2609cb;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline .slah {
+
+    color: #cb0909;
+
+}
+
+.oneline #month_label {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline #year_label {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline #year_labe2 {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline #to {
+
+    color: #4309cb;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline #day_labe2 {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+/* .oneline #slah2{
+   
+    color: #cb0909;
+     margin-left: 2%;
+    margin-right: 2%;
+} */
+.oneline #month_labe2 {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline2 {
+    padding-left: 15%;
+
+    display: flex;
+
+}
+
+.oneline2 #Periodic_date {
+
+    color: #2609cb;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline2 #day_label {
+
+    color: #2609cb;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline2 .slah {
+
+    color: #cb0909;
+
+}
+
+.oneline2 #month_label {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline2 #year_label {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline2 #year_labe2 {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline2 #to {
+
+    color: #4309cb;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.oneline2 #day_labe2 {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+/* .oneline #slah2{
+   
+    color: #cb0909;
+     margin-left: 2%;
+    margin-right: 2%;
+} */
+.oneline2 #month_labe2 {
+
+    color: #cb0909;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.chang_my_pass {
+    width: inherit;
+    text-align: center;
+    margin-top: 1%;
+    padding-left: 40%;
+
+}
+
+.chang_my_pass .conteiner {
+    width: 40%;
+
+    border: #2609cb solid 7px;
+
+    border-radius: 20%;
+}
+
+.chang_my_pass .conteiner input {
+    width: 95%;
+
+}
+
+.chang_my_pass .conteiner label {
+
+    color: #180edc;
+
+}
+
+.chang_my_pass .conteiner .subject {
+
+    color: #cb5d09;
+    font-family: 'Cairo', sans-serif;
+    font-size: 150%;
+}
+
+.chang_my_pass .conteiner button {
+
+    font-family: 'Cairo', sans-serif;
+    font-size: 100%;
+
+}
+
+
+
+/* بعض الأنماط لجعل الجدول يبدو جيداً */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    /* محاذاة النص لليمين للعربية */
+    font-size: 15px;
+}
+
+th {
+    background-color: #3ce26b8d;
+    font-weight: bold;
+    text-align: center;
+}
+
+td .fcol1 {
+    background-color: rgb(123, 53, 96);
+}
+
+td .fcol2 {
+    background-color: rgb(53, 123, 118);
+}
+
+td .btnn {
+    background-color: rgb(57, 5, 37);
+    border: wheat solid 2px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: wheat;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.motorname {
+    text-align: left;
+    width: 30%;
+
+}
+
+.tagno {
+    text-align: center;
+    width: 7%;
+
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+    /* لون فاتح للصفوف الفردية */
+}
+
+/* لتغيير لون الصفوف الزوجية (الثاني، الرابع، السادس، وهكذا) */
+tbody tr:nth-child(even) {
+    background-color: #999dcc8d;
+    /* لون أزرق فاتح للصفوف الزوجية، يمكنك اختيار لون آخر */
+}
+
+/* تحسين تجربة المستخدم عند مرور الماوس فوق الصف */
+tbody tr:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: rgb(173, 171, 8);
+}
+
+.tail {
+
+    display: flex;
+    text-align: center;
+    width: 100%;
+    font-size: 0.5em;
+
+}
+
+.tail .Intail1 {
+
+    margin-left: 7%;
+
+}
+
+.tail .Intail2 {
+
+    margin-left: 27%;
+
+}
+
+.tail .Intail3 {
+
+    margin-left: 31%;
+
+}
+
+.tail4 {
+
+    display: flex;
+    text-align: center;
+    width: 100%;
+
+}
+
+.tail4 .Intail5 {
+
+    margin-left: 5%;
+
+}
+
+.tail4 .Intail6 {
+
+    margin-left: 63%;
+
+}
+
+
+
+
+.tail22 {
+
+    display: flex;
+    text-align: center;
+    width: 100%;
+
+}
+
+.tail22 .Intail1 {
+
+    margin-left: 7%;
+
+}
+
+.tail22 .Intail2 {
+
+    margin-left: 27%;
+
+}
+
+.tail22 .Intail3 {
+
+    margin-left: 31%;
+
+}
+
+.tail44 {
+
+    display: flex;
+    text-align: center;
+    width: 100%;
+
+}
+
+.tail44 .Intail5 {
+
+    margin-left: 5%;
+
+}
+
+.tail44 .Intail6 {
+
+    margin-left: 63%;
+
+}
+
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+.form form select {
+    width: 20%;
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+.form form #tyear {
+    display: none;
+
+}
+
+.form form #tmonth {
+    display: none;
+
+}
+
+.form form #tweek {
+    display: none;
+
+}
+
+.form form #tday {
+    display: none;
+
+}
+
+.form form {
+    width: 100%;
+    text-align: center;
+    background-color: whitesmoke;
+
+}
+
+.form form #btn {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.form form #btnback {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.form form option {
+    width: 100%;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+
+.form form .print-button {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.form form #btn:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.form form #btnback:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: grab;
+}
+
+.form form select:hover {
+    border: 3px solid #e71111;
+    cursor: pointer;
+}
+
+.form form .print-button:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.formshowmotor {
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid rgb(224, 137, 15);
+    background-color: rgb(212, 208, 151);
+}
+
+
+.formshowmotor form select {
+    width: 20%;
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+.formshowmotor form #tyear {
+    display: none;
+
+}
+
+.formshowmotor form #tmonth {
+    display: none;
+
+}
+
+.formshowmotor form #tweek {
+    display: none;
+
+}
+
+.formshowmotor form #tday {
+    display: none;
+
+}
+
+.formshowmotor form {
+    width: 100%;
+    text-align: center;
+}
+
+.formshowmotor form #btn {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.formshowmotor form #btnback {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.formshowmotor form option {
+    width: 100%;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+
+.formshowmotor form .print-button {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.formshowmotor form #btn:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.formshowmotor form #btnback:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: grab;
+}
+
+.formshowmotor form select:hover {
+    border: 3px solid #e71111;
+    cursor: pointer;
+}
+
+.formshowmotor form .print-button:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.formshowTranformer {
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid rgb(224, 137, 15);
+    background-color: rgb(212, 208, 151);
+}
+
+.formshowTranformer form select {
+    width: 20%;
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+.formshowTranformer form #tyear {
+    display: none;
+
+}
+
+.formshowTranformer form #tmonth {
+    display: none;
+
+}
+
+.formshowTranformer form #tweek {
+    display: none;
+
+}
+
+.formshowTranformer form #tday {
+    display: none;
+
+}
+
+.formshowTranformer form {
+    width: 100%;
+    text-align: center;
+
+
+}
+
+.formshowTranformer form #btn {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.formshowTranformer form #btnback {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.formshowTranformer form option {
+    width: 100%;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+
+.formshowTranformer form .print-button {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.formshowTranformer form #btn:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.formshowTranformer form #btnback:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: grab;
+}
+
+.formshowTranformer form select:hover {
+    border: 3px solid #e71111;
+    cursor: pointer;
+}
+
+.formshowTranformer form .print-button:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+.formshowTranformer form #btn:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.formshowTranformer form #btnback:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: grab;
+}
+
+.formshowTranformer form select:hover {
+    border: 3px solid #e71111;
+    cursor: pointer;
+}
+
+.formshowTranformer form .print-button:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+.formshowTranformer31 {
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid rgb(224, 137, 15);
+    background-color: rgb(212, 208, 151);
+}
+
+.formshowTranformer31 form select {
+    width: 20%;
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+.formshowTranformer31 form #tyear {
+    display: none;
+
+}
+
+.formshowTranformer31 form #tmonth {
+    display: none;
+
+}
+
+.formshowTranformer31 form #tweek {
+    display: none;
+
+}
+
+.formshowTranformer31 form #tday {
+    display: none;
+
+}
+
+.formshowTranformer31 form {
+    width: 100%;
+    text-align: center;
+
+
+}
+
+.formshowTranformer31 form #btn {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.formshowTranformer31 form #btnback {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.formshowTranformer31 form option {
+    width: 100%;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+
+.formshowTranformer31 form .print-button {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.formshowTranformer31 form #btn:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.formshowTranformer31 form #btnback:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: grab;
+}
+
+.formshowTranformer31 form select:hover {
+    border: 3px solid #e71111;
+    cursor: pointer;
+}
+
+.formshowTranformer31 form .print-button:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+
+.main_btns button:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.btns button:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.form2 {
+
+    border-radius: 15px;
+    padding: 5px;
+    border: 5px solid rgb(224, 137, 15);
+    background-color: rgb(212, 208, 151);
+}
+
+.form2 form select {
+    width: 20%;
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+.form2 form #tyear {
+    display: none;
+
+}
+
+.form2 form #tmonth {
+    display: none;
+
+}
+
+.form2 form #tweek {
+    display: none;
+
+}
+
+.form2 form #tday {
+    display: none;
+
+}
+
+.form2 form {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(212, 208, 151);
+
+}
+
+.form2 form #btn {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.form2 form #btnback {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.form2 form option {
+    width: 100%;
+    text-align: center;
+    background-color: #ecedf18d;
+
+}
+
+
+.form2 form .print-button {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.form2 form #btn:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+.form2 form #btnback:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: grab;
+}
+
+.form2 form select:hover {
+    border: 3px solid #e71111;
+    cursor: pointer;
+}
+
+.form2 form .print-button:hover {
+    background-color: #a70882;
+    /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    color: wheat;
+    cursor: pointer;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 2px;
+    background-color: #f4f4f4;
+    color: #333;
+    direction: ltr;
+    /* Set default direction for the whole page */
+    text-align: right;
+    /* Align text to the right for RTL */
+}
+
+.container {
+    max-width: 100%;
+    /* Adjust as needed */
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 1px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    /* For horizontal scrolling on smaller screens */
+}
+
+h1 {
+    text-align: center;
+    color: #0056b3;
+    margin-bottom: 5px;
+}
+
+p {
+    text-align: center;
+    margin-top: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.info-section p {
+    margin: 5px 15px;
+    font-size: 1em;
+    color: #333;
+    text-align: right;
+    /* Ensure text aligns right within its flex item */
+}
+.info-section3 {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.info-section3 p {
+    margin: 5px 15px;
+    font-size: 1em;
+    color: #333;
+    text-align: right;
+    /* Ensure text aligns right within its flex item */
+}
+/* Table Show_motor_week_grpup_a.php Styles */
+.container5 table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Collapses borders between cells */
+    margin-top: 20px;
+    table-layout: auto;
+    /* Allows browser to determine column widths based on content */
+    direction: ltr;
+    /* Ensure table direction is RTL */
+    font-weight: bold;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    /* Center align all text for days and status */
+    white-space: nowrap;
+    /* Prevent text wrapping in short cells */
+    font-size: 0.85em;
+}
+
+.container5 thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+
+}
+
+.container5 tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Zebra striping for readability */
+}
+
+.container5 tbody tr:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+
+.container5 tfoot td {
+    background-color: #e9ecef;
+    font-weight: bold;
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/* Specific column widths for better layout */
+/* Adjust these widths as needed based on your content */
+.container5 table th:nth-child(1) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(1) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(2) {
+    /* Status column */
+    width: 45%;
+    white-space: normal;
+
+}
+
+.container5 table th:nth-child(3) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(3) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table th:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(5) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(5) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(6) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(6) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(7) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(7) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(8) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(8) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(9) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(9) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(10) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(10) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+/* Table week_mainten_motors.php Styles */
+.container4 table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Collapses borders between cells */
+    margin-top: 20px;
+    table-layout: auto;
+    /* Allows browser to determine column widths based on content */
+    direction: ltr;
+    /* Ensure table direction is RTL */
+    font-weight: bold;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    /* Center align all text for days and status */
+    white-space: nowrap;
+    /* Prevent text wrapping in short cells */
+    font-size: 0.85em;
+}
+
+.container4 thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+
+}
+
+.container4 tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Zebra striping for readability */
+}
+
+.container4 tbody tr:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+
+.container4 tfoot td {
+    background-color: #e9ecef;
+    font-weight: bold;
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/* Specific column widths for better layout */
+/* Adjust these widths as needed based on your content */
+.container4 table th:nth-child(1) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(1) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(2) {
+    /* Status column */
+    width: 45%;
+    white-space: normal;
+    text-align: left;
+
+}
+
+.container4 table th:nth-child(3) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+
+}
+
+.container4 table td:nth-child(3) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table th:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(5) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(5) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(6) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(6) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(7) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(7) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(8) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(8) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(9) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(9) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(10) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(10) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+/* Table week_mainten_transformer.php Styles */
+.container2 table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Collapses borders between cells */
+    margin-top: 20px;
+    table-layout: auto;
+    /* Allows browser to determine column widths based on content */
+    direction: ltr;
+    /* Ensure table direction is RTL */
+    font-size: 10px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    /* Center align all text for days and status */
+    white-space: nowrap;
+    /* Prevent text wrapping in short cells */
+    font-size: 10px;
+}
+
+.container2 thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    
+
+}
+
+.container2 tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Zebra striping for readability */
+}
+
+.container2 tbody tr:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+
+.container2 tfoot td {
+    background-color: #e9ecef;
+    font-weight: bold;
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/* Specific column widths for better layout */
+/* Adjust these widths as needed based on your content */
+
+
+.container2 table td:nth-child(1) {
+    /* Status column */
+    width: 1%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(2) {
+    /* Status column */
+    width: 8%;
+    white-space: normal;
+    text-align: left;
+    
+    font-weight: bold;
+
+}
+
+.container2 table td:nth-child(3) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+    
+    text-align: center;
+    font-weight: bold;
+}
+
+.container2 table td:nth-child(4) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+}
+
+.container2 table td:nth-child(5) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(6) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(7) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(8) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(9) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(10) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(11) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(12) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+    text-align: left;
+
+}
+
+.container2 table td:nth-child(13) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(14) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(15) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(16) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(17) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(18) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(19) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(20) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(21) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(22) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(23) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(24) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(25) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(26) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(27) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(28) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(29) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(30) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(31) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(32) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(33) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(34) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+.container2 table td:nth-child(4):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(5):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(6):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(7):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(8):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(9):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(10):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(11):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(12):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(13):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(14):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(15):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(16):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(17):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(18):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(19):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(20):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(21):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(22):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(23):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(24):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(25):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(26):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(27):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(28):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(29):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(30):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(31):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(32):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(33):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(34):hover {
+    width: 3%;
+}
+
+
+
+.container1 table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Collapses borders between cells */
+    margin-top: 20px;
+    table-layout: auto;
+    /* Allows browser to determine column widths based on content */
+    direction: ltr;
+    /* Ensure table direction is RTL */
+    font-weight: bold;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    /* Center align all text for days and status */
+    white-space: nowrap;
+    /* Prevent text wrapping in short cells */
+    
+}
+
+.container1 thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+
+}
+
+.container1 tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Zebra striping for readability */
+}
+
+.container1 tbody tr:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+
+.container1 tfoot td {
+    background-color: #e9ecef;
+    font-weight: bold;
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/* Specific column widths for better layout */
+/* Adjust these widths as needed based on your content */
+
+
+.container1 table td:nth-child(1) {
+    /* Status column */
+    width: 1%;
+    white-space: normal;
+    
+
+}
+
+.container1 table td:nth-child(2) {
+    /* Status column */
+    width: 22.5%;
+    white-space: normal;
+    text-align: left;
+    font-size: 7px;
+    font-weight: bold;
+
+}
+
+.container1 table td:nth-child(3) {
+    /* Status column */
+    width: 3%;
+    white-space: normal;
+    font-size: 7px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.container1 table td:nth-child(4) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+    
+}
+
+.container1 table td:nth-child(5) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(6) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(7) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(8) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(9) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(10) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(11) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(12) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+    
+
+}
+
+.container1 table td:nth-child(13) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(14) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(15) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(16) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(17) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(18) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(19) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(20) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(21) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(22) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(23) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(24) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(25) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(26) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(27) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(28) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(29) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(30) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(31) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(32) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(33) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(34) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+.container1 table td:nth-child(4):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(5):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(6):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(7):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(8):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(9):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(10):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(11):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(12):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(13):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(14):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(15):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(16):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(17):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(18):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(19):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(20):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(21):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(22):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(23):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(24):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(25):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(26):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(27):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(28):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(29):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(30):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(31):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(32):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(33):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(34):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 {
+
+    font-size: 10px;
+}
+
+.container1 .z {
+    width: 1.2%;
+    text-align: center;
+    font-size: 10px;
+
+}
+
+.container1 .zz {
+    width: 1.2%;
+    text-align: center;
+    
+    cursor: pointer;
+
+}
+
+.container1 .zz:hover {
+    background-color: rgb(191, 200, 200);
+}
+
+.conx1 {
+
+    display: flex;
+}
+
+.transimageShow {
+
+    width: 7%;
+    margin-left: 3%;
+}
+
+.conx2 {
+    width: 120%;
+    text-align: center;
+    margin-top: 1%;
+}
+
+.conx31 {
+
+    display: flex;
+}
+
+.transimageShow3 {
+
+    width: 7%;
+    margin-left: 3%;
+}
+
+.conx32 {
+    width: 120%;
+    text-align: center;
+    margin-top: 1%;
+}
+.Eng_td {
+
+
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    /* لإضافة تأثير انتقالي سلس */
+
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+/* الأنماط العامة لحقول الإدخال */
+.auto-save {
+
+
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    /* لإضافة تأثير انتقالي سلس */
+
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.auto-save3 {
+
+
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+    /* لإضافة تأثير انتقالي سلس */
+
+    
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+   
+}
+
+.auto-save:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+.auto-save3:hover {
+    background-color: #ddd;
+    font-size: 2em;
+   
+    /* Highlight row on hover */
+}
+
+/* الألوان بناءً على درجات الحرارة */
+.temp-default {
+
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.temp-normal {
+
+    color: #11872d;
+    /* لون نص أخضر غامق ليكون واضحًا */
+    font-weight: bold;
+    /* جعل النص عريضًا */
+    text-align: center;
+    width: 100%;
+}
+
+.temp-elevated {
+
+    color: rgb(168, 111, 6);
+    /* لون نص أصفر/بني غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.temp-critical {
+
+    color: #e90a20;
+    /* لون نص أحمر غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+
+.vip-default {
+
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.vip-normal {
+
+    color: #11872d;
+    /* لون نص أخضر غامق ليكون واضحًا */
+    font-weight: bold;
+    /* جعل النص عريضًا */
+    text-align: center;
+    width: 100%;
+}
+
+.vip-elevated {
+
+    color: blue;
+    /* لون نص أصفر/بني غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.vip-under-critical {
+
+    color: rgb(168, 111, 6);
+    /* لون نص أحمر غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.vip-critical {
+
+    color: #e90a20;
+    /* لون نص أحمر غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.clickable-day2:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+    cursor: pointer;
+}
+
+/* --- Mobile-specific styles --- */
+/* Media query for screens up to 768px wide (typical for tablets and mobiles) */
+/* الأنماط العامة لحقول الإدخال */
+.auto-save2 {
+
+
+
+
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+
+.auto-save2:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+
+/* الألوان بناءً على درجات الحرارة */
+.temp-default2 {
+
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.temp-normal2 {
+
+    color: #11872d;
+    /* لون نص أخضر غامق ليكون واضحًا */
+    font-weight: bold;
+    /* جعل النص عريضًا */
+    text-align: center;
+    width: 100%;
+}
+
+.temp-elevated2 {
+
+    color: rgb(168, 111, 6);
+    /* لون نص أصفر/بني غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.temp-critical2 {
+
+    color: #e90a20;
+    /* لون نص أحمر غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+
+.vip-default2 {
+
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.vip-normal2 {
+
+    color: #11872d;
+    /* لون نص أخضر غامق ليكون واضحًا */
+    font-weight: bold;
+    /* جعل النص عريضًا */
+    text-align: center;
+    width: 100%;
+}
+
+.vip-elevated2 {
+
+    color: blue;
+    /* لون نص أصفر/بني غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.vip-under-critical2 {
+
+    color: rgb(168, 111, 6);
+    /* لون نص أحمر غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.vip-critical2 {
+
+    color: #e90a20;
+    /* لون نص أحمر غامق */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.clickable-day2:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+    cursor: pointer;
+}
+.clickable-day:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+    cursor: pointer;
+}
+
+
+.day-header {
+    cursor: pointer; /* لإظهار مؤشر اليد عند المرور فوق الخلية */
+}
+
+.day-header.selected {
+    background-color: #e5bfa8; /* لون خلفية للخلية المحددة */
+    border: 2px solid #007bff; /* حدود للخلية المحددة */
+    font-weight: bold;
+}
+
+
+/* --- Optional: Even smaller screens (e.g., very narrow phones) --- */
+@media (max-width: 480px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+   
+
+
+    .main_top_head {
+
+        width: inherit;
+        display: flex;
+        background-color: #f8f8f8;
+        text-align: center;
+
+    }
+
+    .main_top_head h1 {
+
+        width: 70%;
+        text-align: center;
+        font-size: 1.5em;
+        padding-top: 3%;
+
+    }
+
+    .btns {
+        width: 100%;
+
+        text-align: center;
+        padding-top: 0.25%;
+        padding-bottom: 0.25%;
+
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid rgb(224, 137, 15);
+        background-color: rgb(212, 208, 151);
+
+
+
+
+    }
+
+    .btns button {
+        font-size: 1.2em;
+        margin-bottom: 1%;
+        margin-right: 2%;
+        padding: 0.5%;
+        border: 50px rgb(113, 6, 6) bold;
+        border-radius: 50px;
+
+    }
+
+    .main_top_head img {
+
+        width: 12%;
+        text-align: center;
+        font-size: 1em;
+    }
+
+    .page_label {
+        width: inherit;
+        background-color: rgb(250, 220, 215);
+        text-align: center;
+        margin-bottom: 0.5%;
+    }
+
+    .page_label h1 {
+        font-size: 1.2em;
+    }
+
+
+    .main_btns {
+        width: 100%;
+        margin-left: 0;
+        display: flex;
+
+        background-color: rgb(221, 217, 225);
+        text-align: center;
+        padding-top: 0.25%;
+        padding-bottom: 0.25%;
+
+    }
+
+    .main_btns button {
+        display: flex;
+        width: 90%;
+        font-size: 1em;
+        margin-left: 5%;
+        margin-right: 0.2%;
+        padding-left: 0.2%;
+        padding-right: 0.2%;
+        padding-top: 0.7%;
+        padding-bottom: 0.7%;
+        border: 50px rgb(113, 6, 6) bold;
+        border-radius: 50px;
+        padding-left: 10%;
+
+    }
+
+    .main_btns .form {
+        display: block;
+        margin-left: 0;
+        width: 100%;
+        background-color: rgb(221, 217, 225);
+    }
+
+    .main_btns .form form {
+
+        display: flex;
+        margin-bottom: 2%;
+        margin-left: 1%;
+        padding-left: 0%;
+        width: 100%;
+        background-color: rgb(221, 217, 225);
+
+    }
+
+    .main_btns .form form button {
+        display: flex;
+        font-size: 1em;
+        margin-left: 2%;
+        margin-right: 2%;
+        padding-left: 1.5%;
+        padding-right: 1.5%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        border: 50px rgb(113, 6, 6) bold;
+        border-radius: 50px;
+        width: 90%;
+
+
+    }
+
+    #dateshow {
+
+        font-family: Arial, sans-serif;
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+        width: fit-content;
+        margin: 20px auto;
+        background-color: #f9f9f9;
+    }
+
+    .calendar-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        background-color: #e0e0e0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .calendar-nav button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.2em;
+        transition: background-color 0.3s ease;
+    }
+
+    .calendar-nav button:hover {
+        background-color: #0056b3;
+    }
+
+    .calendar-nav h3 {
+        margin: 0;
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    .calendars-container {
+        display: block;
+        gap: 20px;
+        /* مسافة بين التقويمين */
+        justify-content: center;
+    }
+
+    .calendar {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .calendar h4 {
+        text-align: center;
+        margin-top: 0;
+        color: #555;
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+
+    .calendar table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .calendar th,
+    .calendar td {
+        text-align: center;
+        padding: 8px;
+        border: 1px solid #eee;
+        width: calc(100% / 7);
+        /* توزيع متساو للخلايا */
+    }
+
+    .calendar th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #666;
+    }
+
+    .calendar td {
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .calendar td:hover:not(:empty) {
+        background-color: #e6f7ff;
+    }
+
+    .calendar-day.selected {
+        background-color: #007bff;
+        color: white;
+        border-radius: 3px;
+        font-weight: bold;
+    }
+
+
+
+    .container3 .yemen_company {
+        width: 100%;
+
+        display: flex;
+        background-color: #f8f8f8;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+    .container3 .yemen_company img {
+        width: 10%;
+
+    }
+
+    .container3 .yemen_company .h {
+
+        display: block;
+        padding-top: 1%;
+
+    }
+
+    .container3 .yemen_company .h h1 {
+
+
+        text-align: center;
+        font-size: 2em;
+        padding-top: 0.%;
+    }
+
+    .container3 .yemen_company .h h2 {
+
+
+        text-align: center;
+        font-size: 1.2em;
+        padding-top: 0.1%;
+
+    }
+
+
+    .yemen_company2 {
+        width: 270%;
+        display: flex;
+        background-color: #f8f8f8;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 0.5%;
+        padding-top: 0.5%;
+    }
+
+    .yemen_company2 .h {
+        width: 100%;
+        display: block;
+        padding-top: 3%;
+
+    }
+
+    .yemen_company2 .h h1 {
+
+        width: 100%;
+        text-align: center;
+        font-size: 1.8em;
+        padding-top: 0.1%;
+    }
+
+    .yemen_company2 .h h2 {
+
+        width: 100%;
+        text-align: center;
+        font-size: 1em;
+        padding-top: 0.1%;
+
+    }
+
+    .container3 .oneline {
+        width: 100%;
+        margin-top: 5%;
+
+        margin-left: 0%;
+        padding: 0;
+
+        display: flex;
+
+    }
+
+    .container3 .oneline #Periodic_date {
+
+        color: #2609cb;
+        /* margin-left: 2%;
+    margin-right: 2%; */
+        font-size: 2em;
+        width: fit-content;
+        margin-left: 27%;
+
+    }
+
+    .container3 .oneline #day_label {
+
+        color: #2609cb;
+        /* margin-left: 2%;
+    margin-right: 2%; */
+        font-size: 2em;
+    }
+
+    .container3 .oneline .slah {
+
+        color: #cb0909;
+        font-size: 2em;
+
+    }
+
+    .container3 .oneline #month_label {
+
+        color: #cb0909;
+        /* margin-left: 2%;
+    margin-right: 2%; */
+        font-size: 2em;
+    }
+
+    .container3 .oneline #year_label {
+
+        color: #cb0909;
+        /* margin-left: 2%;
+    margin-right: 2%; */
+        font-size: 2em;
+    }
+
+    .container3 .oneline #year_labe2 {
+
+        color: #cb0909;
+        /* margin-left: 2%;
+    margin-right: 2%; */
+        font-size: 2em;
+    }
+
+    .container3 .oneline #to {
+
+        color: #4309cb;
+        /* margin-left: 2%;
+    margin-right: 2%; */
+        font-size: 2em;
+    }
+
+    .container3 .oneline #day_labe2 {
+
+        color: #cb0909;
+        /* margin-left: 2%;
+    margin-right: 2%; */
+        font-size: 2em;
+    }
+
+    /* .oneline #slah2{
+   
+    color: #cb0909;
+     margin-left: 2%;
+    margin-right: 2%;
+} */
+    .container3 .oneline #month_labe2 {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 2em;
+    }
+
+    .oneline2 {
+        width: 270%;
+        margin-top: 5%;
+        text-align: center;
+        padding-left: 20%;
+
+        display: flex;
+
+    }
+
+    .oneline2 #Periodic_date {
+
+        color: #2609cb;
+        margin-left: 2%;
+        margin-right: 2%;
+
+        font-size: 2em;
+        width: fit-content;
+
+    }
+
+    .oneline2 #day_label {
+
+        color: #2609cb;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 2em;
+    }
+
+    .oneline2 .slah {
+
+        color: #cb0909;
+        font-size: 2em;
+
+    }
+
+    .oneline2 #month_label {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 2em;
+    }
+
+    .oneline2 #year_label {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 2em;
+    }
+
+    .oneline2 #year_labe2 {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 2em;
+    }
+
+    .oneline2 #to {
+
+        color: #4309cb;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 2em;
+    }
+
+    .oneline2 #day_labe2 {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 2em;
+    }
+
+    /* .oneline #slah2{
+   
+    color: #cb0909;
+     margin-left: 2%;
+    margin-right: 2%;
+} */
+    .oneline2 #month_labe2 {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 2em;
+    }
+
+    .container3 {
+        width: 270%;
+        font-size: 10px;
+        margin: 0;
+        
+
+
+    }
+
+   
+/* Table Show_motor_week_grpup_a.php Styles */
+.container5 table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Collapses borders between cells */
+    margin-top: 20px;
+    table-layout: auto;
+    /* Allows browser to determine column widths based on content */
+    direction: ltr;
+    /* Ensure table direction is RTL */
+    font-weight: bold;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    /* Center align all text for days and status */
+    white-space: nowrap;
+    /* Prevent text wrapping in short cells */
+    font-size: 0.85em;
+}
+
+.container5 thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+
+}
+
+.container5 tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Zebra striping for readability */
+}
+
+.container5 tbody tr:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+
+.container5 tfoot td {
+    background-color: #e9ecef;
+    font-weight: bold;
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/* Specific column widths for better layout */
+/* Adjust these widths as needed based on your content */
+.container5 table th:nth-child(1) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(1) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(2) {
+    /* Status column */
+    width: 45%;
+    white-space: normal;
+
+}
+
+.container5 table th:nth-child(3) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(3) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table th:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(5) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(5) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(6) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(6) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(7) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(7) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(8) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(8) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(9) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(9) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+.container5 table td:nth-child(10) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+
+.container5 table td:nth-child(10) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+/* Table week_mainten_motors.php Styles */
+.container4 table {
+    width: 270%;
+    border-collapse: collapse;
+    /* Collapses borders between cells */
+    margin-top: 20px;
+    table-layout: auto;
+    /* Allows browser to determine column widths based on content */
+    direction: ltr;
+    /* Ensure table direction is RTL */
+    font-weight: bold;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    /* Center align all text for days and status */
+    white-space: nowrap;
+    /* Prevent text wrapping in short cells */
+    font-size: 0.85em;
+}
+
+.container4 thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+
+}
+
+.container4 tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Zebra striping for readability */
+}
+
+.container4 tbody tr:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+
+.container4 tfoot td {
+    background-color: #e9ecef;
+    font-weight: bold;
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/* Specific column widths for better layout */
+/* Adjust these widths as needed based on your content */
+.container4 table th:nth-child(1) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(1) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(2) {
+    /* Status column */
+    width: 45%;
+    white-space: normal;
+    text-align: left;
+
+}
+
+.container4 table th:nth-child(3) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+
+}
+
+.container4 table td:nth-child(3) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table th:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(4) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(5) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(5) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(6) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(6) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(7) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(7) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(8) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(8) {
+    /* Status column */
+    width: 5%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(9) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(9) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+.container4 table td:nth-child(10) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+
+.container4 table td:nth-child(10) {
+    /* Status column */
+    width: 10%;
+    white-space: normal;
+
+}
+
+/* Table week_mainten_transformer.php Styles */
+.container2 table {
+    width: 540%;
+    border-collapse: collapse;
+    /* Collapses borders between cells */
+    margin-top: 20px;
+    table-layout: auto;
+    /* Allows browser to determine column widths based on content */
+    direction: ltr;
+    /* Ensure table direction is RTL */
+    font-size: 10px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    /* Center align all text for days and status */
+    white-space: nowrap;
+    /* Prevent text wrapping in short cells */
+    font-size: 10px;
+}
+
+.container2 thead th {
+    background-color: #007bff;
+    
+    color: white;
+    font-weight: bold;
+    
+
+}
+
+.container2 tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Zebra striping for readability */
+}
+
+.container2 tbody tr:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+
+.container2 tfoot td {
+    background-color: #e9ecef;
+    font-weight: bold;
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/* Specific column widths for better layout */
+/* Adjust these widths as needed based on your content */
+
+
+.container2 table td:nth-child(1) {
+    /* Status column */
+    width: 1%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(2) {
+    /* Status column */
+    width: 8%;
+    white-space: normal;
+    text-align: left;
+    
+    font-weight: bold;
+
+}
+
+.container2 table td:nth-child(3) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+    
+    text-align: center;
+    font-weight: bold;
+}
+
+.container2 table td:nth-child(4) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+}
+
+.container2 table td:nth-child(5) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(6) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(7) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(8) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(9) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(10) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(11) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(12) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+    text-align: left;
+
+}
+
+.container2 table td:nth-child(13) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(14) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(15) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(16) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(17) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(18) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(19) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(20) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(21) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(22) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(23) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(24) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(25) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(26) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(27) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(28) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(29) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(30) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(31) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(32) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(33) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+
+.container2 table td:nth-child(34) {
+    /* Status column */
+    width: 2%;
+    white-space: normal;
+
+}
+.container2 table td:nth-child(4):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(5):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(6):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(7):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(8):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(9):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(10):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(11):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(12):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(13):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(14):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(15):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(16):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(17):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(18):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(19):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(20):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(21):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(22):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(23):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(24):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(25):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(26):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(27):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(28):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(29):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(30):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(31):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(32):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(33):hover {
+    width: 3%;
+}
+.container2 table td:nth-child(34):hover {
+    width: 3%;
+}
+
+
+
+.container1 table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Collapses borders between cells */
+    margin-top: 20px;
+    table-layout: auto;
+    /* Allows browser to determine column widths based on content */
+    direction: ltr;
+    /* Ensure table direction is RTL */
+    font-weight: bold;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    /* Center align all text for days and status */
+    white-space: nowrap;
+    /* Prevent text wrapping in short cells */
+    
+}
+
+.container1 thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+
+}
+
+.container1 tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Zebra striping for readability */
+}
+
+.container1 tbody tr:hover {
+    background-color: #ddd;
+    /* Highlight row on hover */
+}
+
+.container1 tfoot td {
+    background-color: #e9ecef;
+    font-weight: bold;
+
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/* Specific column widths for better layout */
+/* Adjust these widths as needed based on your content */
+
+
+.container1 table td:nth-child(1) {
+    /* Status column */
+    width: 1%;
+    white-space: normal;
+    
+
+}
+
+.container1 table td:nth-child(2) {
+    /* Status column */
+    width: 22.5%;
+    white-space: normal;
+    text-align: left;
+    font-size: 7px;
+    font-weight: bold;
+
+}
+
+.container1 table td:nth-child(3) {
+    /* Status column */
+    width: 3%;
+    white-space: normal;
+    font-size: 7px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.container1 table td:nth-child(4) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+    
+}
+
+.container1 table td:nth-child(5) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(6) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(7) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(8) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(9) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(10) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(11) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(12) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+    
+
+}
+
+.container1 table td:nth-child(13) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(14) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(15) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(16) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(17) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(18) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(19) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(20) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(21) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(22) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(23) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(24) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(25) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(26) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(27) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(28) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(29) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(30) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(31) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(32) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(33) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+
+.container1 table td:nth-child(34) {
+    /* Status column */
+    width: 1.5%;
+    white-space: normal;
+
+}
+.container1 table td:nth-child(4):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(5):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(6):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(7):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(8):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(9):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(10):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(11):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(12):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(13):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(14):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(15):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(16):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(17):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(18):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(19):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(20):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(21):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(22):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(23):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(24):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(25):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(26):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(27):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(28):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(29):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(30):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(31):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(32):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(33):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+.container1 table td:nth-child(34):hover {
+    width: 3%;
+    font-size: 2em;
+    color: darkblue;
+}
+
+    .tail {
+
+        display: flex;
+        text-align: center;
+        width: 100%;
+
+
+    }
+
+    .tail .Intail1 {
+
+        margin-left: 20vw;
+        font-size: 4vw;
+
+    }
+
+    .tail .Intail2 {
+
+        margin-left: 80vw;
+        font-size: 4vw;
+
+    }
+
+    .tail .Intail3 {
+
+        margin-left: 65vw;
+        font-size: 4vw;
+
+    }
+
+    .tail4 {
+
+        display: flex;
+        text-align: center;
+        width: 280%;
+
+    }
+
+    .tail4 .Intail5 {
+
+        margin-left: 15vw;
+        font-size: 4vw;
+
+
+    }
+
+    .tail4 .Intail6 {
+
+        margin-left: 160vw;
+        font-size: 4vw;
+
+
+    }
+
+
+
+
+    .tail22 {
+
+        display: flex;
+        text-align: center;
+        width: 380%;
+
+    }
+
+    .tail22 .Intail1 {
+
+        margin-left: 7%;
+
+    }
+
+    .tail22 .Intail2 {
+
+        margin-left: 27%;
+
+    }
+
+    .tail22 .Intail3 {
+
+        margin-left: 31%;
+
+    }
+
+    .tail44 {
+
+        display: flex;
+        text-align: center;
+        width: 380%;
+
+    }
+
+    .tail44 .Intail5 {
+
+        margin-left: 5%;
+
+    }
+
+    .tail44 .Intail6 {
+
+        margin-left: 63%;
+
+    }
+
+
+    .container {
+
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .form form select {
+        margin-right: 0.5%;
+        width: 20%;
+        font-size: 100%;
+        border-radius: 15px;
+        padding: 0.5%;
+        border: 0.5% solid black;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+    .form form #tyear {
+        display: none;
+
+    }
+
+    .form form #tmonth {
+        display: none;
+
+    }
+
+    .form form #tweek {
+        display: none;
+
+    }
+
+    .form form #tday {
+        display: none;
+
+    }
+
+    .form {
+
+        width: 270%;
+        display: flex;
+        margin-left: 5%;
+        margin-bottom: 4%;
+        text-align: center;
+
+    }
+
+    .form form {
+        width: 100%;
+        text-align: center;
+        display: flex;
+
+    }
+
+    .form form #btn {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form form #btnback {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form form option {
+        width: 100%;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+
+    .form form .print-button {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form form #btn:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .form form #btnback:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: grab;
+    }
+
+    .form form select:hover {
+        border: 3px solid #e71111;
+        cursor: pointer;
+    }
+
+    .form form .print-button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .formshowmotor {
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid rgb(224, 137, 15);
+        background-color: rgb(212, 208, 151);
+    }
+
+    .formshowmotor form select {
+        margin-right: 0.5%;
+        margin-left: 20%;
+        width: 20%;
+        font-size: 100%;
+        border-radius: 15px;
+        padding: 0.5%;
+        border: 0.5% solid black;
+        text-align: center;
+        background-color: #c5c7d08d;
+
+    }
+
+    .formshowmotor form #tyear {
+        display: none;
+
+    }
+
+    .formshowmotor form #tmonth {
+        display: none;
+
+    }
+
+    .formshowmotor form #tweek {
+        display: none;
+
+    }
+
+    .formshowmotor form #tday {
+        display: none;
+
+    }
+
+    .formshowmotor {
+
+        width: 270%;
+        display: flex;
+        margin-left: 5%;
+        margin-bottom: 4%;
+        text-align: center;
+
+    }
+
+    .formshowmotor form {
+        width: 100%;
+        text-align: center;
+        display: flex;
+
+
+    }
+
+    .formshowmotor form #btn {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowmotor form #btnback {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowmotor form option {
+        width: 100%;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+
+    .formshowmotor form .print-button {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowmotor form #btn:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .formshowmotor form #btnback:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: grab;
+    }
+
+    .formshowmotor form select:hover {
+        border: 3px solid #e71111;
+        cursor: pointer;
+    }
+
+    .formshowmotor form .print-button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .formshowTranformer {
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid rgb(224, 137, 15);
+        background-color: rgb(212, 208, 151);
+        width: 540%;
+        display: flex;
+        padding-left: 8%;
+        margin-bottom: 4%;
+        text-align: center;
+
+    }
+   
+
+    .formshowTranformer form select {
+        margin-right: 0.5%;
+        margin-left: 0.5%;
+        width: 15%;
+        font-size: 100%;
+        border-radius: 15px;
+        padding: 0.5%;
+        border: 0.5% solid black;
+        text-align: center;
+        background-color: #c5c7d08d;
+
+    }
+
+    .formshowTranformer form #tyear {
+        display: none;
+
+    }
+
+    .formshowTranformer form #tmonth {
+        display: none;
+
+    }
+
+    .formshowTranformer form #tweek {
+        display: none;
+
+    }
+
+    .formshowTranformer form #tday {
+        display: none;
+
+    }
+
+    .formshowTranformer form {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        padding-left: 20%;
+
+
+    }
+
+    .formshowTranformer form #btn {
+        font-size: 100%;
+        margin-left: 2%;
+        margin-right: 2%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowTranformer form #btnback {
+        font-size: 100%;
+        margin-right: 2%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowTranformer form option {
+        width: 100%;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+
+    .formshowTranformer form .print-button {
+        font-size: 100%;
+        margin-right: 0%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowTranformer form #btn:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .formshowTranformer form #btnback:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: grab;
+    }
+
+    .formshowTranformer form select:hover {
+        border: 3px solid #e71111;
+        cursor: pointer;
+    }
+
+    .formshowTranformer form .print-button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+   .formshowTranformer31 {
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid rgb(224, 137, 15);
+        background-color: rgb(212, 208, 151);
+        width: 270%;
+        display: flex;
+        padding-left: 8%;
+        margin-bottom: 4%;
+        text-align: center;
+
+    }
+    
+    .formshowTranformer31 form select {
+        margin-right: 0.5%;
+        margin-left: 0.5%;
+        width: 15%;
+        font-size: 100%;
+        border-radius: 15px;
+        padding: 0.5%;
+        border: 0.5% solid black;
+        text-align: center;
+        background-color: #c5c7d08d;
+
+    }
+
+    .formshowTranformer31 form #tyear {
+        display: none;
+
+    }
+
+    .formshowTranformer31 form #tmonth {
+        display: none;
+
+    }
+
+    .formshowTranformer31 form #tweek {
+        display: none;
+
+    }
+
+    .formshowTranformer31 form #tday {
+        display: none;
+
+    }
+
+    .formshowTranformer31 form {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        padding-left: 20%;
+
+
+    }
+
+    .formshowTranformer31 form #btn {
+        font-size: 100%;
+        margin-left: 2%;
+        margin-right: 2%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowTranformer31 form #btnback {
+        font-size: 100%;
+        margin-right: 2%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowTranformer31 form option {
+        width: 100%;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+
+    .formshowTranformer31 form .print-button {
+        font-size: 100%;
+        margin-right: 0%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowTranformer31 form #btn:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .formshowTranformer31 form #btnback:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: grab;
+    }
+
+    .formshowTranformer31 form select:hover {
+        border: 3px solid #e71111;
+        cursor: pointer;
+    }
+
+    .formshowTranformer31 form .print-button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .form2 {
+        width: 270%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 5px solid rgb(224, 137, 15);
+        background-color: rgb(212, 208, 151);
+    }
+
+    .form2 form select {
+        width: 20%;
+        font-size: 16px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+        text-align: center;
+        background-color: #ecedf18d;
+        width: 20%;
+
+    }
+
+    .form2 form #tyear {
+        display: none;
+
+    }
+
+    .form2 form #tmonth {
+        display: none;
+
+    }
+
+    .form2 form #tweek {
+        display: none;
+
+    }
+
+    .form2 form #tday {
+        display: none;
+
+    }
+
+    .form2 form {
+
+        text-align: center;
+        background-color: rgb(212, 208, 151);
+
+    }
+
+    .form2 form #btn {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form2 form #btnback {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form2 form option {
+        width: 100%;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+
+    .form2 form .print-button {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form2 form #btn:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .form2 form #btnback:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: grab;
+    }
+
+    .form2 form select:hover {
+        border: 3px solid #e71111;
+        cursor: pointer;
+    }
+
+    .form2 form .print-button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .chang_my_pass {
+        width: inherit;
+        text-align: center;
+        margin-top: 1%;
+        padding-left: 10%;
+
+
+    }
+
+    .chang_my_pass .conteiner {
+        width: 90%;
+
+        border: #2609cb solid 7px;
+
+        border-radius: 20%;
+    }
+
+    .chang_my_pass .conteiner input {
+        width: 95%;
+
+    }
+
+    .chang_my_pass .conteiner label {
+
+        color: #180edc;
+
+    }
+
+    .chang_my_pass .conteiner .subject {
+
+        color: #cb5d09;
+        font-family: 'Cairo', sans-serif;
+        font-size: 150%;
+    }
+
+    .chang_my_pass .conteiner button {
+
+        font-family: 'Cairo', sans-serif;
+        font-size: 100%;
+
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 2px;
+        background-color: #fff;
+        color: #333;
+        direction: ltr;
+        /* Set default direction for the whole page */
+        text-align: center;
+        /* Align text to the right for RTL */
+        
+    }
+
+    .container {
+        max-width: 100%;
+        /* Adjust as needed */
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 1px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        /* For horizontal scrolling on smaller screens */
+    }
+
+    h1 {
+        text-align: center;
+        color: #0056b3;
+        margin-bottom: 5px;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 0;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .info-section {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    width: 540%;
+        /* Adjust width for better layout */
+    }
+
+    .info-section p {
+        margin: 5px 15px;
+        font-size: 1em;
+        color: #333;
+        text-align: right;
+        /* Ensure text aligns right within its flex item */
+    }
+ .info-section3 {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    width: 100%;
+        /* Adjust width for better layout */
+    }
+
+    .info-section3 p {
+        margin: 5px 15px;
+        font-size: 1em;
+        color: #333;
+        text-align: right;
+        /* Ensure text aligns right within its flex item */
+    }
+    /* Table Styles */
+   
+    .container1 {
+        width: 270%;
+        font-size: 10px;
+
+    }
+
+    .container1 .z {
+        width: 1.2%;
+        text-align: center;
+        font-size: 10px;
+
+    }
+
+    .container1 .zz {
+        width: 1.2%;
+        text-align: center;
+        font-size: 10px;
+        cursor: pointer;
+
+    }
+
+    .container1 .zz:hover {
+        background-color: rgb(191, 200, 200);
+    }
+
+
+    .conx1 {
+
+        display: flex;
+        width: 540%;
+    }
+
+    .transimageShow {
+
+        width: 20%;
+        margin-left: 3%;
+    }
+
+    .conx2 {
+        width: 270%;
+        text-align: center;
+        margin-top: 1%;
+    }
+      .conx31 {
+
+        display: flex;
+        width: 100%;
+    }
+
+    .transimageShow3 {
+
+        width: 10%;
+        margin-left: 3%;
+    }
+
+    .conx32 {
+        width: 100%;
+        text-align: center;
+        margin-top: 1%;
+    }
+
+    .rig_img {
+        width: 12%;
+    }
+
+ 
+}
+
+
+@media (max-width: 820px) and (orientation: landscape) {
+    /* هنا تبدأ بتعديل الخصائص التي تحتاج لتغيير في الوضع الأفقي */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    /* Base styles (for desktop and larger screens) */
+    .main_top_head {
+
+        width: 100%;
+        display: flex;
+
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 0.5%;
+        padding-top: 0.5%;
+
+    }
+
+    .main_top_head h1 {
+
+        width: 70%;
+        text-align: center;
+        font-size: 2em;
+        padding-top: 3%;
+
+
+    }
+
+    .main_top_head img {
+
+        width: 20%;
+
+
+
+
+    }
+
+    .btns {
+        width: 100%;
+        background-color: rgb(221, 217, 225);
+        text-align: center;
+        padding-top: 0.25%;
+        padding-bottom: 0.25%;
+    }
+
+    .btns button {
+        font-size: 1.5em;
+        margin-left: 2%;
+        margin-right: 2%;
+        padding: 0.5%;
+        border: 50px rgb(113, 6, 6) bold;
+        border-radius: 50px;
+
+    }
+
+    .page_label {
+        background-color: antiquewhite;
+        text-align: center;
+        margin-bottom: 0.5%;
+    }
+
+    .main_btns {
+        display: flex;
+        width: 100%;
+        background-color: rgb(221, 217, 225);
+        text-align: center;
+        padding-top: 0.25%;
+        padding-bottom: 0.25%;
+
+
+    }
+
+    .main_btns button {
+        font-size: 1.2em;
+        margin-left: 1%;
+        margin-right: 1%;
+        padding-left: 1%;
+        padding-right: 1%;
+        padding-top: 0.7%;
+        padding-bottom: 0.7%;
+        border: 50px rgb(113, 6, 6) bold;
+        border-radius: 50px;
+        width: 50%;
+
+
+    }
+
+    .main_btns .form {
+        display: flex;
+
+        width: 100%;
+        background-color: rgb(221, 217, 225);
+    }
+
+    .main_btns .form form {
+        display: flex;
+        margin-left: 5%;
+        padding-left: 1%;
+        width: inherit;
+        background-color: rgb(221, 217, 225);
+
+
+    }
+
+    .main_btns .form form button {
+        font-size: 1.2em;
+        margin-left: 2%;
+        margin-right: 2%;
+        padding-left: 1.5%;
+        padding-right: 1.5%;
+        padding-top: 1.5%;
+        padding-bottom: 1.5%;
+        border: 50px rgb(113, 6, 6) bold;
+        border-radius: 50px;
+
+
+    }
+
+    #dateshow {
+        visibility: hidden;
+        font-family: Arial, sans-serif;
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+        width: fit-content;
+        margin: 20px auto;
+        background-color: #f9f9f9;
+    }
+
+    .calendar-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        background-color: #e0e0e0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .calendar-nav button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.2em;
+        transition: background-color 0.3s ease;
+    }
+
+    .calendar-nav button:hover {
+        background-color: #0056b3;
+    }
+
+    .calendar-nav h3 {
+        margin: 0;
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    .calendars-container {
+        display: flex;
+        gap: 20px;
+        /* مسافة بين التقويمين */
+        justify-content: center;
+    }
+
+    .calendar {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .calendar h4 {
+        text-align: center;
+        margin-top: 0;
+        color: #555;
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+
+    .calendar table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .calendar th,
+    .calendar td {
+        text-align: center;
+        padding: 8px;
+        border: 1px solid #eee;
+        width: calc(100% / 7);
+        /* توزيع متساو للخلايا */
+    }
+
+    .calendar th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #666;
+    }
+
+    .calendar td {
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .calendar td:hover:not(:empty) {
+        background-color: #e6f7ff;
+    }
+
+    .calendar-day.selected {
+        background-color: #007bff;
+        color: white;
+        border-radius: 3px;
+        font-weight: bold;
+    }
+
+    .yemen_company {
+        width: 130%;
+        display: flex;
+        background-color: #f8f8f8;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 0.5%;
+        padding-top: 0.5%;
+    }
+
+    .yemen_company .h {
+        width: 100%;
+        display: block;
+        padding-top: 3%;
+
+    }
+
+    .yemen_company img {
+        width: 8%;
+
+
+    }
+
+    .yemen_company .h h1 {
+
+        width: 100%;
+        text-align: center;
+        font-size: 1.5em;
+        padding-top: 0.1%;
+    }
+
+    .yemen_company .h h2 {
+
+        width: 100%;
+        text-align: center;
+        font-size: 1.1em;
+        padding-top: 0.1%;
+
+    }
+
+    .formshowmotor {
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid rgb(224, 137, 15);
+        background-color: rgb(212, 208, 151);
+    }
+
+    .formshowmotor form select {
+        margin-right: 0.5%;
+        margin-left: 20%;
+        width: 20%;
+        font-size: 100%;
+        border-radius: 15px;
+        padding: 0.5%;
+        border: 0.5% solid black;
+        text-align: center;
+        background-color: #c5c7d08d;
+
+    }
+
+    .formshowmotor form #tyear {
+        display: none;
+
+    }
+
+    .formshowmotor form #tmonth {
+        display: none;
+
+    }
+
+    .formshowmotor form #tweek {
+        display: none;
+
+    }
+
+    .formshowmotor form #tday {
+        display: none;
+
+    }
+
+    .formshowmotor {
+
+        width: 130%;
+        display: flex;
+        margin-left: 5%;
+        margin-bottom: 4%;
+        text-align: center;
+
+    }
+
+    .formshowmotor form {
+        width: 100%;
+        text-align: center;
+        display: flex;
+
+    }
+
+    .formshowmotor form #btn {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowmotor form #btnback {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowmotor form option {
+        width: 100%;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+
+    .formshowmotor form .print-button {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowmotor form #btn:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .formshowmotor form #btnback:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: grab;
+    }
+
+    .formshowmotor form select:hover {
+        border: 3px solid #e71111;
+        cursor: pointer;
+    }
+
+    .formshowmotor form .print-button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .formshowTranformer {
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid rgb(224, 137, 15);
+        background-color: rgb(212, 208, 151);
+    }
+
+    .formshowTranformer form select {
+        margin-right: 1%;
+        margin-left: 0.5%;
+        width: 15%;
+        font-size: 100%;
+        border-radius: 15px;
+        padding: 0.5%;
+        border: 0.5% solid black;
+        text-align: center;
+        background-color: #c5c7d08d;
+
+    }
+
+    .formshowTranformer form #tyear {
+        display: none;
+
+    }
+
+    .formshowTranformer form #tmonth {
+        display: none;
+
+    }
+
+    .formshowTranformer form #tweek {
+        display: none;
+
+    }
+
+    .formshowTranformer form #tday {
+        display: none;
+
+    }
+
+    .formshowTranformer {
+
+        width: 130%;
+        display: flex;
+        /* margin-left: 5%; */
+        margin-bottom: 1%;
+        padding-left: 20%;
+        text-align: center;
+
+
+
+    }
+
+    .formshowTranformer form {
+        width: 100%;
+        text-align: center;
+        display: flex;
+
+    }
+
+    .formshowTranformer form #btn {
+        font-size: 100%;
+        margin-right: 1%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowTranformer form #btnback {
+        font-size: 100%;
+        margin-right: 2%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowTranformer form option {
+        width: 100%;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+
+    .formshowTranformer form .print-button {
+        font-size: 100%;
+        margin-right: 0.5%;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .formshowTranformer form #btn:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .formshowTranformer form #btnback:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: grab;
+    }
+
+    .formshowTranformer form select:hover {
+        border: 3px solid #e71111;
+        cursor: pointer;
+    }
+
+    .formshowTranformer form .print-button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+
+    .yemen_company2 {
+        width: 130%;
+        display: flex;
+        background-color: #f8f8f8;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 0.5%;
+        padding-top: 0.5%;
+
+    }
+
+    .yemen_company2 .h {
+        width: 100%;
+        display: block;
+        padding-top: 3%;
+
+    }
+
+    .yemen_company2 img {
+        width: 8%;
+
+
+    }
+
+    .yemen_company2 .h h1 {
+
+        width: 100%;
+        text-align: center;
+        font-size: 1.5em;
+        padding-top: 0.1%;
+    }
+
+    .yemen_company2 .h h2 {
+
+        width: 100%;
+        text-align: center;
+        font-size: 1.1em;
+        padding-top: 0.1%;
+
+    }
+
+    .oneline {
+        padding-top: 1%;
+        padding-left: 28%;
+        width: 130%;
+        display: flex;
+
+    }
+
+    .oneline #Periodic_date {
+        font-size: 1.2em;
+        color: #2609cb;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline #day_label {
+        font-size: 1.2em;
+        color: #2609cb;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline .slah {
+        font-size: 1.2em;
+        color: #cb0909;
+
+    }
+
+    .oneline #month_label {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline #year_label {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline #year_labe2 {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline #to {
+        font-size: 1.2em;
+        color: #4309cb;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline #day_labe2 {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    /* .oneline #slah2{
+   
+    color: #cb0909;
+     margin-left: 2%;
+    margin-right: 2%;
+} */
+    .oneline #month_labe2 {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+
+    .oneline2 {
+        padding-left: 15%;
+        margin-left: 20%;
+        display: flex;
+
+    }
+
+    .oneline2 #Periodic_date {
+        font-size: 1.2em;
+        color: #2609cb;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline2 #day_label {
+        font-size: 1.2em;
+        color: #2609cb;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline2 .slah {
+        font-size: 1.2em;
+        color: #cb0909;
+
+    }
+
+    .oneline2 #month_label {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline2 #year_label {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline2 #year_labe2 {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline2 #to {
+        font-size: 1.2em;
+        color: #4309cb;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline2 #day_labe2 {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    /* .oneline #slah2{
+   
+    color: #cb0909;
+     margin-left: 2%;
+    margin-right: 2%;
+} */
+    .oneline2 #month_labe2 {
+        font-size: 1.2em;
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+
+
+
+    /* بعض الأنماط لجعل الجدول يبدو جيداً */
+    table {
+        width: 128%;
+        border-collapse: collapse;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+
+        font-family: Georgia, 'Times New Roman', Times, serif;
+
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 0px;
+        padding-right: 0px;
+        text-align: center;
+        /* محاذاة النص لليمين للعربية */
+        font-size: 15px;
+    }
+
+    th {
+        background-color: #3ce26b8d;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    td .fcol1 {
+        background-color: rgb(123, 53, 96);
+    }
+
+    td .fcol2 {
+        background-color: rgb(53, 123, 118);
+    }
+
+    td .btnn {
+        background-color: rgb(57, 5, 37);
+        border: wheat solid 2px;
+        border-radius: 5px;
+        font-size: 15px;
+        color: wheat;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .motorname {
+        text-align: left;
+        width: 100%;
+
+    }
+
+    .tagno {
+        text-align: center;
+        width: 7%;
+
+    }
+
+    td form {
+        display: flex;
+
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+        /* لون فاتح للصفوف الفردية */
+    }
+
+    /* لتغيير لون الصفوف الزوجية (الثاني، الرابع، السادس، وهكذا) */
+    tbody tr:nth-child(even) {
+        background-color: #999dcc8d;
+        /* لون أزرق فاتح للصفوف الزوجية، يمكنك اختيار لون آخر */
+    }
+
+    /* تحسين تجربة المستخدم عند مرور الماوس فوق الصف */
+    tbody tr:hover {
+        background-color: #e3e3e9;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: rgb(216, 16, 10);
+    }
+
+    .tail {
+
+        display: flex;
+        text-align: center;
+        width: 100%;
+        font-size: 0.7em;
+        margin-bottom: 5%;
+        background-color: rgb(166, 220, 27);
+
+    }
+
+    .tail .Intail1 {
+
+        margin-left: 7%;
+
+
+    }
+
+    .tail .Intail2 {
+
+        margin-left: 27%;
+
+    }
+
+    .tail .Intail3 {
+
+        margin-left: 31%;
+
+    }
+
+    .tail4 {
+
+        display: flex;
+        text-align: center;
+        width: 100%;
+
+    }
+
+    .tail4 .Intail5 {
+
+        margin-left: 5%;
+
+    }
+
+    .tail4 .Intail6 {
+
+        margin-left: 63%;
+
+    }
+
+
+
+
+    .tail22 {
+
+        display: flex;
+
+
+
+
+    }
+
+    .tail22 .Intail1 {
+
+        margin-left: 7%;
+
+    }
+
+    .tail22 .Intail2 {
+
+        margin-left: 27%;
+
+    }
+
+    .tail22 .Intail3 {
+
+        margin-left: 31%;
+
+    }
+
+    .tail44 {
+
+        display: flex;
+        text-align: center;
+        width: 100%;
+
+    }
+
+    .tail44 .Intail5 {
+
+        margin-left: 5%;
+
+    }
+
+    .tail44 .Intail6 {
+
+        margin-left: 63%;
+
+    }
+
+
+
+
+    .container {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .form {
+
+        width: 270%;
+        display: flex;
+        margin-left: 5%;
+        margin-bottom: 4%;
+        text-align: center;
+
+    }
+
+    .form form select {
+        width: 10%;
+        font-size: 16px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+    .form form #tyear {
+        display: none;
+
+    }
+
+    .form form #tmonth {
+        display: none;
+
+    }
+
+    .form form #tweek {
+        display: none;
+
+    }
+
+    .form form #tday {
+        display: none;
+
+    }
+
+    .form form {
+        width: 100%;
+        text-align: center;
+        background-color: whitesmoke;
+
+    }
+
+    .form form #btn {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form form #btnback {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form form option {
+        width: 100%;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+
+    .form form .print-button {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form form #btn:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .form form #btnback:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: grab;
+    }
+
+    .form form select:hover {
+        border: 3px solid #e71111;
+        cursor: pointer;
+    }
+
+    .form form .print-button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .main_btns button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .btns button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .form2 {
+
+
+        width: 129%;
+        border-radius: 15px;
+        padding: 0.5%;
+        border: 5px solid rgb(224, 137, 15);
+        background-color: rgb(212, 208, 151);
+
+    }
+
+    .form2 form select {
+        width: 20%;
+        font-size: 16px;
+        border-radius: 15px;
+        padding: 1%;
+        border: 3px solid black;
+        text-align: center;
+        background-color: #ecedf18d;
+
+
+    }
+
+    .form2 form #tyear {
+        display: none;
+
+    }
+
+    .form2 form #tmonth {
+        display: none;
+
+    }
+
+    .form2 form #tweek {
+        display: none;
+
+    }
+
+    .form2 form #tday {
+        display: none;
+
+    }
+
+    .form2 form {
+        width: 100%;
+        text-align: center;
+        background-color: rgb(212, 208, 151);
+
+    }
+
+    .form2 form #btn {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form2 form #btnback {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form2 form option {
+        width: 100%;
+        text-align: center;
+        background-color: #ecedf18d;
+
+    }
+
+
+    .form2 form .print-button {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+        padding: 5px;
+        border: 3px solid black;
+    }
+
+    .form2 form #btn:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .form2 form #btnback:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: grab;
+    }
+
+    .form2 form select:hover {
+        border: 3px solid #e71111;
+        cursor: pointer;
+    }
+
+    .form form2 .print-button:hover {
+        background-color: #a70882;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+        color: wheat;
+        cursor: pointer;
+    }
+
+    .conx1 {
+
+        display: flex;
+        width: 130%;
+    }
+
+    .transimageShow {
+
+        width: 7%;
+        margin-left: 3%;
+    }
+
+    .conx2 {
+        width: 120%;
+        text-align: center;
+        margin-top: 1%;
+    }
+
+    .rig_img {
+        width: 10%;
+    }
+}
+
+/* ------------------------------------- */
+/* Print Media Query (استعلام وسائط الطباعة) */
+/* هذه الأنماط تطبق فقط عند طباعة المستند */
+/* ------------------------------------- */
+@media print {
+    * {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+
+        padding: 0;
+
+    }
+
+
+    /* Base styles (for desktop and larger screens) */
+    .main_top_head {
+
+        width: 100%;
+        display: none;
+        background-color: #f8f8f8;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 0.5%;
+        padding-top: 0.5%;
+    }
+
+    .main_top_head h1 {
+        display: none;
+        width: 70%;
+        text-align: center;
+        font-size: 5em;
+        padding-top: 3%;
+
+
+    }
+
+    .btns {
+        width: 100%;
+        background-color: rgb(221, 217, 225);
+        text-align: center;
+        padding-top: 0.25%;
+        padding-bottom: 0.25%;
+    }
+
+    .btns button {
+        font-size: 1.5em;
+        margin-left: 2%;
+        margin-right: 2%;
+        padding: 0.5%;
+        border: 50px rgb(113, 6, 6) bold;
+        border-radius: 50px;
+
+    }
+
+    .page_label {
+        background-color: antiquewhite;
+        text-align: center;
+        margin-bottom: 0.5%;
+    }
+
+    .main_btns {
+        width: 100%;
+        background-color: rgb(221, 217, 225);
+        text-align: center;
+        padding-top: 0.25%;
+        padding-bottom: 0.25%;
+
+    }
+
+    .main_btns button {
+        font-size: 1.5em;
+        margin-left: 2%;
+        margin-right: 2%;
+        padding: 0.5%;
+        border: 50px rgb(113, 6, 6) bold;
+        border-radius: 50px;
+
+    }
+
+    #dateshow {
+        visibility: hidden;
+        font-family: Arial, sans-serif;
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+        width: fit-content;
+        margin: 20px auto;
+        background-color: #f9f9f9;
+    }
+
+    .calendar-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        background-color: #e0e0e0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .calendar-nav button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.2em;
+        transition: background-color 0.3s ease;
+    }
+
+    .calendar-nav button:hover {
+        background-color: #0056b3;
+    }
+
+    .calendar-nav h3 {
+        margin: 0;
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    .calendars-container {
+        display: flex;
+        gap: 20px;
+        /* مسافة بين التقويمين */
+        justify-content: center;
+    }
+
+    .calendar {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .calendar h4 {
+        text-align: center;
+        margin-top: 0;
+        color: #555;
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+
+    .calendar table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .calendar th,
+    .calendar td {
+        text-align: center;
+        padding: 8px;
+        border: 1px solid #eee;
+        width: calc(100% / 7);
+        /* توزيع متساو للخلايا */
+    }
+
+    .calendar th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #666;
+    }
+
+    .calendar td {
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .calendar td:hover:not(:empty) {
+        background-color: #e6f7ff;
+    }
+
+    .calendar-day.selected {
+        background-color: #007bff;
+        color: white;
+        border-radius: 3px;
+        font-weight: bold;
+    }
+
+    .yemen_company {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        background-color: #f8f8f8;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-top: 10px;
+    }
+
+    .yemen_company .h {
+        width: 100%;
+        display: block;
+        padding-top: 0;
+
+    }
+
+    .yemen_company .h h1 {
+
+        width: 100%;
+        text-align: center;
+        font-size: 10px;
+        padding-top: 0;
+    }
+
+    .yemen_company .h h2 {
+
+        width: 100%;
+        text-align: center;
+        font-size: 8px;
+        padding-top: 0.1%;
+
+    }
+
+    .oneline {
+        text-align: center;
+        font-size: 6px;
+        padding-left: 200px;
+        height: 1.5px;
+        display: flex;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        width: 100%;
+
+
+    }
+
+    .oneline {
+        padding-left: 20%;
+
+        display: flex;
+
+    }
+
+    .oneline #Periodic_date {
+
+        color: #2609cb;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 10px;
+    }
+
+    .oneline #day_label {
+
+        color: #2609cb;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 10px;
+    }
+
+    .oneline .slah {
+
+        color: #cb0909;
+        font-size: 10px;
+
+    }
+
+    .oneline #month_label {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 10px;
+    }
+
+    .oneline #year_label {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 10px;
+    }
+
+    .oneline #year_labe2 {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 10px;
+    }
+
+    .oneline #to {
+
+        color: #4309cb;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .oneline #day_labe2 {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 10px;
+    }
+
+    /* .oneline #slah2{
+   
+    color: #cb0909;
+     margin-left: 2%;
+    margin-right: 2%;
+} */
+    .oneline #month_labe2 {
+
+        color: #cb0909;
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 10px;
+    }
+
+    /*+++++++++++++++++++++++++++++++++++++++++++*/
+
+    /* بعض الأنماط لجعل الجدول يبدو جيداً */
+    table {
+        width: 100%;
+        margin: 2px 0;
+        font-size: 5px;
+
+
+    }
+
+    th,
+    td {
+        font-size: 9px;
+        text-align: center;
+        /* محاذاة النص لليمين للعربية */
+    }
+
+    th {
+        background-color: #2596be;
+        font-size: 9px;
+        text-align: center;
+        border: #333 solid 1px;
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+        /* لون فاتح للصفوف الفردية */
+    }
+
+    /* لتغيير لون الصفوف الزوجية (الثاني، الرابع، السادس، وهكذا) */
+    tbody tr:nth-child(even) {
+        background-color: #e6f7ff;
+        /* لون أزرق فاتح للصفوف الزوجية، يمكنك اختيار لون آخر */
+    }
+
+    /* تحسين تجربة المستخدم عند مرور الماوس فوق الصف */
+    tbody tr:hover {
+        background-color: #d1efff;
+        /* لون أغمق قليلاً عند المرور لتحديد الصف */
+    }
+
+    .form {
+
+        display: none;
+    }
+
+    hr {
+        display: none;
+    }
+
+    .tail {
+
+        text-align: center;
+        width: 100%;
+        font-size: 8px;
+
+    }
+
+    .tail .Intail1 {
+
+        margin-left: 7%;
+
+    }
+
+    .tail .Intail2 {
+
+        margin-left: 30%;
+
+    }
+
+    .tail .Intail3 {
+
+        margin-left: 27%;
+
+    }
+
+    .tail4 {
+
+        display: flex;
+        text-align: center;
+        width: 100%;
+        font-size: 8px;
+
+    }
+
+    .tail4 .Intail5 {
+
+        margin-left: 5%;
+
+    }
+
+    .tail4 .Intail6 {
+
+        margin-left: 63%;
+
+    }
+     .formshowTranformer {
+
+        display: none;
+
+    }
+
+    .formshowTranformer31 {
+
+        display: none;
+
+    }
+
+    .formshowmotor {
+
+        display: none;
+
+    }
+
+    
+
+}
+
+/* Universal reset */
