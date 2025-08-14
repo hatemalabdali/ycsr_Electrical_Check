@@ -579,7 +579,7 @@ $conn->set_charset("utf8mb4");
         echo ' <div class="btns">
                     <button onclick="transformers_btn()" id="transformers_test"><img class="rig_img" src="imgs/transformerimg.png" alt=""> الفحص اليومي للمحولات</button>
                     <button onclick="motors_btn()" id="motors_test"><img class="rig_img" src="imgs/motorimg2.png" alt=""> الفحص الاسبوعي للمحركات</button>
-                    <button onclick="earth_btn()" id="earth_test"><img class="rig_img" src="imgs/earth.png" alt="">فحص الأرضي</button>
+                    <button onclick="earth_btn()" id="earth_test"><img class="rig_img" src="imgs/earth.png" alt="">فحص نقـاط الأرضـي</button>
                     <button onclick="MCB_btn()" id="MCB_test"><img class="rig_img" src="imgs/mcb2.png" alt="">فحص القواطع MCB</button>
                 </div>';
         echo '<script src="m5.js?v=' . filemtime('m5.js') . '"></script><br>';

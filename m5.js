@@ -16,12 +16,24 @@ let maintenance_transformer_table = document.getElementById('maintenance_transfo
 let MCB_Show = document.getElementById('MCB_Show');
 let MCB_maint = document.getElementById('MCB_maint');
 let MCB_test = document.getElementById('MCB_test');
+let earth_test = document.getElementById('earth_test');
+let Eart_Maint_Page = document.getElementById('Eart_Maint_Page');
+let Earth_Show_Pge = document.getElementById('Earth_Show_Pge');
 /**
  * Function to be called when the transformers button is clicked.
  */
 
+function Earthing_Maint() {
+  window.location.href = "Earth_Maint.php";
+}
 
+function Earting_Show() {
+  window.location.href = "Earth_Show.php";
+}
 
+function earth_btn() {
+  window.location.href = "Earting.php";
+}
 
 function maint_MCB_Page() {
     // Corrected: Use console.log directly
@@ -109,6 +121,26 @@ if (MCB_test) {
     console.warn("Element with ID 'transformers_test' not found.");
 }
 
+if (earth_test) {
+    earth_test.addEventListener('click', earth_btn);
+    console.log("Transformers button event listener attached.");
+} else {
+    console.warn("Element with ID 'transformers_test' not found.");
+}
+
+if (Eart_Maint_Page) {
+    Eart_Maint_Page.addEventListener('click', Earthing_Maint);
+    console.log("Transformers button event listener attached.");
+} else {
+    console.warn("Element with ID 'transformers_test' not found.");
+}
+
+if (Earth_Show_Pge) {
+    Earth_Show_Pge.addEventListener('click', Earting_Show);
+    console.log("Transformers button event listener attached.");
+} else {
+    console.warn("Element with ID 'transformers_test' not found.");
+}
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     كود عرض التاريخ       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 let currentDisplayDate = new Date(); // يبدأ من التاريخ الحالي لعرض الشهر الحالي والماضي
