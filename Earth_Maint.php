@@ -160,6 +160,116 @@ $conn->close();
         .editable {
             cursor: pointer;
         }
+         @media (max-width: 480px) {
+            .controls-container {
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-left: 25%;
+                margin-right: 25%;
+                width: 150%;
+            }
+
+            .header-content {
+                position: relative;
+                text-align: center;
+                margin-top: 20px;
+                 width: 190%;
+            }
+
+            .header-content h1 {
+                margin: 0;
+                margin-left: 15%;
+                display: inline-block;
+            }
+
+            .header-content .image-container {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-left: 20px;
+            }
+
+            .header-content .image-container img {
+                max-height: 100px;
+                width: auto;
+            }
+
+            .header-info-container {
+                display: flex;
+                justify-content: space-between;
+                width: 190%;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+            .header-info-container div {
+                margin-left: 5%;
+                text-align: left;
+                width: 100%;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                direction: ltr;
+            }
+
+            th,
+            td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+            }
+
+            th {
+                background-color: #edc811ff;
+            }
+
+            td {
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            .status-ok {
+                color: green;
+                font-weight: bold;
+            }
+
+            .status-repair {
+                color: red;
+                font-weight: bold;
+            }
+
+            .back-btn {
+                padding: 10px 20px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+
+            select {
+                padding: 8px;
+                border-radius: 5px;
+            }
+
+            .tail {
+                display: flex;
+                width: 90%;
+                justify-content: space-between;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: 500;
+            }
+
+            .l1 {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: 500;
+            }
+        }
     </style>
 </head>
 <body>

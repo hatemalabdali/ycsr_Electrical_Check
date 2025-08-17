@@ -19,6 +19,9 @@ let MCB_test = document.getElementById('MCB_test');
 let earth_test = document.getElementById('earth_test');
 let Eart_Maint_Page = document.getElementById('Eart_Maint_Page');
 let Earth_Show_Pge = document.getElementById('Earth_Show_Pge');
+let AirCB_test = document.getElementById('AirCB_test');
+let Air_C_Maint = document.getElementById('Air_C_Maint');
+let Air_C_Show = document.getElementById('Air_C_Show');
 /**
  * Function to be called when the transformers button is clicked.
  */
@@ -44,6 +47,9 @@ function transformers_btn() {
     // Corrected: Use console.log directly
     document.location='weekly_transformers.php';
     
+}
+function AirCB_btn() {
+  window.location.href = "Air_Circuit_Breakers.php";
 }
 
 /**
@@ -140,6 +146,35 @@ if (Earth_Show_Pge) {
     console.log("Transformers button event listener attached.");
 } else {
     console.warn("Element with ID 'transformers_test' not found.");
+}
+
+if (AirCB_test) {
+    AirCB_test.addEventListener('click', AirCB_btn);
+    console.log("Transformers button event listener attached.");
+} else {
+    console.warn("Element with ID 'transformers_test' not found.");
+}
+
+
+if (Air_C_Maint) {
+    Air_C_Maint.addEventListener('click', show_Air_C_Maint);
+    console.log("Transformers button event listener attached.");
+} else {
+    console.warn("Element with ID 'transformers_test' not found.");
+}
+function show_Air_C_Maint() {
+    window.location.href = 'Air Circuit Breaker_Show.php';
+}
+
+
+if (Air_C_Show) {
+    Air_C_Show.addEventListener('click', show_Air_C_Show);
+    console.log("Transformers button event listener attached.");
+} else {
+    console.warn("Element with ID 'transformers_test' not found.");
+}
+function show_Air_C_Show() {
+    window.location.href = 'Air Circuit Breaker_Show.php';
 }
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     كود عرض التاريخ       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

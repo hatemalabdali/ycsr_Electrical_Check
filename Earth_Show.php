@@ -46,7 +46,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Fetch all rows into an associative array
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $data[] = $row;
     }
 }
@@ -55,6 +55,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,6 +64,7 @@ $conn->close();
         body {
             font-family: Arial, sans-serif;
         }
+
         .controls-container {
             margin-bottom: 20px;
             display: flex;
@@ -71,15 +73,18 @@ $conn->close();
             margin-left: 25%;
             margin-right: 25%;
         }
+
         .header-content {
             position: relative;
             text-align: center;
             margin-top: 20px;
         }
+
         .header-content h1 {
             margin: 0;
             display: inline-block;
         }
+
         .header-content .image-container {
             position: absolute;
             left: 0;
@@ -87,10 +92,12 @@ $conn->close();
             transform: translateY(-50%);
             margin-left: 20px;
         }
+
         .header-content .image-container img {
             max-height: 100px;
             width: auto;
         }
+
         .header-info-container {
             display: flex;
             justify-content: space-between;
@@ -98,33 +105,42 @@ $conn->close();
             margin-top: 10px;
             margin-bottom: 20px;
         }
+
         .header-info-container div {
             text-align: left;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             direction: ltr;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
         }
+
         th {
             background-color: #edc811ff;
         }
+
         td {
             font-family: 'Times New Roman', Times, serif;
         }
+
         .status-ok {
             color: green;
             font-weight: bold;
         }
+
         .status-repair {
             color: red;
             font-weight: bold;
         }
+
         .back-btn {
             padding: 10px 20px;
             background-color: #007BFF;
@@ -134,23 +150,138 @@ $conn->close();
             border-radius: 5px;
             text-decoration: none;
         }
+
         select {
             padding: 8px;
             border-radius: 5px;
         }
-        .tail{
+
+        .tail {
             display: flex;
             width: 90%;
             justify-content: space-between;
-            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: 500;
         }
-        .l1{
-            font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+        .l1 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: 500;
+        }
+
+       @media (max-width: 480px) {
+            .controls-container {
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-left: 25%;
+                margin-right: 25%;
+                width: 150%;
+            }
+
+            .header-content {
+                position: relative;
+                text-align: center;
+                margin-top: 20px;
+                 width: 190%;
+            }
+
+            .header-content h1 {
+                margin: 0;
+                margin-left: 15%;
+                display: inline-block;
+            }
+
+            .header-content .image-container {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-left: 20px;
+            }
+
+            .header-content .image-container img {
+                max-height: 100px;
+                width: auto;
+            }
+
+            .header-info-container {
+                display: flex;
+                justify-content: space-between;
+                width: 190%;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+            .header-info-container div {
+                margin-left: 5%;
+                text-align: left;
+                width: 100%;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                direction: ltr;
+            }
+
+            th,
+            td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+            }
+
+            th {
+                background-color: #edc811ff;
+            }
+
+            td {
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            .status-ok {
+                color: green;
+                font-weight: bold;
+            }
+
+            .status-repair {
+                color: red;
+                font-weight: bold;
+            }
+
+            .back-btn {
+                padding: 10px 20px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+
+            select {
+                padding: 8px;
+                border-radius: 5px;
+            }
+
+            .tail {
+                display: flex;
+                width: 90%;
+                justify-content: space-between;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: 500;
+            }
+
+            .l1 {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: 500;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="controls-container">
@@ -175,7 +306,7 @@ $conn->close();
             <img src="imgs/4.png" alt="ملاحظات">
         </div>
     </div>
-    
+
     <div class="header-info-container">
         <div>
             <div>YCSR</div>
@@ -207,12 +338,12 @@ $conn->close();
                     if ($row['SR.NO.'] == '29' || $row['SR.NO.'] == '34' || $row['SR.NO.'] == '35') {
                         $actionValue = 'need to repair';
                     }
-                    
+
                     $statusClass = '';
                     if (isset($row['status'])) {
                         $statusClass = ($row['status'] == 'OK') ? 'status-ok' : 'status-repair';
                     }
-                    
+
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['SR.NO.']) . "</td>"; // S.NO
                     echo "<td>" . htmlspecialchars($row['PIT NO']) . "</td>"; // PIT NO
@@ -230,14 +361,23 @@ $conn->close();
             ?>
         </tbody>
     </table>
-<br>
-<div class="l1"><p>NOT:MAX RESISTANCE EQUAL</p></div>
-<div class="tail">
-    
-    <div class="l2"><p>SUPERVISOR</p></div>
-    <div class="l3"><p>QF-ELEC-017-R02</p></div>
-    <div class="l4"><p>S.H</p></div>
-</div>
-    
+    <br>
+    <div class="l1">
+        <p>NOT:MAX RESISTANCE EQUAL</p>
+    </div>
+    <div class="tail">
+
+        <div class="l2">
+            <p>SUPERVISOR</p>
+        </div>
+        <div class="l3">
+            <p>QF-ELEC-017-R02</p>
+        </div>
+        <div class="l4">
+            <p>S.H</p>
+        </div>
+    </div>
+
 </body>
+
 </html>

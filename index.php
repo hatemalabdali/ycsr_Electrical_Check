@@ -582,6 +582,13 @@ $conn->set_charset("utf8mb4");
                     <button onclick="earth_btn()" id="earth_test"><img class="rig_img" src="imgs/earth.png" alt="">فحص نقـاط الأرضـي</button>
                     <button onclick="MCB_btn()" id="MCB_test"><img class="rig_img" src="imgs/mcb2.png" alt="">فحص القواطع MCB</button>
                 </div>';
+
+                echo ' <div class="btns">
+                    <button onclick="AirCB_btn()" id="AirCB_test"><img class="rig_img" src="imgs/transformerimg.png" alt="">فحص القواطع الكهربائية</button>
+                    <button onclick="motors_btn()" id="motors_test"><img class="rig_img" src="imgs/motorimg2.png" alt="">فحص المحولات</button>
+                    
+                </div>';
+
         echo '<script src="m5.js?v=' . filemtime('m5.js') . '"></script><br>';
     }
 
