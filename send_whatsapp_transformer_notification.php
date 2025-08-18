@@ -15,7 +15,7 @@ $Xdbname = 'if0_39426096_mwt';
 // $Xdbname = 'mwt';
 
 // الاتصال بقاعدة البيانات
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($Xservername, $Xusername, $Xpassword, $Xdbname);
 $conn->set_charset("utf8mb4");
 
 // التحقق من الاتصال
