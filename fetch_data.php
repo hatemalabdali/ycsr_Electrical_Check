@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json; charset=utf-8');
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 header('Content-Type: application/json');
@@ -17,7 +18,7 @@ if (isset($_GET['breaker']) && isset($_GET['year'])) {
 
     // الاتصال بقاعدة البيانات
     $conn = new mysqli($servername, $username, $password, $dbname);
-
+    $conn->set_charset("utf8mb4");
     // التحقق من الاتصال
     if ($conn->connect_error) {
         echo json_encode(['error' => 'Connection failed: ' . $conn->connect_error]);
@@ -30,7 +31,7 @@ if (isset($_GET['breaker']) && isset($_GET['year'])) {
 
     $data = [];
     if ($result && $result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
     }
@@ -45,4 +46,3 @@ if (isset($_GET['breaker']) && isset($_GET['year'])) {
 } else {
     echo json_encode(['error' => 'Missing breaker or year data.']);
 }
-?>

@@ -220,7 +220,7 @@ session_start();
 
     </div>
 
-    <div class="select-container">
+    <!-- <div class="select-container">
         <label for="year-select" class="select-label">اختر السنة:</label>
         <select id="year-select" class="custom-select">
             <option value="" disabled selected>-- اختر سنة --</option>
@@ -288,10 +288,10 @@ session_start();
             <option value="ACB_HOME_TR_TEC">ACB_HOME_TR_TEC</option>
             <option value="ACB_HOME_ENG">ACB_HOME_ENG</option>
         </select>
-    </div>
+    </div> -->
 
 
-    <script>
+    <!-- <script>
         // الحصول على عناصر القائمة المنسدلة
         const yearSelect = document.getElementById('year-select');
         const breakerSelect = document.getElementById('breaker-select');
@@ -324,7 +324,7 @@ session_start();
             saveSelection(event.target);
         });
     </script>
-
+ -->
     <?php
 
     if (isset($_POST['Edit_pass'])) {
