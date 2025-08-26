@@ -500,7 +500,7 @@ $Xdbname = 'if0_39426096_mwt';
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
-$conn->set_charset("utf8mb4");
+        $conn->set_charset("utf8mb4");
         // Check connection
         if ($conn->connect_error) {
             die("<div class='message error'>فشل الاتصال بقاعدة البيانات: " . $conn->connect_error . "</div>");
@@ -574,24 +574,23 @@ $conn->set_charset("utf8mb4");
         // echo $_SESSION['passwrd'];
         // echo "<hr>";
 
-       
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        echo ' <div class="btns">
+
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+            echo ' <div class="btns">
                     <button onclick="transformers_btn()" id="transformers_test"><img class="rig_img" src="imgs/transformerimg.png" alt=""> الفحص اليومي للمحولات</button>
                     <button onclick="motors_btn()" id="motors_test"><img class="rig_img" src="imgs/motorimg2.png" alt=""> الفحص الاسبوعي للمحركات</button>
                     <button onclick="earth_btn()" id="earth_test"><img class="rig_img" src="imgs/earth.png" alt="">فحص نقـاط الأرضـي</button>
                     <button onclick="MCB_btn()" id="MCB_test"><img class="rig_img" src="imgs/mcb2.png" alt="">فحص القواطع MCB</button>
                 </div>';
 
-                echo ' <div class="btns">
-                    <button onclick="AirCB_btn()" id="AirCB_test"><img class="rig_img" src="imgs/transformerimg.png" alt="">فحص القواطع الكهربائية</button>
-                    <button onclick="motors_btn()" id="motors_test"><img class="rig_img" src="imgs/motorimg2.png" alt="">فحص المحولات</button>
+            echo ' <div class="btns">
+                    <button onclick="AirCB_btn()" id="AirCB_test"><img class="rig_img" src="imgs/acb.png" alt="">القواطع الهوائية</button>
+                    <button onclick="motors_btn()" id="motors_test"><img class="rig_img" src="imgs/transformerimg.png" alt="">فحص المحولات</button>
                     
                 </div>';
 
-        echo '<script src="m5.js?v=' . filemtime('m5.js') . '"></script><br>';
-    }
-
+            echo '<script src="m5.js?v=' . filemtime('m5.js') . '"></script><br>';
+        }
     }
 
 
