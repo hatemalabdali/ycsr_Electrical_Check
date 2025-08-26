@@ -14,8 +14,7 @@ session_start();
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>قائمة بجمبع أجهزة ELCB
-        List of ELCB </title>
+    <title>قائمة بجمبع أجهزة ELCB List of ELCB </title>
 
     <link rel="stylesheet" href="mainpage.css?v=<?php echo filemtime('mainpage.css'); ?>">
 
@@ -39,8 +38,7 @@ session_start();
 
     <div class="page_label">
 
-        <h1>( ELCB
-            List of ELCB )قائمة بجميع أجهزة </h1>
+        <h1>( ELCB List of ELCB )قائمة بجميع أجهزة </h1>
 
         <hr>
 

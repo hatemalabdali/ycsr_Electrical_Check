@@ -10,9 +10,10 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air Circuit Breaker Maint Checklist</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
-            padding: 20px;
+            padding: 1.5%;
+            width: 97%;
         }
 
         table {
@@ -154,8 +155,167 @@ session_start();
             justify-content: space-between;
             background-color: bisque;
         }
-         .SR_col{
+
+        .SR_col {
             width: 5%;
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                font-family: Arial, sans-serif;
+                padding-left: 1.5%;
+                 padding-right: 1.5%;
+                  padding-top: 1.5%;
+                   padding-bottom: 0;
+                   margin-bottom: 0;
+                width: 300%;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                border: 1px solid black;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+
+            th,
+            td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 14px;
+            }
+
+            .left-align {
+                text-align: left;
+            }
+
+            .right-align {
+                text-align: right;
+            }
+
+            .arabic-text {
+                direction: rtl;
+            }
+
+            table img.imgx {
+                width: 100px;
+                height: 100px;
+            }
+
+            table .tdimg {
+                text-align: center;
+                width: 10%;
+            }
+
+            .blue_color {
+                color: #0052ED;
+            }
+
+            /* سمات السيلكتور جروب وزر العودة */
+            .select-container {
+                position: relative;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 10px;
+                border: 1px solid #e0e0e0;
+                width: 20%;
+                margin-left: 5%;
+                margin-top: 0.2%;
+                display: flex;
+            }
+
+            .select-label {
+                font-size: 16px;
+                color: #555;
+                margin-bottom: 8px;
+                display: block;
+            }
+
+            .custom-select {
+                width: 100%;
+                padding: 10px 15px;
+                font-size: 16px;
+                color: #333;
+                background-color: #f9f9f9;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .custom-select:hover {
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+            }
+
+            .custom-select:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+
+            /* تنسيق أسهم القائمة المنسدلة */
+            .select-container::after {
+                content: '\25BC';
+                /* سهم للأسفل */
+                position: absolute;
+                top: 50%;
+                left: 20px;
+                transform: translateY(20%);
+                font-size: 12px;
+                color: #555;
+                pointer-events: none;
+                transition: transform 0.3s ease;
+            }
+
+            .custom-select:focus+.select-container::after {
+                transform: translateY(20%) rotate(180deg);
+            }
+
+            /* تنسيق الخيارات */
+            .custom-select option {
+                padding: 10px;
+                font-size: 16px;
+                background-color: #fff;
+                color: #333;
+            }
+
+            .top_div {
+                display: flex;
+                justify-content: space-between;
+                background-color: bisque;
+            }
+
+            .back-btn {
+                padding-top: 2%;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                text-decoration: none;
+                margin-right: 5%;
+                padding-left: 1%;
+                padding-right: 1%;
+            }
+
+            form {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                background-color: bisque;
+            }
+
+            .SR_col {
+                width: 5%;
+            }
         }
     </style>
 </head>
@@ -300,7 +460,7 @@ session_start();
         ////////////////////////////////////////*************************************///////////////////////////////////
         // Set the date automatically when the page loads
         document.addEventListener("DOMContentLoaded", function() {
-            const dateCell = document.querySelector(".blue_color tr:nth-child(1) td:nth-child(4)");
+            const dateCell = document.querySelector("table:nth-of-type(1) tr:nth-child(1) td:nth-child(1)");
             if (dateCell) {
                 const today = new Date();
                 const day = String(today.getDate()).padStart(2, '0');
@@ -599,6 +759,7 @@ session_start();
                             if (data.error) {
                                 console.error(data.error);
                                 // مسح البيانات من الجدول إذا حدث خطأ
+                                document.querySelector('.blue_color tr:nth-child(1) td:nth-child(4)').textContent = '';
                                 document.querySelector('.blue_color tr:nth-child(2) td:nth-child(2)').textContent = '';
                                 document.querySelector('.blue_color tr:nth-child(2) td:nth-child(4)').textContent = '';
                                 document.querySelector('.blue_color tr:nth-child(3) td:nth-child(2)').textContent = '';
@@ -617,6 +778,7 @@ session_start();
                                 }
                             } else {
                                 const mainData = data[0];
+                                document.querySelector('.blue_color tr:nth-child(1) td:nth-child(4)').textContent = mainData.Date || '';
                                 document.querySelector('.blue_color tr:nth-child(2) td:nth-child(2)').textContent = mainData.Location || '';
                                 document.querySelector('.blue_color tr:nth-child(2) td:nth-child(4)').textContent = mainData.Sirial_No || '';
                                 document.querySelector('.blue_color tr:nth-child(3) td:nth-child(2)').textContent = mainData.manfict_by || '';

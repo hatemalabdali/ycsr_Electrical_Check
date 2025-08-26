@@ -1,4 +1,7 @@
 <?php
+// أضف هذا السطر في أعلى الملف إذا لم يكن موجوداً
+session_start();
+
 // تفعيل عرض الأخطاء للمساعدة في التطوير
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -8,46 +11,75 @@ error_reporting(E_ALL);
 header('Content-Type: application/json');
 
 try {
-    // 1. التحقق من أن طريقة الطلب هي POST
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         echo json_encode(['success' => false, 'error' => "Invalid request method."]);
         exit;
     }
 
-    // 2. فك تشفير البيانات المرسلة من جافا سكريبت
     $data = json_decode(file_get_contents('php://input'), true);
 
-    // 3. التحقق من وجود كافة البيانات المطلوبة
-    if (!isset($data['states']) || !isset($data['need_maint']) || !isset($data['srs'])) {
+    // 1. تعريف جميع المتغيرات من البيانات المستقبلة
+    if (!isset($data['states']) || !isset($data['need_maint']) || !isset($data['srs']) || !isset($data['note']) || !isset($data['recommends']) || !isset($data['breaker']) || !isset($data['year']) || !isset($data['prepared_by']) || !isset($data['date_value'])) {
         echo json_encode(['success' => false, 'error' => "Missing or invalid data."]);
         exit;
     }
 
-    // 4. إعدادات الاتصال بقاعدة البيانات
+    $stateValues = $data['states'];
+    $needMaintValues = $data['need_maint'];
+    $srValues = $data['srs'];
+    $noteValue = $data['note'];
+    $recommendsValue = $data['recommends'];
+    $breakerName = $data['breaker'];
+    $yearValue = $data['year'];
+    $preparedBy = $data['prepared_by'];
+    $date_value = $data['date_value'];
+    
+    // بناء اسم الجدول بشكل ديناميكي
+    $tableName = $breakerName . '_' . $yearValue;
+
+    // 2. إعدادات الاتصال بقاعدة البيانات
     $servername = "sql202.infinityfree.com";
     $username = "if0_39426096";
     $password = "WKa8VQVTNfi";
     $dbname = 'if0_39426096_mwt';
 
-    // 5. إنشاء الاتصال
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // 6. التحقق من نجاح الاتصال
     if ($conn->connect_error) {
         echo json_encode(['success' => false, 'error' => 'Connection failed: ' . $conn->connect_error]);
         exit();
     }
-
-    // إعداد ترميز الأحرف
     $conn->set_charset("utf8mb4");
 
-    // 7. جمع البيانات من المصفوفة
-    $stateValues = $data['states'];
-    $needMaintValues = $data['need_maint'];
-    $srValues = $data['srs'];
-
-    // 8. إعداد وحفظ البيانات
-    $inspectionQuery = "UPDATE ACB_MCC1_2025 SET state = ?, need_maint = ? WHERE SR = ?";
+    // 3. استخراج اسم المستخدم من الجلسة (مصدر موثوق)
+    $loggedInUser = $_SESSION['username'] ?? '';
+    
+    // 4. التحقق من صلاحية التعديل لكل سجل قبل البدء بعملية الحفظ
+    for ($i = 0; $i < count($srValues); $i++) {
+        $sr = $srValues[$i];
+        
+        $checkQuery = "SELECT prepared_by FROM `$tableName` WHERE SR = ?";
+        $stmt_check = $conn->prepare($checkQuery);
+        if ($stmt_check === false) {
+             echo json_encode(['success' => false, 'error' => 'Prepare statement failed (check): ' . $conn->error]);
+             $conn->close();
+             exit();
+        }
+        $stmt_check->bind_param("i", $sr);
+        $stmt_check->execute();
+        $result = $stmt_check->get_result();
+        $row = $result->fetch_assoc();
+        $currentPreparedBy = $row['prepared_by'];
+        $stmt_check->close();
+    
+        if (!empty($currentPreparedBy) && $currentPreparedBy !== $loggedInUser) {
+            echo json_encode(['success' => false, 'error' => "لا تملك صلاحية تعديل السجل رقم #$sr. لقد تم إعداده مسبقاً من قبل مستخدم آخر."]);
+            $conn->close();
+            exit();
+        }
+    }
+    // استعلام لتحديث عمود 'state' و 'need_maint'
+    $inspectionQuery = "UPDATE `$tableName` SET state = ?, need_maint = ? WHERE SR = ?";
     $stmt = $conn->prepare($inspectionQuery);
 
     if ($stmt === false) {
@@ -61,7 +93,7 @@ try {
         $sr = $srValues[$i];
         $state = $stateValues[$i];
         $needMaint = $needMaintValues[$i];
-
+        
         $stmt->bind_param("ssi", $state, $needMaint, $sr);
 
         if (!$stmt->execute()) {
@@ -71,7 +103,7 @@ try {
             exit();
         }
     }
-
+    
     // حفظ بيانات الأعمدة الثانية (الصفوف من 14 إلى 26)
     for ($i = 0; $i < count($srValues); $i++) {
         $sr = $srValues[$i] + 13;
@@ -88,10 +120,30 @@ try {
         }
     }
 
+    // تم تعديل الاستعلام ليشمل prepared_by
+    $otherDataQuery = "UPDATE `$tableName` SET Note = ?, recommends = ?, prepared_by = ?, Date = ? WHERE SR = 1";
+    $stmtOther = $conn->prepare($otherDataQuery);
+    if ($stmtOther === false) {
+        echo json_encode(['success' => false, 'error' => 'Prepare statement for other data failed: ' . $conn->error]);
+        $conn->close();
+        exit();
+    }
+    // تم تعديل ربط المتغيرات ليشمل prepared_by
+    $stmtOther->bind_param("ssss", $noteValue, $recommendsValue, $preparedBy ,$date_value);
+    if (!$stmtOther->execute()) {
+        echo json_encode(['success' => false, 'error' => 'Failed to save other data: ' . $stmtOther->error]);
+        $stmtOther->close();
+        $conn->close();
+        exit();
+    }
+    $stmtOther->close();
+
     $stmt->close();
     $conn->close();
 
     echo json_encode(['success' => true]);
+
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 }
+?>
