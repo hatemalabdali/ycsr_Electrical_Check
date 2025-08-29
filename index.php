@@ -585,7 +585,7 @@ $Xdbname = 'if0_39426096_mwt';
 
             echo ' <div class="btns">
                     <button onclick="AirCB_btn()" id="AirCB_test"><img class="rig_img" src="imgs/acb.png" alt="">القواطع الهوائية</button>
-                    <button onclick="motors_btn()" id="motors_test"><img class="rig_img" src="imgs/transformerimg.png" alt="">فحص المحولات</button>
+                    <button onclick="tr_btn()" id="tr_test"><img class="rig_img" src="imgs/transformerimg.png" alt="">فحص المحولات</button>
                     
                 </div>';
 

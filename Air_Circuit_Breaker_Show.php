@@ -328,7 +328,7 @@ session_start();
         <div class="select-container">
             <label for="year-select" class="select-label">اختر السنة:</label>
             <select id="year-select" name="year-select" class="custom-select">
-                <option value="" disabled selected>-- اختر سنة --</option>
+                <!-- <option value="" disabled selected>-- اختر سنة --</option> -->
                 <option value="2025">2025</option>
                 <option value="2026">2026</option>
                 <option value="2027">2027</option>
@@ -835,7 +835,7 @@ session_start();
     </script>
     <table>
         <tr>
-            <td>August 18, 2025</td>
+            <td></td>
             <td class='left-align'>Date</td>
             <td colspan='1' class='arabic-text'>سجل التفتيش على قاطع الدائرة الهوائية<br>Air Circuit Breaker Inspection Check list</td>
             <td class='left-align'>Title</td>

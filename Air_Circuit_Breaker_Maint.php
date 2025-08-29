@@ -518,7 +518,7 @@ session_start();
             // Get the logged-in user's name from the PHP session variable
             const loggedInUser = "<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>";
 
-            const inputFields = document.querySelectorAll('input, select, textarea');
+            const inputFields = document.querySelectorAll('input, textarea');
 
             inputFields.forEach(field => {
                 field.addEventListener('change', () => {
@@ -1005,7 +1005,7 @@ session_start();
         <tr>
             <td>0</td>
             <td class='left-align'>Rev. No.</td>
-            <td colspan='1'>Electrical department</td>
+            <td colspan='1'>ELECTRICAL DEPARTMENT</td>
             <td class='left-align'>Department</td>
         </tr>
         <tr>
