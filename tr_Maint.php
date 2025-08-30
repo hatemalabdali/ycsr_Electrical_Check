@@ -748,7 +748,16 @@ session_start();
                     } else if (currentValue === 'A') {
                         cell.textContent = 'NA';
                         isDirty = true;
-                    } else {
+                    } 
+                    else if (currentValue === 'NA') {
+                        cell.textContent = 'C';
+                        isDirty = true;
+                    } 
+                     else if (currentValue === 'C') {
+                        cell.textContent = 'R';
+                        isDirty = true;
+                    } 
+                    else {
                         cell.textContent = '';
                         isDirty = true;
                     }

@@ -13,8 +13,19 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إدارة بيانات MCB</title>
+    <title>فحص القواطه الهوائية MCB</title>
     <style>
+         :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #edd456;
+            --dark-color: #582f0e;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --border-color: #dee2e6;
+            --whatsapp-color: #25D366;
+            --telegram-color: #0088cc;
+        }
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
@@ -35,16 +46,14 @@ if (!isset($_SESSION['username'])) {
         }
 
         .controls {
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: center;
+         display: flex;
+            justify-content: space-between;
             align-items: center;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-bottom: 1px solid var(--border-color);
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            gap: 15px;
         }
 
         .controls form {
@@ -55,10 +64,27 @@ if (!isset($_SESSION['username'])) {
             flex-wrap: wrap;
         }
 
-        .controls label,
-        .controls select {
-            margin: 5px 10px;
+        .controls label{
+            font-weight: 600;
+            color: var(--dark-color);
         }
+        #year-select{
+             display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .controls select {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: white;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            min-width: 150px;
+        }
+        
 
         .back-button {
             padding: 8px 15px;
@@ -133,6 +159,9 @@ if (!isset($_SESSION['username'])) {
             color: red;
             font-weight: bold;
         }
+         .print-button{
+                cursor: pointer;
+            }
 
         /* Media Queries for mobile and tablets */
         @media (max-width: 768px) {
@@ -259,6 +288,21 @@ if (!isset($_SESSION['username'])) {
             }
 
         }
+          @media print {
+            body {
+            width: 100%;
+            padding: 0;
+            margin-left: 0;
+             margin-right: 0;
+              margin-bottom: 0;
+               margin-top: 5%;
+            background: #fff !important;
+            }
+            .container{
+            display: none !important;
+            }
+          
+        }
     </style>
 </head>
 
@@ -293,6 +337,9 @@ if (!isset($_SESSION['username'])) {
                     <option value="12" <?php echo ($currentMonth == '12' ? ' selected' : ''); ?>>ديسمبر</option>
                 </select>
             </form>
+             <button class="print-button" onclick="window.print()"><img class="pdf_img" src="imgs/printdoc2.png"
+                    alt=""></button>
+    </div>
         </div>
 
         <h3 id="table-date"></h3>
@@ -440,9 +487,9 @@ if (!isset($_SESSION['username'])) {
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
-                            echo '<script>
-                                document.getElementById("table-date").innerHTML = "تاريخ التقرير: ' . date("Y-m-d H:i:s") . '";
-                            </script>';
+                            // echo '<script>
+                            //     document.getElementById("table-date").innerHTML = "تاريخ التقرير: ' . date("Y-m-d H:i:s") . '";
+                            // </script>';
 
                             // تحديث الخلايا Prepared By وتواريخ التعديل هنا
                             echo '<script>

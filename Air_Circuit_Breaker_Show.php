@@ -159,6 +159,9 @@ session_start();
         .SR_col {
             width: 5%;
         }
+         .print-button{
+                cursor: pointer;
+            }
 
         @media screen and (max-width: 480px) {
             body {
@@ -316,6 +319,24 @@ session_start();
             .SR_col {
                 width: 5%;
             }
+            .print-button{
+                cursor: pointer;
+            }
+        }
+        @media print {
+            body {
+            width: 100%;
+            padding: 0;
+            margin-left: 0;
+             margin-right: 0;
+              margin-bottom: 0;
+               margin-top: 5%;
+            background: #fff !important;
+            }
+            .top_div{
+            display: none !important;
+            }
+          
         }
     </style>
 </head>
@@ -394,6 +415,8 @@ session_start();
             </select>
         </div>
         <!-- <button id="save-data-btn" class="back-btn" style="margin-right: 2%;">حفظ البيانات</button> -->
+            <button class="print-button" onclick="window.print()"><img class="pdf_img" src="imgs/printdoc2.png"
+                    alt=""></button>
     </div>
     <script>
         ////////////////////////////////////////*************************************///////////////////////////////////

@@ -9,7 +9,7 @@ $password = "WKa8VQVTNfi";
 $dbname = 'if0_39426096_mwt';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
+ $conn->set_charset("utf8mb4");
 if ($conn->connect_error) {
     echo json_encode(['status' => 'error', 'message' => 'Connection failed: ' . $conn->connect_error]);
     exit();

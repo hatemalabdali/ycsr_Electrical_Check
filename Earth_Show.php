@@ -31,6 +31,7 @@ $dbname = 'if0_39426096_mwt';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+ $conn->set_charset("utf8mb4");
 
 // Check connection
 if ($conn->connect_error) {
@@ -39,8 +40,10 @@ if ($conn->connect_error) {
 
 $tableName = "earthingTable_" . $selectedYear;
 
+cleanEmptyData($conn, $tableName);
+
 // SQL query to fetch all required data from the corresponding table
-$sql = "SELECT `SR.NO.`, `PIT NO`, `PIT LOCATION`, `r_with_grid`, `r_without_grid`, `status`, `name` FROM `" . $tableName . "` ORDER BY `SR.NO.` ASC";
+$sql = "SELECT `SR.NO.`, `PIT NO`, `PIT LOCATION`, `r_with_grid`, `r_without_grid`, `status`, `name`, `action` FROM `" . $tableName . "` ORDER BY `SR.NO.` ASC";
 
 $result = $conn->query($sql);
 
@@ -51,333 +54,488 @@ if ($result->num_rows > 0) {
     }
 }
 $conn->close();
+// دالة تنظيف البيانات من الخلايا الفارغة
+function cleanEmptyData($connection, $tableName) {
+    $cleanSql = "UPDATE `$tableName` 
+                SET `status` = '', `action` = '', `r_with_grid` = '', `r_without_grid` = ''
+                WHERE (`name` IS NULL OR `name` = '')";
+    
+    if ($connection->query($cleanSql)) {
+        error_log("تم تنظيف البيانات في الجدول: $tableName");
+    } else {
+        error_log("خطأ في تنظيف البيانات: " . $connection->error);
+    }
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earth Pit Resistance Check - Data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #edd456;
+            --dark-color: #582f0e;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --border-color: #dee2e6;
         }
-
-        .controls-container {
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             margin-bottom: 20px;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        .header h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .controls-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-left: 25%;
-            margin-right: 25%;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 15px;
         }
-
-        .header-content {
-            position: relative;
-            text-align: center;
-            margin-top: 20px;
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
-
-        .header-content h1 {
-            margin: 0;
-            display: inline-block;
+        
+        .back-btn:hover {
+            background-color: #385d8a;
+            transform: translateY(-2px);
         }
-
-        .header-content .image-container {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            margin-left: 20px;
+        
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
-
-        .header-content .image-container img {
-            max-height: 100px;
-            width: auto;
+        
+        .print-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
         }
-
-        .header-info-container {
+        
+        .print-btn i {
+            margin-left: 8px;
+        }
+        
+        .year-selector {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-top: 10px;
-            margin-bottom: 20px;
+            align-items: center;
+            gap: 10px;
         }
-
-        .header-info-container div {
-            text-align: left;
+        
+        .year-selector label {
+            font-weight: 600;
+            color: var(--dark-color);
         }
-
+        
+        .year-selector select {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: white;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            min-width: 150px;
+        }
+        
+        .year-selector select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            padding: 10px;
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
             direction: ltr;
+            margin: 0 auto;
+            font-size: 14px;
         }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
+        
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
             text-align: center;
         }
-
-        th {
-            background-color: #edc811ff;
+        
+        .titlee {
+            background-color: var(--secondary-color);
+            font-weight: 800;
+            border: 2px solid var(--dark-color);
+            border-radius: 5px;
+            padding: 10px;
         }
-
+        
         td {
             font-family: 'Times New Roman', Times, serif;
         }
-
+        
         .status-ok {
-            color: green;
+            color: var(--success-color);
             font-weight: bold;
         }
-
+        
         .status-repair {
-            color: red;
+            color: var(--danger-color);
             font-weight: bold;
         }
-
-        .back-btn {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            text-decoration: none;
+        
+        .footer {
+            padding: 20px;
+            background-color: var(--light-color);
+            border-top: 1px solid var(--border-color);
         }
-
-        select {
-            padding: 8px;
+        
+        .notes {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
             border-radius: 5px;
+            border-left: 4px solid var(--primary-color);
         }
-
-        .tail {
+        
+        .signatures {
             display: flex;
-            width: 90%;
             justify-content: space-between;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-weight: 500;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
         }
-
-        .l1 {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-weight: 500;
+        
+        .signature-box {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
         }
-
-       @media (max-width: 480px) {
-            .controls-container {
-                margin-bottom: 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-left: 25%;
-                margin-right: 25%;
-                width: 150%;
+        
+        .signature-box p {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .signature-line {
+            height: 1px;
+            background-color: #333;
+            margin: 15px 0 5px;
+        }
+        
+        img {
+            max-height: 100px;
+            width: auto;
+        }
+        
+        /* تنسيقات الطباعة */
+        @media print {
+            body * {
+                visibility: hidden;
             }
-
-            .header-content {
-                position: relative;
-                text-align: center;
-                margin-top: 20px;
-                 width: 190%;
+            
+            .print-section, .print-section * {
+                visibility: visible;
             }
-
-            .header-content h1 {
-                margin: 0;
-                margin-left: 15%;
-                display: inline-block;
-            }
-
-            .header-content .image-container {
+            
+            .print-section {
                 position: absolute;
                 left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                margin-left: 20px;
-            }
-
-            .header-content .image-container img {
-                max-height: 100px;
-                width: auto;
-            }
-
-            .header-info-container {
-                display: flex;
-                justify-content: space-between;
-                width: 190%;
-                margin-top: 10px;
-                margin-bottom: 20px;
-            }
-
-            .header-info-container div {
-                margin-left: 5%;
-                text-align: left;
+                top: 0;
                 width: 100%;
             }
-
+            
+            .controls-container, .header {
+                display: none;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .table-container, .footer {
+                padding: 0;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .controls-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .year-selector {
+                width: 100%;
+                justify-content: center;
+            }
+            
             table {
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 8px 5px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .header p {
+                font-size: 14px;
+            }
+            
+            .year-selector {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .year-selector select {
                 width: 100%;
-                border-collapse: collapse;
-                direction: ltr;
             }
-
-            th,
-            td {
-                border: 1px solid #ddd;
-                padding: 8px;
-                text-align: center;
+            
+            .signatures {
+                flex-direction: column;
+                gap: 20px;
             }
-
-            th {
-                background-color: #edc811ff;
+            
+            img {
+                max-height: 80px;
             }
-
-            td {
-                font-family: 'Times New Roman', Times, serif;
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px;
             }
-
-            .status-ok {
-                color: green;
-                font-weight: bold;
+            
+            .header h1 {
+                font-size: 20px;
             }
-
-            .status-repair {
-                color: red;
-                font-weight: bold;
+            
+            .controls-container {
+                padding: 15px;
             }
-
-            .back-btn {
-                padding: 10px 20px;
-                background-color: #007BFF;
-                color: white;
-                border: none;
-                cursor: pointer;
-                border-radius: 5px;
-                text-decoration: none;
+            
+            .back-btn, .print-btn {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 10px;
             }
-
-            select {
-                padding: 8px;
-                border-radius: 5px;
+            
+            th, td {
+                padding: 6px 3px;
+                font-size: 11px;
             }
-
-            .tail {
-                display: flex;
-                width: 90%;
-                justify-content: space-between;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                font-weight: 500;
-            }
-
-            .l1 {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                font-weight: 500;
+            
+            .titlee {
+                padding: 8px 4px;
+                font-size: 11px;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <div class="controls-container">
-        <a href="Earting.php" class="back-btn">العودة للصفحة السابقة</a>
-        <form action="" method="GET">
-            <label for="year-select">اختر السنة:</label>
-            <select name="year" id="year-select" onchange="this.form.submit()">
-                <option value="">--اختر سنة--</option>
-                <option value="2025" <?php echo (isset($selectedYear) && $selectedYear == '2025') ? 'selected' : ''; ?>>2025</option>
-                <option value="2026" <?php echo (isset($selectedYear) && $selectedYear == '2026') ? 'selected' : ''; ?>>2026</option>
-                <option value="2027" <?php echo (isset($selectedYear) && $selectedYear == '2027') ? 'selected' : ''; ?>>2027</option>
-                <option value="2028" <?php echo (isset($selectedYear) && $selectedYear == '2028') ? 'selected' : ''; ?>>2028</option>
-                <option value="2029" <?php echo (isset($selectedYear) && $selectedYear == '2029') ? 'selected' : ''; ?>>2029</option>
-                <option value="2030" <?php echo (isset($selectedYear) && $selectedYear == '2030') ? 'selected' : ''; ?>>2030</option>
-            </select>
-        </form>
-    </div>
-
-    <div class="header-content">
-        <h1>قائمة الحفر التاريض في الشركة<br>List for Earthing pits in the company</h1>
-        <div class="image-container">
-            <img src="imgs/4.png" alt="ملاحظات">
+    <div class="container">
+        <div class="header">
+            <h1>Earth Pit Resistance Check</h1>
+            <p>قائمة لحفر التأريض في الشركة - List for Earthing pits in the company</p>
         </div>
-    </div>
-
-    <div class="header-info-container">
-        <div>
-            <div>YCSR</div>
-            <div>Department: Electrical department.</div>
+        
+        <div class="controls-container">
+            <a href="Earting.php" class="back-btn">العودة للصفحة السابقة</a>
+            
+            <div class="year-selector">
+                <label for="year-select">اختر السنة:</label>
+                <form action="" method="GET">
+                    <select name="year" id="year-select" onchange="this.form.submit()">
+                        <option value="">--اختر سنة--</option>
+                        <option value="2025" <?php echo (isset($selectedYear) && $selectedYear == '2025') ? 'selected' : ''; ?>>2025</option>
+                        <option value="2026" <?php echo (isset($selectedYear) && $selectedYear == '2026') ? 'selected' : ''; ?>>2026</option>
+                        <option value="2027" <?php echo (isset($selectedYear) && $selectedYear == '2027') ? 'selected' : ''; ?>>2027</option>
+                        <option value="2028" <?php echo (isset($selectedYear) && $selectedYear == '2028') ? 'selected' : ''; ?>>2028</option>
+                        <option value="2029" <?php echo (isset($selectedYear) && $selectedYear == '2029') ? 'selected' : ''; ?>>2029</option>
+                        <option value="2030" <?php echo (isset($selectedYear) && $selectedYear == '2030') ? 'selected' : ''; ?>>2030</option>
+                    </select>
+                </form>
+            </div>
+            
+            <button class="print-btn" onclick="printPage()">
+                <i class="fas fa-print"></i> طباعة المستند
+            </button>
         </div>
-        <div>
-            <div>Date: 20/06/23</div>
-        </div>
-    </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>S.NO</th>
-                <th>PIT NO</th>
-                <th>PIT LOCATION</th>
-                <th>RESISTANCE <br> WITH GRID <br>(IN OHMS)</th>
-                <th>RESISTANCE <br> WITHOUT GRID <br>(IN OHMS)</th>
-                <th>STATUS</th>
-                <th>NAME</th>
-                <th>ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            if (!empty($data)) {
-                foreach ($data as $row) {
-                    $actionValue = '';
-                    if ($row['SR.NO.'] == '29' || $row['SR.NO.'] == '34' || $row['SR.NO.'] == '35') {
-                        $actionValue = 'need to repair';
+        
+        <div class="print-section">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <td rowspan="2"><img src="imgs/4.png" alt="ملاحظات"></td>
+                            <td>Title</td>
+                            <td colspan="4">قائمة لحفر التأريض في الشركة<br>List for Earthing pits in the company</td>
+                            <td>Date</td>
+                            <td id="dateCell"></td>
+                        </tr>
+                        <tr>
+                            <td>Department</td>
+                            <td colspan="4">Electrical department</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="titlee">S.NO</td>
+                            <td rowspan="2" class="titlee">PIT NO</td>
+                            <td rowspan="2" class="titlee">PIT LOCATION</td>
+                            <td colspan="2" class="titlee">RESISTANCE IN OHMS</td>
+                            <td rowspan="2" class="titlee">STATUS(GOOD/NEED<br>ACTIONREPAIRE /REPLACE)</td>
+                            <td rowspan="2" class="titlee">NAME</td>
+                            <td rowspan="2" class="titlee">ACTION</td>
+                        </tr>
+                        <tr>
+                            <td class="titlee">WITH GRID</td>
+                            <td class="titlee">WITHOUTGRID</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                    if (!empty($data)) {
+                        foreach ($data as $row) {
+                            $statusClass = '';
+                            if (isset($row['status'])) {
+                                $statusClass = ($row['status'] == 'OK') ? 'status-ok' : (($row['status'] == 'REPAIR') ? 'status-repair' : '');
+                            }
+                            
+                            echo "<tr data-sno='" . htmlspecialchars($row['SR.NO.']) . "'>";
+                            echo "<td>" . htmlspecialchars($row['SR.NO.']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['PIT NO']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['PIT LOCATION']) . "</td>";
+                            echo "<td class='editable' data-column='r_with_grid'>" . (isset($row['r_with_grid']) ? htmlspecialchars($row['r_with_grid']) : '') . "</td>";
+                            echo "<td class='editable' data-column='r_without_grid'>" . (isset($row['r_without_grid']) ? htmlspecialchars($row['r_without_grid']) : '') . "</td>";
+                            echo "<td class='editable status-cell " . htmlspecialchars($statusClass) . "' data-column='status'>" . (isset($row['status']) ? htmlspecialchars($row['status']) : '') . "</td>";
+                            echo "<td class='name-cell'>" . (isset($row['name']) ? htmlspecialchars($row['name']) : '') . "</td>";
+                            echo "<td class='editable' data-column='action'>" . (isset($row['action']) ? htmlspecialchars($row['action']) : '') . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='8' style='text-align: center; padding: 20px;'>No data found for the selected year.</td></tr>";
                     }
-
-                    $statusClass = '';
-                    if (isset($row['status'])) {
-                        $statusClass = ($row['status'] == 'OK') ? 'status-ok' : 'status-repair';
-                    }
-
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($row['SR.NO.']) . "</td>"; // S.NO
-                    echo "<td>" . htmlspecialchars($row['PIT NO']) . "</td>"; // PIT NO
-                    echo "<td>" . htmlspecialchars($row['PIT LOCATION']) . "</td>"; // PIT LOCATION
-                    echo "<td>" . (isset($row['r_with_grid']) ? htmlspecialchars($row['r_with_grid']) : '') . "</td>"; // RESISTANCE WITH GRID
-                    echo "<td>" . (isset($row['r_without_grid']) ? htmlspecialchars($row['r_without_grid']) : '') . "</td>"; // RESISTANCE WITHOUT GRID
-                    echo "<td class='" . htmlspecialchars($statusClass) . "'>" . (isset($row['status']) ? htmlspecialchars($row['status']) : '') . "</td>"; // STATUS
-                    echo "<td>" . (isset($row['name']) ? htmlspecialchars($row['name']) : '') . "</td>"; // NAME
-                    echo "<td>" . htmlspecialchars($actionValue) . "</td>"; // ACTION
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='8'>No data found for the selected year.</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-    <br>
-    <div class="l1">
-        <p>NOT:MAX RESISTANCE EQUAL</p>
-    </div>
-    <div class="tail">
-
-        <div class="l2">
-            <p>SUPERVISOR</p>
-        </div>
-        <div class="l3">
-            <p>QF-ELEC-017-R02</p>
-        </div>
-        <div class="l4">
-            <p>S.H</p>
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="footer">
+                <div class="notes">
+                    <p>NOT:MAX RESISTANCE EQUAL</p>
+                </div>
+                
+                <div class="signatures">
+                    <div class="signature-box">
+                        <p>SUPERVISOR</p>
+                        <div class="signature-line"></div>
+                    </div>
+                    
+                    <div class="signature-box">
+                        <p>QF-ELEC-017-R02</p>
+                    </div>
+                    
+                    <div class="signature-box">
+                        <p>S.H</p>
+                        <div class="signature-line"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script>
+        document.getElementById('dateCell').textContent = new Date().toLocaleDateString();
+        
+        function printPage() {
+            window.print();
+        }
+    </script>
 </body>
-
 </html>

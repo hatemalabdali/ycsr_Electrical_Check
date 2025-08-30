@@ -14,6 +14,7 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إدارة بيانات MCB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -29,22 +30,21 @@ if (!isset($_SESSION['username'])) {
             padding: 10px;
         }
 
+
         h2 {
             color: #333;
             margin-bottom: 10px;
         }
 
         .controls {
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
-            flex-direction: row-reverse;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-bottom: 1px solid var(--border-color);
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            gap: 15px;
         }
 
         .controls form {
@@ -55,9 +55,27 @@ if (!isset($_SESSION['username'])) {
             flex-wrap: wrap;
         }
 
-        .controls label,
+        .controls label {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        #year-select {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .controls select {
-            margin: 5px 10px;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: white;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            min-width: 150px;
         }
 
         .back-button {
@@ -132,6 +150,49 @@ if (!isset($_SESSION['username'])) {
         .status-not-ok {
             color: red;
             font-weight: bold;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #0088cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .telegram-btn:hover {
+            background-color: #006699;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn i,
+        .telegram-btn i {
+            margin-left: 8px;
         }
 
         /* Media Queries for mobile and tablets */
@@ -293,6 +354,15 @@ if (!isset($_SESSION['username'])) {
                     <option value="12" <?php echo ($currentMonth == '12' ? ' selected' : ''); ?>>ديسمبر</option>
                 </select>
             </form>
+            <!-- في مكان مناسب في صفحتك -->
+            <div class="buttons-container">
+                <a href="#" class="whatsapp-btn" id="whatsappSupervisor">
+                    <i class="fab fa-whatsapp"></i> إرسال للمشرف
+                </a>
+                <a href="#" class="telegram-btn" id="telegramManager">
+                    <i class="fab fa-telegram"></i> إرسال لرئيس القسم
+                </a>
+            </div>
         </div>
 
         <h3 id="table-date"></h3>
@@ -376,7 +446,7 @@ if (!isset($_SESSION['username'])) {
 
                     $conn = new mysqli($servername, $username, $password, $dbname);
                     $conn->set_charset("utf8mb4");
-                    
+
                     if ($conn->connect_error) {
                         die("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
                     }
@@ -571,6 +641,40 @@ if (!isset($_SESSION['username'])) {
                         alert('حدث خطأ في الاتصال بالخادم.');
                     });
             }
+        });
+        // دالة إرسال رسالة الواتساب
+        function sendWhatsApp(phoneNumber, message) {
+            var encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        // دالة إنشاء محتوى الرسالة (تعديلها حسب احتياجات الصفحة)
+        function createReportMessage() {
+            // يمكنك تعديل هذه الدالة لتناسب محتوى الصفحة الأخرى
+            var currentDate = new Date().toLocaleDateString('ar-EG');
+
+            var message = `تقرير من الصفحة - ${document.title}
+    
+تم إنشاء التقرير بتاريخ ${currentDate}
+
+هذا تقرير من النظام الإلكتروني.
+
+شكراً لكم`;
+
+            return message;
+        }
+
+        // معالجة النقر على الأزرار
+        document.getElementById('whatsappSupervisor').addEventListener('click', function(e) {
+            e.preventDefault();
+            var message = createReportMessage();
+            sendWhatsApp('713909115', message);
+        });
+
+        document.getElementById('telegramManager').addEventListener('click', function(e) {
+            e.preventDefault();
+            var message = createReportMessage();
+            sendWhatsApp('776402808', message);
         });
     </script>
 </body>
