@@ -9,6 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>جدول صيانة المحولات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -163,9 +164,23 @@ session_start();
             display: flex;
             justify-content: space-between;
             background-color: bisque;
+
         }
 
         .back-btn {
+
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-left: 5%;
+            padding-left: 1%;
+            padding-right: 1%;
+        }
+
+        .back-btn1 {
             padding-top: 2%;
             background-color: #007BFF;
             color: white;
@@ -200,6 +215,65 @@ session_start();
         .wide_font {
             font-family: Arial, sans-serif;
             font-weight: 600;
+        }
+
+        .whatsapp-btn,
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .telegram-btn {
+            background-color: #0088cc;
+            color: white;
+        }
+
+        .telegram-btn:hover {
+            background-color: #006699;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn i,
+        .telegram-btn i {
+            margin-left: 8px;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .whats {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            /* لتوسيط الأفقي */
+            align-items: center;
+            /* لتوسيط العمودي (إذا needed) */
+            gap: 15px;
+            /* مسافة بين الزرين */
+
+            padding: 10px;
+            /* إضافة padding لجمالية أكثر */
         }
 
         @media screen and (max-width: 480px) {
@@ -361,6 +435,19 @@ session_start();
             }
 
             .back-btn {
+
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                text-decoration: none;
+                margin-left: 5%;
+                padding-left: 1%;
+                padding-right: 1%;
+            }
+
+            .back-btn1 {
                 padding-top: 2%;
                 background-color: #007BFF;
                 color: white;
@@ -395,7 +482,7 @@ session_start();
 <body>
     <div class="top_div">
 
-        <a href="tr.php" class="back-btn">العودة للصفحة السابقة</a>
+        <a href="tr.php" class="back-btn1">العودة للصفحة السابقة</a>
 
         <div class="select-container">
             <label for="year-select" class="select-label">اختر السنة:</label>
@@ -434,7 +521,19 @@ session_start();
                 <option value="TRANSFORMERS_NO_CHALEHAT_2">TRANSFORMERS NO CHALEHAT 2</option>
             </select>
         </div>
-       <button id="save-data-btn" class="back-btn" style="margin-right: 2%;">حفظ البيانات</button>
+        <!-- أضف هذه الأزرار الجديدة -->
+
+        <button id="save-data-btn" class="back-btn" ">حفظ البيانات</button>
+    </div>
+    <div class=" whats">
+            <div class="buttons-container" style="display: flex; gap: 10px; margin-right: 2%;">
+                <a href="#" class="whatsapp-btn" id="whatsappSupervisor" style="background-color: #25D366; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: flex; align-items: center;">
+                    <i class="fab fa-whatsapp"></i> إرسال للمشرف
+                </a>
+                <a href="#" class="telegram-btn" id="telegramManager" style="background-color: #0088cc; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: flex; align-items: center;">
+                    <i class="fab fa-telegram"></i> إرسال لرئيس القسم
+                </a>
+            </div>
     </div>
     <SCript>
         let isDirty = false;
@@ -506,12 +605,12 @@ session_start();
 
                     const AB = row.querySelector('td:nth-child(3)').textContent.trim();
                     ABS.push(AB);
-                     const BC = row.querySelector('td:nth-child(2)').textContent.trim();
+                    const BC = row.querySelector('td:nth-child(2)').textContent.trim();
                     BCS.push(BC);
-                     const CA = row.querySelector('td:nth-child(1)').textContent.trim();
+                    const CA = row.querySelector('td:nth-child(1)').textContent.trim();
                     CAS.push(CA);
 
-                    
+
                 });
 
                 console.log("conds Array to be sent:", conds);
@@ -590,7 +689,7 @@ session_start();
         // @@@@@@@@@@@@@@@@@@@@@@@@@@@ تصدير البيانات الى الجداول    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         document.addEventListener("DOMContentLoaded", function() {
 
-             const inputFields = document.querySelectorAll('input,textarea');
+            const inputFields = document.querySelectorAll('input,textarea');
 
             inputFields.forEach(field => {
                 field.addEventListener('change', () => {
@@ -748,16 +847,13 @@ session_start();
                     } else if (currentValue === 'A') {
                         cell.textContent = 'NA';
                         isDirty = true;
-                    } 
-                    else if (currentValue === 'NA') {
+                    } else if (currentValue === 'NA') {
                         cell.textContent = 'C';
                         isDirty = true;
-                    } 
-                     else if (currentValue === 'C') {
+                    } else if (currentValue === 'C') {
                         cell.textContent = 'R';
                         isDirty = true;
-                    } 
-                    else {
+                    } else {
                         cell.textContent = '';
                         isDirty = true;
                     }
@@ -901,7 +997,7 @@ session_start();
                 });
             });
 
-             const NOTE_VALUE_AND_PHASINGCells = document.querySelectorAll('.NOTE_VALUE_AND_PHASING');
+            const NOTE_VALUE_AND_PHASINGCells = document.querySelectorAll('.NOTE_VALUE_AND_PHASING');
             NOTE_VALUE_AND_PHASINGCells.forEach((cell, index) => {
                 cell.addEventListener('click', () => {
                     const adjacentMaintCell = cell.nextElementSibling;
@@ -1082,12 +1178,64 @@ session_start();
                 updatePageData();
             });
 
-              window.addEventListener('beforeunload', (event) => {
-            if (isDirty) {
-                event.preventDefault();
-                event.returnValue = '';
+            window.addEventListener('beforeunload', (event) => {
+                if (isDirty) {
+                    event.preventDefault();
+                    event.returnValue = '';
+                }
+            });
+            // دالة إنشاء رسالة التقرير
+            function createTransformerReportMessage() {
+                var currentDate = new Date().toLocaleDateString('ar-EG');
+
+                // الحصول على اسم المحول المختار
+                var transformerSelect = document.getElementById('transfformer-select');
+                var selectedTransformer = transformerSelect.options[transformerSelect.selectedIndex].text;
+
+                // الحصول على السنة المختارة
+                var yearSelect = document.getElementById('year-select');
+                var selectedYear = yearSelect.value;
+
+                // الحصول على اسم المهندس من الجدول
+                var engineerName = document.querySelector('table:nth-of-type(2) tr:nth-child(3) td:nth-child(1)').textContent.trim();
+
+                var message = `🔧 أشعار فحص المحولات الكهربائية
+📅 التاريخ: ${currentDate}
+⚡ المحول: ${selectedTransformer}
+📆 السنة: ${selectedYear}
+
+تم إجراء الفحص الدوري للمحولات الكهربائية بنجاح.
+
+👨‍💼 المهندس المسؤول: 
+${engineerName || 'لم يتم تسجيل اسم المهندس'}
+
+📊 هذا تقرير تلقائي من النظام الإلكتروني
+
+شكراً لكم 👨‍💼
+فريق الصيانة الكهربائية ⚡`;
+
+                return message;
             }
-        });
+
+            // دالة إرسال رسالة الواتساب
+            function sendWhatsApp(phoneNumber, message) {
+                var encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+            }
+
+            // إرسال للمشرف
+            document.getElementById('whatsappSupervisor').addEventListener('click', function(e) {
+                e.preventDefault();
+                var message = createTransformerReportMessage();
+                sendWhatsApp('771598385', message);
+            });
+
+            // إرسال لرئيس القسم
+            document.getElementById('telegramManager').addEventListener('click', function(e) {
+                e.preventDefault();
+                var message = createTransformerReportMessage();
+                sendWhatsApp('776402808', message);
+            });
         });
     </SCript>
     <table>
@@ -1351,7 +1499,7 @@ session_start();
         <tr>
             <td class="bisque" colspan='8'>SECTION D - ELECTRICAL TESTS</td>
         </tr>
-        <tr >
+        <tr>
             <td>C-A</td>
             <td>B-C</td>
             <td>A-B</td>

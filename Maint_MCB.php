@@ -16,12 +16,40 @@ if (!isset($_SESSION['username'])) {
     <title>إدارة بيانات MCB</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #edd456;
+            --dark-color: #582f0e;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --border-color: #dee2e6;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             text-align: center;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+
+        .header h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
         }
 
         .container {
@@ -206,6 +234,14 @@ if (!isset($_SESSION['username'])) {
                 width: 200%;
             }
 
+            .heade .header h1 {
+                font-size: 22px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
             .container {
                 width: 100%;
                 margin: auto;
@@ -324,9 +360,12 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
-
+    <div class="header">
+        <h1>Breakers Data Management MCB</h1>
+        <p>إدارة بيانات القواطع MCB</p>
+    </div>
     <div class="container">
-        <h2>إدارة بيانات القواطع MCB</h2>
+
 
         <div class="controls">
             <a href="mcb.php" class="back-button">العودة إلى صفحة الإدخال</a>
@@ -650,16 +689,60 @@ if (!isset($_SESSION['username'])) {
 
         // دالة إنشاء محتوى الرسالة (تعديلها حسب احتياجات الصفحة)
         function createReportMessage() {
-            // يمكنك تعديل هذه الدالة لتناسب محتوى الصفحة الأخرى
             var currentDate = new Date().toLocaleDateString('ar-EG');
 
-            var message = `تقرير من الصفحة - ${document.title}
-    
-تم إنشاء التقرير بتاريخ ${currentDate}
+            // الحصول على السنة والشهر من الجلسة (سيتم تمريرها من PHP)
+            var selectedYear = "<?php echo isset($_SESSION['selected_year']) ? $_SESSION['selected_year'] : date('Y'); ?>";
+            var selectedMonth = "<?php echo isset($_SESSION['selected_month']) ? $_SESSION['selected_month'] : date('m'); ?>";
 
-هذا تقرير من النظام الإلكتروني.
+            // اسم الجدول بناء على البادئة والشهر والسنة
+            var tableName = "MCB_" + selectedMonth + "_" + selectedYear;
 
-شكراً لكم`;
+            // جلب أسماء المهندسين من PHP (سيتم تعبئتها من قاعدة البيانات)
+            var engineers = "<?php
+                                if (isset($_SESSION['selected_year']) && isset($_SESSION['selected_month'])) {
+                                    $year = $_SESSION['selected_year'];
+                                    $month = $_SESSION['selected_month'];
+                                    $tableName = 'MCB_' . $month . '_' . $year;
+
+                                    // استعلام لجلب أسماء المهندسين الفريدة
+                                    $servername = 'sql202.infinityfree.com';
+                                    $username = 'if0_39426096';
+                                    $password = 'WKa8VQVTNfi';
+                                    $dbname = 'if0_39426096_mwt';
+
+                                    $conn = new mysqli($servername, $username, $password, $dbname);
+                                    $conn->set_charset('utf8mb4');
+
+                                    if (!$conn->connect_error) {
+                                        $sql = 'SELECT DISTINCT `Eng` FROM `' . $tableName . '` WHERE `Eng` IS NOT NULL AND `Eng` != ""';
+                                        $result = $conn->query($sql);
+                                        $engineersList = [];
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $engineersList[] = $row['Eng'];
+                                            }
+                                        }
+                                        echo implode('، ', $engineersList);
+                                        $conn->close();
+                                    }
+                                }
+                                ?>";
+
+            var message = `🔧 أشعار فحص القواطع (MCB)
+📅 التاريخ: ${currentDate}
+📋 الشهر/السنة: ${selectedMonth}/${selectedYear}
+
+تم إجراء الفحص الدوري للقواطع الكهربائية بنجاح.
+
+👨‍💼 المهندسون المشاركون في الفحص:
+${engineers || 'لم يتم تسجيل أسماء المهندسين'}
+
+📊 هذا تقرير تلقائي من النظام الإلكتروني
+
+شكراً لكم 👨‍💼
+فريق الصيانة الكهربائية ⚡`;
 
             return message;
         }
@@ -668,7 +751,7 @@ if (!isset($_SESSION['username'])) {
         document.getElementById('whatsappSupervisor').addEventListener('click', function(e) {
             e.preventDefault();
             var message = createReportMessage();
-            sendWhatsApp('713909115', message);
+            sendWhatsApp('771598385', message);
         });
 
         document.getElementById('telegramManager').addEventListener('click', function(e) {

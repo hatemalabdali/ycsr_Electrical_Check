@@ -10,7 +10,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air Circuit Breaker Maint Checklist</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -160,6 +160,65 @@ session_start();
 
         .SR_col {
             width: 5%;
+        }
+        
+        .whatsapp-btn,
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .telegram-btn {
+            background-color: #0088cc;
+            color: white;
+        }
+
+        .telegram-btn:hover {
+            background-color: #006699;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn i,
+        .telegram-btn i {
+            margin-left: 8px;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .whats {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            /* لتوسيط الأفقي */
+            align-items: center;
+            /* لتوسيط العمودي (إذا needed) */
+            gap: 15px;
+            /* مسافة بين الزرين */
+
+            padding: 10px;
+            /* إضافة padding لجمالية أكثر */
         }
 
         @media screen and (max-width: 480px) {
@@ -394,6 +453,16 @@ session_start();
             </select>
         </div>
         <button id="save-data-btn" class="back-btn" style="margin-right: 2%;">حفظ البيانات</button>
+    </div>
+    <div class=" whats">
+            <div class="buttons-container" style="display: flex; gap: 10px; margin-right: 2%;">
+                <a href="#" class="whatsapp-btn" id="whatsappSupervisor" style="background-color: #25D366; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: flex; align-items: center;">
+                    <i class="fab fa-whatsapp"></i> إرسال للمشرف
+                </a>
+                <a href="#" class="telegram-btn" id="telegramManager" style="background-color: #0088cc; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: flex; align-items: center;">
+                    <i class="fab fa-telegram"></i> إرسال لرئيس القسم
+                </a>
+            </div>
     </div>
     <script>
         let isDirty = false;
@@ -993,6 +1062,58 @@ session_start();
                 event.returnValue = '';
             }
         });
+         // دالة إنشاء رسالة التقرير
+            function createTransformerReportMessage() {
+                var currentDate = new Date().toLocaleDateString('ar-EG');
+
+                // الحصول على اسم المحول المختار
+                var breakerSelect = document.getElementById('breaker-select');
+                var selectedTbreaker = breakerSelect.options[breakerSelect.selectedIndex].text;
+
+                // الحصول على السنة المختارة
+                var yearSelect = document.getElementById('year-select');
+                var selectedYear = yearSelect.value;
+
+                // الحصول على اسم المهندس من الجدول
+                var engineerName = document.querySelector('table:nth-of-type(1) tr:nth-child(4) td:nth-child(3)').textContent.trim();
+
+                var message = `🔧 أشعار فحص القواطع الهوائية
+📅 التاريخ: ${currentDate}
+⚡ القاطع: ${selectedTbreaker}
+📆 السنة: ${selectedYear}
+
+تم إجراء الفحص الدوري للقواطع الهوائية بنجاح.
+
+👨‍💼 المهندس المسؤول: 
+${engineerName || 'لم يتم تسجيل اسم المهندس'}
+
+📊 هذا تقرير تلقائي من النظام الإلكتروني
+
+شكراً لكم 👨‍💼
+فريق الصيانة الكهربائية ⚡`;
+
+                return message;
+            }
+
+            // دالة إرسال رسالة الواتساب
+            function sendWhatsApp(phoneNumber, message) {
+                var encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+            }
+
+            // إرسال للمشرف
+            document.getElementById('whatsappSupervisor').addEventListener('click', function(e) {
+                e.preventDefault();
+                var message = createTransformerReportMessage();
+                sendWhatsApp('771598385', message);
+            });
+
+            // إرسال لرئيس القسم
+            document.getElementById('telegramManager').addEventListener('click', function(e) {
+                e.preventDefault();
+                var message = createTransformerReportMessage();
+                sendWhatsApp('776402808', message);
+            });
     </script>
     <table>
         <tr>

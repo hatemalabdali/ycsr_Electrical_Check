@@ -157,6 +157,33 @@ $Xdbname = 'if0_39426096_mwt';
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+        .pdf_img{
+             display: flex;
+        font-size: 1em;
+        margin-left: 2%;
+        margin-right: 2%;
+        padding-left: 1.5%;
+        padding-right: 1.5%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        border: 50px rgb(113, 6, 6) bold;
+        border-radius: 50px;
+        width: 90%;
+        }
+        .logoutbtn{
+            width: 15%;
+            display:inline-block;
+            text-align: center;
+            font-size: small;
+             align-items: center;
+        }
+        .rig_img1{
+            width: 100%;
+            padding: 0%;
+            height: 50%;
+            
+        }
+
 
         /* 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px 480px  */
         @media (max-width: 480px) {
@@ -294,7 +321,10 @@ $Xdbname = 'if0_39426096_mwt';
                 color: #721c24;
                 border: 1px solid #f5c6cb;
             }
-
+.btns  {
+    display: flex;
+    width: 100%;
+}
         }
 
         /* 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px 9000px  */
@@ -563,59 +593,34 @@ $Xdbname = 'if0_39426096_mwt';
     </div>
 
     <?php
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        // echo "<hr>";
-        // echo $_SESSION['loggedin'];
-        // echo "<hr>";
-        // echo $_SESSION['userno'];
-        // echo "<hr>";
-        // echo $_SESSION['username'];
-        // echo "<hr>";
-        // echo $_SESSION['passwrd'];
-        // echo "<hr>";
 
-
-        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    echo ' <div class="btns">
+                <button class = "logoutbtn" onclick="transformers_btn()" id="transformers_test"><img class="rig_img1" src="imgs/transformerimg2.png" alt=""> الفحص اليومي للمحولات</button>
+                <button class = "logoutbtn" onclick="motors_btn()" id="motors_test"><img class="rig_img1" src="imgs/motorimg3.png" alt=""> الفحص الاسبوعي للمحركات</button>
+                
+            </div>';
             echo ' <div class="btns">
-                    <button onclick="transformers_btn()" id="transformers_test"><img class="rig_img" src="imgs/transformerimg.png" alt=""> الفحص اليومي للمحولات</button>
-                    <button onclick="motors_btn()" id="motors_test"><img class="rig_img" src="imgs/motorimg2.png" alt=""> الفحص الاسبوعي للمحركات</button>
-                    <button onclick="earth_btn()" id="earth_test"><img class="rig_img" src="imgs/earth.png" alt="">فحص نقـاط الأرضـي</button>
-                    <button onclick="MCB_btn()" id="MCB_test"><img class="rig_img" src="imgs/mcb2.png" alt="">فحص القواطع MCB</button>
-                </div>';
+             <button class = "logoutbtn onclick="logbook_btn()" id="logbook_btn_test"><img class="rig_img1" src="imgs/logbook.png" alt="">دفتر القرائات والتقارير اليومية</button>
+                <button class = "logoutbtn" onclick="MCB_btn()" id="MCB_test"><img class="rig_img1" src="imgs/mcb3.png" alt="">فحص القواطع MCB</button>
+            </div>';
 
+    echo ' <div class="btns">
+                <button class = "logoutbtn" onclick="AirCB_btn()" id="AirCB_test"><img class="rig_img1" src="imgs/acb3.png" alt="">القواطع الهوائية</button>
+                <button class = "logoutbtn onclick="tr_btn()" id="tr_test"><img class="rig_img1" src="imgs/trans4.png" alt="">فحص المحولات</button>
+                
+            </div>';
             echo ' <div class="btns">
-                    <button onclick="AirCB_btn()" id="AirCB_test"><img class="rig_img" src="imgs/acb.png" alt="">القواطع الهوائية</button>
-                    <button onclick="tr_btn()" id="tr_test"><img class="rig_img" src="imgs/transformerimg.png" alt="">فحص المحولات</button>
-                    
-                </div>';
+           <button class = "logoutbtn" onclick="earth_btn()" id="earth_test"><img class="rig_img1" src="imgs/earth3.png" alt="">فحص نقـاط الأرضـي</button>
+                <!-- الزر المعدل -->
+                <button class = "logoutbtn" onclick="if(confirm(\'هل تريد تسجيل الخروج؟\')) window.location.href=\'logout.php\'" 
+                        id="logout">
+                    <img class="rig_img1" src="imgs/logout3.png" alt=""><br>..تسجيل الخروج
+                </button>
+            </div>';
 
-            echo '<script src="m5.js?v=' . filemtime('m5.js') . '"></script><br>';
-        }
-    }
-
-
-    // if($_SESSION['loggedin'] === true){
-    //              if(!$_SESSION['username']==''){
-    //                 echo $_SESSION['username'];       
-    //             }
-    //             elseif(!$_SESSION['userno']==''){
-    //             echo $_SESSION['userno'];
-    //             }  
-    //      }
-    //     else{
-    //             echo "";
-    //         }
-
-    // if($_SESSION['loggedin'] === true){
-    //                     if(!$_SESSION['username']==''){
-    //                         echo $_SESSION['passwrd'];       
-    //                     } 
-    //             }
-    //             else{
-    //                     echo "";
-    //                 }
-
-
+    echo '<script src="m5.js?v=' . filemtime('m5.js') . '"></script><br>';
+}
     ?>
 </body>
 

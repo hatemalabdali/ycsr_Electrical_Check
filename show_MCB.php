@@ -33,6 +33,23 @@ if (!isset($_SESSION['username'])) {
             padding: 0;
             text-align: center;
         }
+          .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        .header h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
 
         .container {
             width: 95%;
@@ -179,7 +196,13 @@ if (!isset($_SESSION['username'])) {
                 margin: auto;
                 padding: 10px;
             }
+            .header h1 {
+                font-size: 22px;
+            }
 
+            .header p {
+                font-size: 14px;
+            }
             h2 {
                 color: #333;
                 margin-bottom: 10px;
@@ -308,8 +331,12 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 
+    <div class="header">
+            <h1>Breakers Data Management MCB</h1>
+            <p>إدارة بيانات القواطع MCB</p>
+        </div>
     <div class="container">
-        <h2>إدارة بيانات القواطع MCB</h2>
+        
 
         <div class="controls">
             <a href="mcb.php" class="back-button">العودة إلى صفحة الإدخال</a>

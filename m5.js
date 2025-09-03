@@ -25,6 +25,9 @@ let Air_C_Show = document.getElementById('Air_C_Show');
 let tr_test = document.getElementById('tr_test');
 let tr_Maint = document.getElementById('tr_Maint');
 let tr_Show = document.getElementById('tr_Show');
+let logbook_btn_test = document.getElementById('logbook_btn_test');
+let logbook_record = document.getElementById('logbook_record');
+let logbook_show = document.getElementById('logbook_show');
 /**
  * Function to be called when the transformers button is clicked.
  */
@@ -66,6 +69,7 @@ function motors_btn() {
 function back_to_main_page() {
     // Corrected: Use console.log directly
      document.location='index.php';
+     
 }
 
 
@@ -208,6 +212,35 @@ if (tr_Show) {
 }
 function show_tr() {
     window.location.href = 'tr_show.php';
+}
+if (logbook_btn_test) {
+    logbook_btn_test.addEventListener('click', logbook);
+    
+} else {
+    console.warn("Element with ID 'transformers_test' not found.");
+}
+function logbook() {
+    window.location.href = 'logbook.php';
+}
+
+if (logbook_record) {
+    logbook_record.addEventListener('click', logbook_recording);
+    
+} else {
+    console.warn("Element with ID 'transformers_test' not found.");
+}
+function logbook_recording() {
+    window.location.href = 'logbook_show.php';
+}
+
+if (logbook_show) {
+    logbook_show.addEventListener('click', logbook_showing);
+    
+} else {
+    console.warn("Element with ID 'transformers_test' not found.");
+}
+function logbook_showing() {
+    window.location.href = 'logbook_show.php';
 }
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     كود عرض التاريخ       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -866,6 +899,7 @@ function display_datexxxxxxxxxx(){
     
     display_date();
     dateshow.style.visibility = 'visible';
+    dateshow.style.display = 'block';
 }
 
 function display_datexxxxxxxxxx2(){
@@ -873,6 +907,7 @@ function display_datexxxxxxxxxx2(){
     
     display_date2();
     dateshow.style.visibility = 'visible';
+    dateshow.style.display = 'block';
 }
 
 
