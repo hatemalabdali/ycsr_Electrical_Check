@@ -715,6 +715,7 @@ session_start();
                         .then(data => {
                             if (data.error) {
                                 console.error(data.error);
+                                // table2
                                 document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(1)').textContent = '';
                                 document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(2)').textContent = '';
                                 document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(3)').textContent = '';
@@ -777,6 +778,469 @@ session_start();
                                 document.querySelector('table:nth-of-type(2) tr:nth-child(6) td:nth-child(18)').textContent = '';
                                 document.querySelector('table:nth-of-type(2) tr:nth-child(6) td:nth-child(19)').textContent = '';
                                 document.querySelector('table:nth-of-type(2) tr:nth-child(6) td:nth-child(20)').textContent = '';
+
+                                // table 3
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(36)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(35)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(34)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(33)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(32)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(31)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(30)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(29)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(28)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(27)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(26)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(25)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(24)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(23)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(22)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(21)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(20)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(19)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(1)').textContent = '';
+
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(36)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(35)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(34)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(33)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(32)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(31)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(30)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(29)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(28)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(27)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(26)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(25)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(24)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(23)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(22)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(21)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(20)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(19)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(1)').textContent = '';
+
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(36)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(35)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(34)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(33)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(32)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(31)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(30)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(29)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(28)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(27)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(26)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(25)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(24)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(23)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(22)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(21)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(20)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(19)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(1)').textContent = '';
+                                // TABLE 4 
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(32)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(31)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(30)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(29)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(28)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(27)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(26)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(25)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(24)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(23)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(22)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(21)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(20)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(19)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(1)').textContent = '';
+
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(32)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(31)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(30)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(29)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(28)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(27)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(26)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(25)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(24)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(23)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(22)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(21)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(20)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(19)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(1)').textContent = '';
+
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(32)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(31)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(30)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(29)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(28)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(27)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(26)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(25)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(24)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(23)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(22)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(21)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(20)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(19)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(1)').textContent = '';
+                                // TABLE 5
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(32)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(31)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(30)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(29)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(28)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(26)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(27)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(25)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(24)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(23)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(22)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(21)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(20)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(19)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(16)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(13)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(7)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(4)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(3)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(1)').textContent = '';
+
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(32)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(31)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(30)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(29)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(28)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(26)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(27)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(25)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(24)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(23)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(22)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(21)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(20)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(19)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(16)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(13)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(7)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(4)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(3)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(1)').textContent = '';
+
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(32)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(31)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(30)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(29)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(28)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(26)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(27)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(25)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(24)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(23)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(22)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(21)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(20)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(19)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(16)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(13)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(7)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(4)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(3)').textContent = '';
+                                // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(1)').textContent = '';
+                                // table 6
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(1)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(1)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(1)').textContent = '';
+
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(1)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(1)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(18)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(17)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(16)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(15)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(1)').textContent = '';
+                                // table 7
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(1)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(1)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(14)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(13)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(12)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(11)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(10)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(9)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(8)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(7)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(6)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(5)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(4)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(3)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(2)').textContent = '';
+                                document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(1)').textContent = '';
 
 
                             } else {
@@ -861,7 +1325,478 @@ session_start();
                                     document.querySelector('table:nth-of-type(2) tr:nth-child(6) td:nth-child(2)').textContent = targetData.LV_SW_G_CU_MCC_RS_C || '';
 
                                     document.querySelector('table:nth-of-type(2) tr:nth-child(6) td:nth-child(1)').textContent = targetData.LV_SW_G_ROOM_TEMP_C || '';
+                                    // table 3
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(36)').textContent = targetData.M_08130_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(35)').textContent = targetData.M_08130_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(34)').textContent = targetData.M_08140_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(33)').textContent = targetData.M_08140_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(32)').textContent = targetData.M_08150_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(31)').textContent = targetData.M_08150_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(30)').textContent = targetData.M_08160_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(29)').textContent = targetData.M_08160_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(28)').textContent = targetData.M_08230_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(27)').textContent = targetData.M_08230_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(26)').textContent = targetData.M_08240_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(25)').textContent = targetData.M_08240_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(24)').textContent = targetData.M_08330_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(23)').textContent = targetData.M_08330_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(22)').textContent = targetData.M_08340_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(21)').textContent = targetData.M_08340_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(20)').textContent = targetData.M_08430_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(19)').textContent = targetData.M_08430_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(18)').textContent = targetData.M_09130_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(17)').textContent = targetData.M_09130_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(16)').textContent = targetData.M_09140_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(15)').textContent = targetData.M_09140_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(14)').textContent = targetData.M_09230_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(13)').textContent = targetData.M_09230_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(12)').textContent = targetData.M_09380_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(11)').textContent = targetData.M_09380_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(10)').textContent = targetData.M_09430_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(9)').textContent = targetData.M_09430_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(8)').textContent = targetData.M_10160_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(7)').textContent = targetData.M_10160_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(6)').textContent = targetData.M_04240_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(5)').textContent = targetData.M_04240_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(4)').textContent = targetData.M_04250_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(3)').textContent = targetData.M_04250_T_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(2)').textContent = targetData.M_10020_A_A || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(1)').textContent = targetData.M_10020_T_A || '';
+
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(36)').textContent = targetData.M_08130_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(35)').textContent = targetData.M_08130_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(34)').textContent = targetData.M_08140_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(33)').textContent = targetData.M_08140_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(32)').textContent = targetData.M_08150_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(31)').textContent = targetData.M_08150_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(30)').textContent = targetData.M_08160_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(29)').textContent = targetData.M_08160_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(28)').textContent = targetData.M_08230_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(27)').textContent = targetData.M_08230_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(26)').textContent = targetData.M_08240_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(25)').textContent = targetData.M_08240_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(24)').textContent = targetData.M_08330_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(23)').textContent = targetData.M_08330_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(22)').textContent = targetData.M_08340_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(21)').textContent = targetData.M_08340_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(20)').textContent = targetData.M_08430_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(19)').textContent = targetData.M_08430_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(18)').textContent = targetData.M_09130_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(17)').textContent = targetData.M_09130_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(16)').textContent = targetData.M_09140_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(15)').textContent = targetData.M_09140_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(14)').textContent = targetData.M_09230_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(13)').textContent = targetData.M_09230_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(12)').textContent = targetData.M_09380_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(11)').textContent = targetData.M_09380_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(10)').textContent = targetData.M_09430_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(9)').textContent = targetData.M_09430_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(8)').textContent = targetData.M_10160_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(7)').textContent = targetData.M_10160_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(6)').textContent = targetData.M_04240_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(5)').textContent = targetData.M_04240_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(4)').textContent = targetData.M_04250_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(3)').textContent = targetData.M_04250_T_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(2)').textContent = targetData.M_10020_A_B || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(1)').textContent = targetData.M_10020_T_B || '';
+
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(36)').textContent = targetData.M_08130_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(35)').textContent = targetData.M_08130_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(34)').textContent = targetData.M_08140_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(33)').textContent = targetData.M_08140_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(32)').textContent = targetData.M_08150_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(31)').textContent = targetData.M_08150_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(30)').textContent = targetData.M_08160_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(29)').textContent = targetData.M_08160_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(28)').textContent = targetData.M_08230_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(27)').textContent = targetData.M_08230_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(26)').textContent = targetData.M_08240_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(25)').textContent = targetData.M_08240_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(24)').textContent = targetData.M_08330_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(23)').textContent = targetData.M_08330_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(22)').textContent = targetData.M_08340_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(21)').textContent = targetData.M_08340_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(20)').textContent = targetData.M_08430_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(19)').textContent = targetData.M_08430_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(18)').textContent = targetData.M_09130_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(17)').textContent = targetData.M_09130_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(16)').textContent = targetData.M_09140_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(15)').textContent = targetData.M_09140_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(14)').textContent = targetData.M_09230_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(13)').textContent = targetData.M_09230_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(12)').textContent = targetData.M_09380_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(11)').textContent = targetData.M_09380_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(10)').textContent = targetData.M_09430_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(9)').textContent = targetData.M_09430_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(8)').textContent = targetData.M_10160_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(7)').textContent = targetData.M_10160_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(6)').textContent = targetData.M_04240_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(5)').textContent = targetData.M_04240_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(4)').textContent = targetData.M_04250_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(3)').textContent = targetData.M_04250_T_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(2)').textContent = targetData.M_10020_A_C || '';
+                                    document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(1)').textContent = targetData.M_10020_T_C || '';
+                                    // table 4
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(32)').textContent = targetData.M_13020_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(31)').textContent = targetData.M_13020_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(32)').textContent = targetData.M_13020_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(31)').textContent = targetData.M_13020_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(32)').textContent = targetData.M_13020_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(31)').textContent = targetData.M_13020_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(30)').textContent = targetData.M_13025_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(29)').textContent = targetData.M_13025_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(30)').textContent = targetData.M_13025_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(29)').textContent = targetData.M_13025_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(30)').textContent = targetData.M_13025_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(29)').textContent = targetData.M_13025_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(28)').textContent = targetData.M_13040_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(27)').textContent = targetData.M_13040_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(28)').textContent = targetData.M_13040_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(27)').textContent = targetData.M_13040_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(28)').textContent = targetData.M_13040_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(27)').textContent = targetData.M_13040_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(26)').textContent = targetData.M_13045_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(25)').textContent = targetData.M_13045_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(26)').textContent = targetData.M_13045_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(25)').textContent = targetData.M_13045_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(26)').textContent = targetData.M_13045_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(25)').textContent = targetData.M_13045_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(24)').textContent = targetData.M_13060_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(23)').textContent = targetData.M_13060_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(24)').textContent = targetData.M_13060_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(23)').textContent = targetData.M_13060_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(24)').textContent = targetData.M_13060_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(23)').textContent = targetData.M_13040_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(22)').textContent = targetData.M_13065_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(21)').textContent = targetData.M_13065_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(22)').textContent = targetData.M_13065_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(21)').textContent = targetData.M_13065_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(22)').textContent = targetData.M_13065_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(21)').textContent = targetData.M_13065_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(20)').textContent = targetData.M_13080_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(19)').textContent = targetData.M_13080_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(20)').textContent = targetData.M_13080_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(19)').textContent = targetData.M_13080_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(20)').textContent = targetData.M_13080_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(19)').textContent = targetData.M_13080_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(18)').textContent = targetData.M_13085_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(17)').textContent = targetData.M_13085_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(18)').textContent = targetData.M_13085_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(17)').textContent = targetData.M_13085_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(18)').textContent = targetData.M_13085_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(17)').textContent = targetData.M_13085_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(16)').textContent = targetData.M_13100_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(15)').textContent = targetData.M_13100_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(16)').textContent = targetData.M_13100_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(15)').textContent = targetData.M_13100_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(16)').textContent = targetData.M_13100_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(15)').textContent = targetData.M_13100_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(14)').textContent = targetData.M_13105_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(13)').textContent = targetData.M_13105_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(14)').textContent = targetData.M_13105_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(13)').textContent = targetData.M_13105_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(14)').textContent = targetData.M_13105_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(13)').textContent = targetData.M_13105_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(12)').textContent = targetData.M_13120_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(11)').textContent = targetData.M_13120_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(12)').textContent = targetData.M_13120_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(11)').textContent = targetData.M_13120_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(12)').textContent = targetData.M_13120_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(11)').textContent = targetData.M_13120_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(10)').textContent = targetData.M_13125_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(9)').textContent = targetData.M_13125_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(10)').textContent = targetData.M_13125_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(9)').textContent = targetData.M_13125_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(10)').textContent = targetData.M_13125_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(9)').textContent = targetData.M_13125_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(8)').textContent = targetData.M_13140_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(7)').textContent = targetData.M_13140_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(8)').textContent = targetData.M_13140_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(7)').textContent = targetData.M_13140_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(8)').textContent = targetData.M_13140_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(7)').textContent = targetData.M_13140_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(6)').textContent = targetData.M_13145_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(5)').textContent = targetData.M_13145_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(6)').textContent = targetData.M_13145_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(5)').textContent = targetData.M_13145_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(6)').textContent = targetData.M_13145_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(5)').textContent = targetData.M_13145_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(4)').textContent = targetData.M_13160_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(3)').textContent = targetData.M_13160_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(4)').textContent = targetData.M_13160_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(3)').textContent = targetData.M_13160_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(4)').textContent = targetData.M_13160_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(3)').textContent = targetData.M_13160_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(2)').textContent = targetData.M_13165_A_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(1)').textContent = targetData.M_13165_T_A || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(2)').textContent = targetData.M_13165_A_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(1)').textContent = targetData.M_13165_T_B || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(2)').textContent = targetData.M_13165_A_C || '';
+                                    document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(1)').textContent = targetData.M_13165_T_C || '';
+
+                                    // table 5  
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(32)').textContent = targetData.M_05840_A_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(31)').textContent = targetData.M_05840_T_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(32)').textContent = targetData.M_05840_A_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(31)').textContent = targetData.M_05840_T_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(32)').textContent = targetData.M_05840_A_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(31)').textContent = targetData.M_05840_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(30)').textContent = targetData.M_05845_A_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(29)').textContent = targetData.M_05845_T_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(30)').textContent = targetData.M_05845_A_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(29)').textContent = targetData.M_05845_T_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(30)').textContent = targetData.M_05845_A_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(29)').textContent = targetData.M_05845_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(28)').textContent = targetData.M_05850_A_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(27)').textContent = targetData.M_05850_T_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(28)').textContent = targetData.M_05850_A_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(27)').textContent = targetData.M_05850_T_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(28)').textContent = targetData.M_05850_A_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(27)').textContent = targetData.M_05850_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(26)').textContent = targetData.M_13210_A_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(25)').textContent = targetData.M_13210_T_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(26)').textContent = targetData.M_13210_A_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(25)').textContent = targetData.M_13210_T_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(26)').textContent = targetData.M_13210_A_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(25)').textContent = targetData.M_13210_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(24)').textContent = targetData.M_13220_A_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(23)').textContent = targetData.M_13220_T_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(24)').textContent = targetData.M_13220_A_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(23)').textContent = targetData.M_13220_T_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(24)').textContent = targetData.M_13220_A_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(23)').textContent = targetData.M_13220_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(22)').textContent = targetData.M_13230_A_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(21)').textContent = targetData.M_13230_T_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(22)').textContent = targetData.M_13230_A_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(21)').textContent = targetData.M_13230_T_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(22)').textContent = targetData.M_13230_A_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(21)').textContent = targetData.M_13230_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(20)').textContent = targetData.M_10120_A_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(19)').textContent = targetData.M_10120_T_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(20)').textContent = targetData.M_10120_A_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(19)').textContent = targetData.M_10120_T_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(20)').textContent = targetData.M_10120_A_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(19)').textContent = targetData.M_10120_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(18)').textContent = targetData.M_10640_A_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(17)').textContent = targetData.M_10640_T_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(18)').textContent = targetData.M_10640_A_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(17)').textContent = targetData.M_10640_T_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(18)').textContent = targetData.M_10640_A_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(17)').textContent = targetData.M_10640_T_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(16)').textContent = targetData.TR_TR1_AMP_A || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(15)').textContent = targetData.TR_TR1_WTI_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(14)').textContent = targetData.TR_TR1_OTI_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(16)').textContent = targetData.TR_TR1_AMP_B || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(15)').textContent = targetData.TR_TR1_WTI_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(14)').textContent = targetData.TR_TR1_OTI_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(16)').textContent = targetData.TR_TR1_AMP_C || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(15)').textContent = targetData.TR_TR1_WTI_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(14)').textContent = targetData.TR_TR1_OTI_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(13)').textContent = targetData.TR_TR2_AMP_A || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(12)').textContent = targetData.TR_TR2_WTI_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(11)').textContent = targetData.TR_TR2_OTI_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(13)').textContent = targetData.TR_TR2_AMP_B || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(12)').textContent = targetData.TR_TR2_WTI_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(11)').textContent = targetData.TR_TR2_OTI_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(13)').textContent = targetData.TR_TR2_AMP_C || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(12)').textContent = targetData.TR_TR2_WTI_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(11)').textContent = targetData.TR_TR2_OTI_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(10)').textContent = targetData.TR_TR3_AMP_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(9)').textContent = targetData.TR_TR3_WTI_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(8)').textContent = targetData.TR_TR3_OTI_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(10)').textContent = targetData.TR_TR3_AMP_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(9)').textContent = targetData.TR_TR3_WTI_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(8)').textContent = targetData.TR_TR3_OTI_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(10)').textContent = targetData.TR_TR3_AMP_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(9)').textContent = targetData.TR_TR3_WTI_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(8)').textContent = targetData.TR_TR3_OTI_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(7)').textContent = targetData.TR_TR5_AMP_A || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(6)').textContent = targetData.TR_TR5_WTI_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(5)').textContent = targetData.TR_TR5_OTI_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(7)').textContent = targetData.TR_TR5_AMP_B || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(6)').textContent = targetData.TR_TR5_WTI_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(5)').textContent = targetData.TR_TR5_OTI_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(7)').textContent = targetData.TR_TR5_AMP_C || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(6)').textContent = targetData.TR_TR5_WTI_C || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(5)').textContent = targetData.TR_TR5_OTI_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(4)').textContent = targetData.TR_TRRO_AMP_A || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(3)').textContent = targetData.TR_TRRO_WTI_A || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(2)').textContent = targetData.TR_TRRO_OTI_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(4)').textContent = targetData.TR_TRRO_AMP_B || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(3)').textContent = targetData.TR_TRRO_WTI_B || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(2)').textContent = targetData.TR_TRRO_OTI_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(4)').textContent = targetData.TR_TRRO_AMP_C || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(3)').textContent = targetData.TR_TRRO_WTI_C || '';
+                                    // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(2)').textContent = targetData.TR_TRRO_OTI_C || '';
+
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(1)').textContent = targetData.TR_REMARKS_A || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(1)').textContent = targetData.TR_REMARKS_B || '';
+                                    document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(1)').textContent = targetData.TR_REMARKS_C || '';
+
+                                    // table 6
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(18)').textContent = targetData.BCVFD_08130_INV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(17)').textContent = targetData.BCVFD_08130_CNV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(18)').textContent = targetData.BCVFD_08130_INV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(17)').textContent = targetData.BCVFD_08130_CNV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(18)').textContent = targetData.BCVFD_08130_INV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(17)').textContent = targetData.BCVFD_08130_CNV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(18)').textContent = targetData.BCVFD_08130_INV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(17)').textContent = targetData.BCVFD_08130_CNV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(18)').textContent = targetData.BCVFD_08130_INV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(17)').textContent = targetData.BCVFD_08130_CNV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(18)').textContent = targetData.BCVFD_08130_INV_5_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(17)').textContent = targetData.BCVFD_08130_CNV_5_AM || '';
+
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(16)').textContent = targetData.BCVFD_08140_INV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(15)').textContent = targetData.BCVFD_08140_CNV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(16)').textContent = targetData.BCVFD_08140_INV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(15)').textContent = targetData.BCVFD_08140_CNV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(16)').textContent = targetData.BCVFD_08140_INV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(15)').textContent = targetData.BCVFD_08140_CNV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(16)').textContent = targetData.BCVFD_08140_INV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(15)').textContent = targetData.BCVFD_08140_CNV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(16)').textContent = targetData.BCVFD_08140_INV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(15)').textContent = targetData.BCVFD_08140_CNV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(16)').textContent = targetData.BCVFD_08140_INV_5_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(15)').textContent = targetData.BCVFD_08140_CNV_5_AM || '';
+
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(14)').textContent = targetData.BCVFD_08150_INV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(13)').textContent = targetData.BCVFD_08150_CNV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(14)').textContent = targetData.BCVFD_08150_INV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(13)').textContent = targetData.BCVFD_08150_CNV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(14)').textContent = targetData.BCVFD_08150_INV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(13)').textContent = targetData.BCVFD_08150_CNV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(14)').textContent = targetData.BCVFD_08150_INV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(13)').textContent = targetData.BCVFD_08150_CNV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(14)').textContent = targetData.BCVFD_08150_INV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(13)').textContent = targetData.BCVFD_08150_CNV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(14)').textContent = targetData.BCVFD_08150_INV_5_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(13)').textContent = targetData.BCVFD_08150_CNV_5_AM || '';
+
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(12)').textContent = targetData.BCVFD_08160_INV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(11)').textContent = targetData.BCVFD_08160_CNV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(12)').textContent = targetData.BCVFD_08160_INV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(11)').textContent = targetData.BCVFD_08160_CNV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(12)').textContent = targetData.BCVFD_08160_INV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(11)').textContent = targetData.BCVFD_08160_CNV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(12)').textContent = targetData.BCVFD_08160_INV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(11)').textContent = targetData.BCVFD_08160_CNV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(12)').textContent = targetData.BCVFD_08160_INV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(11)').textContent = targetData.BCVFD_08160_CNV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(12)').textContent = targetData.BCVFD_08160_INV_5_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(11)').textContent = targetData.BCVFD_08160_CNV_5_AM || '';
+
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(10)').textContent = targetData.BCVFD_08230_INV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(9)').textContent = targetData.BCVFD_08230_CNV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(10)').textContent = targetData.BCVFD_08230_INV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(9)').textContent = targetData.BCVFD_08230_CNV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(10)').textContent = targetData.BCVFD_08230_INV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(9)').textContent = targetData.BCVFD_08230_CNV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(10)').textContent = targetData.BCVFD_08230_INV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(9)').textContent = targetData.BCVFD_08230_CNV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(10)').textContent = targetData.BCVFD_08230_INV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(9)').textContent = targetData.BCVFD_08230_CNV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(10)').textContent = targetData.BCVFD_08230_INV_5_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(9)').textContent = targetData.BCVFD_08230_CNV_5_AM || '';
+
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(8)').textContent = targetData.BCVFD_08240_INV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(7)').textContent = targetData.BCVFD_08240_CNV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(8)').textContent = targetData.BCVFD_08240_INV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(7)').textContent = targetData.BCVFD_08240_CNV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(8)').textContent = targetData.BCVFD_08240_INV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(7)').textContent = targetData.BCVFD_08240_CNV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(8)').textContent = targetData.BCVFD_08240_INV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(7)').textContent = targetData.BCVFD_08240_CNV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(8)').textContent = targetData.BCVFD_08240_INV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(7)').textContent = targetData.BCVFD_08240_CNV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(8)').textContent = targetData.BCVFD_08240_INV_5_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(7)').textContent = targetData.BCVFD_08240_CNV_5_AM || '';
+
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(6)').textContent = targetData.BCVFD_08330_INV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(5)').textContent = targetData.BCVFD_08330_CNV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(6)').textContent = targetData.BCVFD_08330_INV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(5)').textContent = targetData.BCVFD_08330_CNV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(6)').textContent = targetData.BCVFD_08330_INV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(5)').textContent = targetData.BCVFD_08330_CNV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(6)').textContent = targetData.BCVFD_08330_INV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(5)').textContent = targetData.BCVFD_08330_CNV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(6)').textContent = targetData.BCVFD_08330_INV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(5)').textContent = targetData.BCVFD_08330_CNV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(6)').textContent = targetData.BCVFD_08330_INV_5_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(5)').textContent = targetData.BCVFD_08330_CNV_5_AM || '';
+
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(4)').textContent = targetData.BCVFD_08340_INV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(3)').textContent = targetData.BCVFD_08340_CNV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(4)').textContent = targetData.BCVFD_08340_INV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(3)').textContent = targetData.BCVFD_08340_CNV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(4)').textContent = targetData.BCVFD_08340_INV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(3)').textContent = targetData.BCVFD_08340_CNV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(4)').textContent = targetData.BCVFD_08340_INV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(3)').textContent = targetData.BCVFD_08340_CNV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(4)').textContent = targetData.BCVFD_08340_INV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(3)').textContent = targetData.BCVFD_08340_CNV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(4)').textContent = targetData.BCVFD_08340_INV_5_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(3)').textContent = targetData.BCVFD_08340_CNV_5_AM || '';
+
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(2)').textContent = targetData.BCVFD_08430_INV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(1)').textContent = targetData.BCVFD_08430_CNV_9_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(2)').textContent = targetData.BCVFD_08430_INV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(1)').textContent = targetData.BCVFD_08430_CNV_1_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(2)').textContent = targetData.BCVFD_08430_INV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(1)').textContent = targetData.BCVFD_08430_CNV_5_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(2)').textContent = targetData.BCVFD_08430_INV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(1)').textContent = targetData.BCVFD_08430_CNV_9_PM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(2)').textContent = targetData.BCVFD_08430_INV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(1)').textContent = targetData.BCVFD_08430_CNV_1_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(2)').textContent = targetData.BCVFD_08430_INV_5_AM || '';
+                                    document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(1)').textContent = targetData.BCVFD_08430_CNV_5_AM || '';
+
+                                    // table 7
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(14)').textContent = targetData.ENE_MCC_1_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(13)').textContent = targetData.ENE_MCC_2_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(12)').textContent = targetData.ENE_MCC_3_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(11)').textContent = targetData.ENE_MCC_3A_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(10)').textContent = targetData.ENE_MCC_5_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(9)').textContent = targetData.ENE_AIR_COMPRESSOR_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(8)').textContent = targetData.ENE_COMP_FROM_MCC_3_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(7)').textContent = targetData.ENE_RO_PLANT_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(6)').textContent = targetData.ENE_K_SILO_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(5)').textContent = targetData.ENE_PACKING_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(4)').textContent = targetData.ENE_RAW_SUGAR_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(3)').textContent = targetData.ENE_MCC_2B_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(2)').textContent = targetData.ENE_B_CONVEYOR_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(1)').textContent = targetData.ENE_COMPRESSOR_A || '';
                                 }
+
+
+
 
 
                             }
@@ -871,30 +1806,204 @@ session_start();
                         });
                 }
             }
+            //********************************************************************************************* */
+            function updatePageData2() {
+                let selectedYear = yearSelect.value;
+                let selectedmonth = monthSelect.value;
+                let selectday = daySelect.value;
+                clearAllCells();
+                let targetSR2 = daySelect.value - 1;
+                if (targetSR2 < 1 && selectedmonth == 1 && selectedYear == 2025) {
+                    targetSR2 = 1;
+                } else if (targetSR2 < 1 && selectedmonth == 1) {
+                    targetSR2 = 31;
+                    selectedmonth = 12;
+                    selectedYear = selectedYear - 1;
+                } else if (targetSR2 < 1) {
+                    if (selectedmonth == 5 || selectedmonth == 7 || selectedmonth == 10 || selectedmonth == 12) {
+                        targetSR2 = 30;
+                    } else {
+                        targetSR2 = 31;
+                    }
+
+                    selectedmonth = selectedmonth - 1;
+                }
+
+                if (selectedYear && selectedmonth) {
+                    fetch(`/fetch_Logbook_data.php?breaker=${selectedmonth}&year=${selectedYear}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error(data.error);
+                                // مسح البيانات من الجدول إذا حدث خطأ
+                            } else {
+                                const mainData = data[0];
+
+                                const targetData2 = data.find(item => item.SR == targetSR2);
+                                if (targetData2) {
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(14)').textContent = targetData2.ENE_MCC_1_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(13)').textContent = targetData2.ENE_MCC_2_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(12)').textContent = targetData2.ENE_MCC_3_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(11)').textContent = targetData2.ENE_MCC_3A_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(10)').textContent = targetData2.ENE_MCC_5_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(9)').textContent = targetData2.ENE_AIR_COMPRESSOR_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(8)').textContent = targetData2.ENE_COMP_FROM_MCC_3_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(7)').textContent = targetData2.ENE_RO_PLANT_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(6)').textContent = targetData2.ENE_K_SILO_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(5)').textContent = targetData2.ENE_PACKING_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(4)').textContent = targetData2.ENE_RAW_SUGAR_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(3)').textContent = targetData2.ENE_MCC_2B_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(2)').textContent = targetData2.ENE_B_CONVEYOR_A || '';
+                                    document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(1)').textContent = targetData2.ENE_COMPRESSOR_A || '';
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
+                }
+            }
+
+            function calculating() {
+                function calculateCell(column) {
+                    const selectorBase = `table:nth-of-type(7) tr:nth-child`;
+
+                    // الحصول على العناصر أولاً
+                    const element5 = document.querySelector(`${selectorBase}(5) td:nth-child(${column})`);
+                    const element4 = document.querySelector(`${selectorBase}(4) td:nth-child(${column})`);
+                    const resultElement = document.querySelector(`${selectorBase}(6) td:nth-child(${column})`);
+
+                    // التحقق من وجود العناصر
+                    if (!element5 || !element4 || !resultElement) {
+                        console.error(`❌ عنصر غير موجود للعمود ${column}`);
+                        return;
+                    }
+
+                    // عرض القيم الفعلية في الكونسول
+                    console.log(`📊 العمود ${column}:`);
+                    console.log(`الصف 5: '${element5.textContent}'`);
+                    console.log(`الصف 4: '${element4.textContent}'`);
+
+                    // تحويل القيم إلى أرقام
+                    const value5 = parseInt(element5.textContent);
+                    const value4 = parseInt(element4.textContent);
+
+                    // التحقق إذا كانت القيم أرقاماً صحيحة
+                    if (isNaN(value5) || isNaN(value4)) {
+                        console.error(`❌ قيم غير رقمية في العمود ${column}`);
+                        return;
+                    }
+
+                    // إجراء العملية الحسابية
+                    resultElement.textContent = value5 - value4;
+                    console.log(`✅ النتيجة: ${value5} - ${value4} = ${value5 - value4}`);
+                }
+
+                calculateCell(13);
+                calculateCell(14);
+            }
+
+            // نسخة بديلة باستخدام querySelectorAll لأسلوب أكثر موثوقية
+            function calculatingAlternative() {
+                // الحصول على كل الجداول أولاً
+                const tables = document.querySelectorAll('table');
+                console.log(`عدد الجداول: ${tables.length}`);
+
+                if (tables.length < 7) {
+                    console.error('❌ لا يوجد جدول سابع');
+                    return;
+                }
+
+                const table = tables[6]; // الجدول السابع (index 6)
+                const rows = table.querySelectorAll('tr');
+                console.log(`عدد الصفوف في الجدول: ${rows.length}`);
+
+                if (rows.length < 6) {
+                    console.error('❌ لا يوجد 6 صفوف في الجدول');
+                    return;
+                }
+
+                // الصفوف (تذكر: index يبدأ من 0)
+                const row4 = rows[3]; // الصف الرابع
+                const row5 = rows[4]; // الصف الخامس  
+                const row6 = rows[5]; // الصف السادس
+
+                const cells4 = row4.querySelectorAll('td');
+                const cells5 = row5.querySelectorAll('td');
+                const cells6 = row6.querySelectorAll('td');
+
+                console.log(`عدد الخلايا في الصف 4: ${cells4.length}`);
+                console.log(`عدد الخلايا في الصف 5: ${cells5.length}`);
+
+                // العمود 13 و14 (تذكر: index يبدأ من 0)
+                const columns = [12, 13]; // index 12 = العمود 13, index 13 = العمود 14
+
+                columns.forEach(colIndex => {
+                    if (cells4.length > colIndex && cells5.length > colIndex && cells6.length > colIndex) {
+                        const value4 = parseInt(cells4[colIndex].textContent);
+                        const value5 = parseInt(cells5[colIndex].textContent);
+
+                        if (!isNaN(value4) && !isNaN(value5)) {
+                            cells6[colIndex].textContent = value5 - value4;
+                            console.log(`✅ العمود ${colIndex + 1}: ${value5} - ${value4} = ${value5 - value4}`);
+                        } else {
+                            console.error(`❌ قيم غير رقمية في العمود ${colIndex + 1}`);
+                        }
+                    } else {
+                        console.error(`❌ العمود ${colIndex + 1} غير موجود`);
+                    }
+                });
+            }
+
+            // استدع الدالة مع تحسينات
+            function calculatingImproved() {
+                console.log('=== بدء الحساب ===');
+
+                // حاول الطريقة الأولى
+                calculating();
+
+                // إذا لم تنجح، جرب الطريقة البديلة
+                setTimeout(() => {
+                    console.log('=== المحاولة بالطريقة البديلة ===');
+                    calculatingAlternative();
+                }, 1000);
+            }
+
+            // استدع الدالة المحسنة
+            calculatingImproved();
             window.addEventListener('load', () => {
                 loadSelection(yearSelect);
                 loadSelection(monthSelect);
                 loadSelection(daySelect);
                 updatePageData();
+                updatePageData2();
+                calculating();
             });
 
             yearSelect.addEventListener('change', () => {
                 saveSelection(yearSelect);
                 updatePageData();
+                updatePageData2();
+                calculating();
             });
 
             monthSelect.addEventListener('change', () => {
                 saveSelection(monthSelect);
                 updatePageData();
+                updatePageData2();
+                calculating();
             });
             daySelect.addEventListener('change', () => {
                 saveSelection(daySelect);
                 updatePageData();
+                updatePageData2();
+                calculating();
             });
 
         });
 
         function clearAllCells() {
+            // table2
             document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(1)').textContent = '';
             document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(2)').textContent = '';
             document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(3)').textContent = '';
@@ -915,7 +2024,6 @@ session_start();
             document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(18)').textContent = '';
             document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(19)').textContent = '';
             document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(20)').textContent = '';
-
 
             document.querySelector('table:nth-of-type(2) tr:nth-child(5) td:nth-child(1)').textContent = '';
             document.querySelector('table:nth-of-type(2) tr:nth-child(5) td:nth-child(2)').textContent = '';
@@ -958,6 +2066,470 @@ session_start();
             document.querySelector('table:nth-of-type(2) tr:nth-child(6) td:nth-child(18)').textContent = '';
             document.querySelector('table:nth-of-type(2) tr:nth-child(6) td:nth-child(19)').textContent = '';
             document.querySelector('table:nth-of-type(2) tr:nth-child(6) td:nth-child(20)').textContent = '';
+
+            // table 3
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(36)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(35)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(34)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(33)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(32)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(31)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(30)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(29)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(28)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(27)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(26)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(25)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(24)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(23)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(22)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(21)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(20)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(19)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(4) td:nth-child(1)').textContent = '';
+
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(36)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(35)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(34)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(33)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(32)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(31)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(30)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(29)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(28)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(27)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(26)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(25)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(24)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(23)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(22)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(21)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(20)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(19)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(5) td:nth-child(1)').textContent = '';
+
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(36)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(35)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(34)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(33)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(32)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(31)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(30)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(29)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(28)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(27)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(26)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(25)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(24)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(23)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(22)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(21)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(20)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(19)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(3) tr:nth-child(6) td:nth-child(1)').textContent = '';
+            // TABLE 4 
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(32)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(31)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(30)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(29)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(28)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(27)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(26)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(25)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(24)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(23)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(22)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(21)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(20)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(19)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(4) td:nth-child(1)').textContent = '';
+
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(32)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(31)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(30)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(29)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(28)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(27)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(26)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(25)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(24)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(23)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(22)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(21)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(20)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(19)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(5) td:nth-child(1)').textContent = '';
+
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(32)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(31)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(30)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(29)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(28)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(27)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(26)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(25)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(24)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(23)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(22)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(21)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(20)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(19)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(4) tr:nth-child(6) td:nth-child(1)').textContent = '';
+            // TABLE 5
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(32)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(31)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(30)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(29)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(28)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(26)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(27)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(25)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(24)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(23)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(22)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(21)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(20)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(19)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(16)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(13)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(7)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(4)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(3)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(4) td:nth-child(1)').textContent = '';
+
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(32)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(31)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(30)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(29)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(28)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(26)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(27)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(25)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(24)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(23)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(22)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(21)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(20)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(19)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(16)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(13)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(7)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(4)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(3)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(5) td:nth-child(1)').textContent = '';
+
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(32)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(31)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(30)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(29)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(28)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(26)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(27)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(25)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(24)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(23)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(22)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(21)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(20)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(19)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(16)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(13)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(7)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(4)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(3)').textContent = '';
+            // document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(5) tr:nth-child(6) td:nth-child(1)').textContent = '';
+            // table 6
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(4) td:nth-child(1)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(5) td:nth-child(1)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(6) td:nth-child(1)').textContent = '';
+
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(7) td:nth-child(1)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(8) td:nth-child(1)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(18)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(17)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(16)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(15)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(6) tr:nth-child(9) td:nth-child(1)').textContent = '';
+
+            // table 7
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(1)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(5) td:nth-child(1)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(14)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(13)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(12)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(11)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(10)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(9)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(8)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(7)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(6)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(5)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(4)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(3)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(2)').textContent = '';
+            document.querySelector('table:nth-of-type(7) tr:nth-child(6) td:nth-child(1)').textContent = '';
         }
     </script>
     <!-- table1 -->
@@ -1441,7 +3013,7 @@ session_start();
             <td rowspan="3">SHIFT</td>
         </tr>
         <tr>
-            <td colspan="5">REMARKS</td>
+            <td rowspan="2" colspan="5">REMARKS</td>
             <td colspan="3">TR-RO</td>
             <td colspan="3">TR-5</td>
             <td colspan="3">TR-3</td>
@@ -1460,7 +3032,7 @@ session_start();
             <td colspan="2">05840</td>
         </tr>
         <tr>
-            <td colspan="5"></td>
+
 
             <td>OTI</td>
             <td>WTI</td>
