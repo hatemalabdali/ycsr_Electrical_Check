@@ -230,7 +230,7 @@ if (logbook_record) {
     console.warn("Element with ID 'transformers_test' not found.");
 }
 function logbook_recording() {
-    window.location.href = 'logbook_show.php';
+    window.location.href = 'logbook_maint.php';
 }
 
 if (logbook_show) {

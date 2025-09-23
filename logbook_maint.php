@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض القراءات والتقارير</title>
+    <title>تسجيل القراءات والتقارير</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -541,11 +541,316 @@ session_start();
         </div>
 
 
-         <button class="print-button" onclick="window.print()"><img class="pdf_img" src="imgs/printdoc2.png"
-                alt=""></button>
+        <!-- <button id="save-data-btn" class="back-btn" style="margin-right: 2%;">حفظ البيانات</button> -->
+        <!-- <button class="print-button" onclick="window.print()"><img class="pdf_img" src="imgs/printdoc2.png"
+                alt=""></button> -->
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // كود الادخال للبيانات XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            // إضافة دالة التعديل بالنقر المزدوج
+            // دالة لتمكين التعديل بالنقر المزدوج للأعمدة 1-8 و 15-20
+            // دالة لتمكين التعديل بالنقر المزدوج للأعمدة 1-8 و 15-20
+            // دالة لتمكين التعديل بالنقر المزدوج للأعمدة 1-8 و 15-20
+            function enableDoubleClickEditing() {
+                const table = document.querySelector('table:nth-of-type(2)');
+
+                // تحديد الصفوف (4, 5, 6) - الفهرس يبدأ من 0 (الصفوف 3, 4, 5 في DOM)
+                for (let row = 3; row <= 6; row++) {
+                    // جميع الأعمدة من 1 إلى 20 (باستثناء 9-14 التي لها معالجة خاصة)
+                    for (let col = 1; col <= 20; col++) {
+                        // تخطي الأعمدة 9-14 التي لها معالجة خاصة
+                        if (col >= 9 && col <= 14) continue;
+
+                        const cell = table.querySelector(`tr:nth-child(${row}) td:nth-child(${col})`);
+                        if (cell) {
+                            cell.addEventListener('dblclick', function() {
+                                makeCellEditable(this);
+                            });
+
+                            // إضافة نمط المؤشر للإشارة إلى أن الخلية قابلة للتعديل
+                            cell.style.cursor = 'pointer';
+                        }
+                    }
+                }
+            }
+            // دالة لتمكين التعديل بالنقر المزدوج للأعمدة 9-14
+            // دالة لتمكين التعديل بالنقر المزدوج للأعمدة 9-14
+            function enableToggleEditing() {
+                const table = document.querySelector('table:nth-of-type(2)');
+
+                // تحديد الصفوف (4, 5, 6) - الفهرس يبدأ من 0 (الصفوف 3, 4, 5 في DOM)
+                for (let row = 3; row <= 6; row++) {
+                    // الأعمدة من 9 إلى 14
+                    for (let col = 9; col <= 14; col++) {
+                        const cell = table.querySelector(`tr:nth-child(${row}) td:nth-child(${col})`);
+                        if (cell) {
+                            cell.addEventListener('dblclick', function() {
+                                toggleCellValue(this);
+                            });
+
+                            // إضافة نمط المؤشر للإشارة إلى أن الخلية قابلة للتعديل
+                            cell.style.cursor = 'pointer';
+
+                            // تنسيق الخلايا بناءً على قيمتها
+                            updateCellStyle(cell);
+                        }
+                    }
+                }
+            }
+
+            // دالة لتمكين التعديل بالنقر المزدوج للجدول الثالث
+            function enableTable3Editing() {
+                const table = document.querySelector('table:nth-of-type(3)');
+
+                if (!table) return;
+
+                // تحديد الصفوف (4, 5, 6) - الفهرس يبدأ من 0 (الصفوف 3, 4, 5 في DOM)
+                for (let row = 3; row <= 6; row++) {
+                    // جميع الأعمدة من 1 إلى 36
+                    for (let col = 1; col <= 36; col++) {
+                        const cell = table.querySelector(`tr:nth-child(${row}) td:nth-child(${col})`);
+                        if (cell) {
+                            cell.addEventListener('dblclick', function() {
+                                makeCellEditable(this);
+                            });
+
+                            // إضافة نمط المؤشر للإشارة إلى أن الخلية قابلة للتعديل
+                            cell.style.cursor = 'pointer';
+                        }
+                    }
+                }
+            }
+
+            // دالة لتمكين التعديل بالنقر المزدوج للجدول الرابع
+            function enableTable4Editing() {
+                const table = document.querySelector('table:nth-of-type(4)');
+
+                if (!table) return;
+
+                // تحديد الصفوف (4, 5, 6) - الفهرس يبدأ من 0 (الصفوف 3, 4, 5 في DOM)
+                for (let row = 3; row <= 6; row++) {
+                    // جميع الأعمدة من 1 إلى 32
+                    for (let col = 1; col <= 32; col++) {
+                        const cell = table.querySelector(`tr:nth-child(${row}) td:nth-child(${col})`);
+                        if (cell) {
+                            cell.addEventListener('dblclick', function() {
+                                makeCellEditable(this);
+                            });
+
+                            // إضافة نمط المؤشر للإشارة إلى أن الخلية قابلة للتعديل
+                            cell.style.cursor = 'pointer';
+                        }
+                    }
+                }
+            }
+
+
+            // دالة لتمكين التعديل بالنقر المزدوج للجدول الخامس
+            function enableTable5Editing() {
+                const table = document.querySelector('table:nth-of-type(5)');
+
+                if (!table) return;
+
+                // تحديد الصفوف (4, 5, 6) - الفهرس يبدأ من 0 (الصفوف 3, 4, 5 في DOM)
+                for (let row = 3; row <= 6; row++) {
+                    // جميع الأعمدة من 1 إلى 32 (باستثناء الخلايا غير القابلة للتعديل)
+                    for (let col = 1; col <= 32; col++) {
+                        // تخطي الخلايا غير القابلة للتعديل
+                        if ([15, 12, 6, 3, 2].includes(col)) continue;
+
+                        const cell = table.querySelector(`tr:nth-child(${row}) td:nth-child(${col})`);
+                        if (cell) {
+                            cell.addEventListener('dblclick', function() {
+                                makeCellEditable(this);
+                            });
+
+                            // إضافة نمط المؤشر للإشارة إلى أن الخلية قابلة للتعديل
+                            cell.style.cursor = 'pointer';
+                        }
+                    }
+                }
+            }
+            // دالة لتمكين التعديل بالنقر المزدوج للجدول السادس
+            function enableTable6Editing() {
+                const table = document.querySelector('table:nth-of-type(6)');
+
+                if (!table) return;
+
+                // تحديد الصفوف (4, 5, 6, 7, 8, 9) - الفهرس يبدأ من 0 (الصفوف 3, 4, 5, 6, 7, 8 في DOM)
+                for (let row = 3; row <= 9; row++) {
+                    // جميع الأعمدة من 1 إلى 18
+                    for (let col = 1; col <= 18; col++) {
+                        const cell = table.querySelector(`tr:nth-child(${row}) td:nth-child(${col})`);
+                        if (cell) {
+                            cell.addEventListener('dblclick', function() {
+                                makeCellEditable(this);
+                            });
+
+                            // إضافة نمط المؤشر للإشارة إلى أن الخلية قابلة للتعديل
+                            cell.style.cursor = 'pointer';
+                        }
+                    }
+                }
+            }
+
+            // دالة لتمكين التعديل بالنقر المزدوج للجدول السابع (الصف الخامس فقط)
+            function enableTable7Editing() {
+                const table = document.querySelector('table:nth-of-type(7)');
+
+                if (!table) return;
+
+                // تحديد الصف الخامس فقط (الفهرس 4 في DOM)
+                const row = 5;
+
+                // جميع الأعمدة من 1 إلى 14
+                for (let col = 1; col <= 14; col++) {
+                    const cell = table.querySelector(`tr:nth-child(${row}) td:nth-child(${col})`);
+                    if (cell) {
+                        cell.addEventListener('dblclick', function() {
+                            makeCellEditable7(this);
+                        });
+
+                        // إضافة نمط المؤشر للإشارة إلى أن الخلية قابلة للتعديل
+                        cell.style.cursor = 'pointer';
+                    }
+                }
+            }
+
+            function makeCellEditable7(cell) {
+                const currentValue = cell.textContent;
+                let The_OldValue = 0;
+                const columnIndex = Array.from(cell.parentElement.children).indexOf(cell) + 1;
+                const rowIndex = Array.from(cell.closest('table').querySelectorAll('tr')).indexOf(cell.parentElement) + 1;
+                console.log('🎯 تم النقر على الخلية - الصف:', rowIndex, 'العمود:', columnIndex);
+                const correct_row = 19 - columnIndex;
+                The_OldValue = document.querySelector(`table:nth-of-type(10) tr:nth-child(${correct_row}) td:nth-child(4)`).textContent || 0;
+
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.value = currentValue;
+                input.style.width = '100%';
+                input.style.height = '100%';
+                input.style.border = 'none';
+                input.style.background = 'transparent';
+                input.style.textAlign = 'center';
+                input.style.fontSize = 'inherit';
+                input.style.backgroundColor = '#dce3efff';
+
+                cell.textContent = 0;
+                cell.appendChild(input);
+                input.focus();
+                input.select();
+
+                let isCancelling = false;
+                let isConfirmDialogOpen = false;
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        isConfirmDialogOpen = true;
+                        if (input.value >= The_OldValue) {
+                            finishEditing(cell, input.value);
+                             cell.style.backgroundColor = '#d4edda'; // أخضر فاتح
+                        } else {
+                            cell.textContent = currentValue;
+                            cell.style.backgroundColor = '#ffcccc';
+                            showMessage('❌ القيمة يجب أن تكون أكبر من أو تساوي ' + The_OldValue);
+                            cell.style.backgroundColor = '#d21313ff'; // لون أحمر فاتح
+                            setTimeout(() => {
+                                cell.style.backgroundColor = '#f6c3efff'; // إعادة اللون بعد ثانيتين
+                                hideMessage();
+                            }, 2000);
+                        }
+
+                    } else if (e.key === 'Escape') {
+                        isCancelling = true; // وضع علامة للإلغاء
+                        cell.textContent = currentValue;
+                    }
+                });
+
+                input.addEventListener('blur', function() {
+                    if (!isCancelling && !isConfirmDialogOpen) { // عدم التنفيذ إذا كان إلغاء
+                        if (input.value >= The_OldValue) {
+                            finishEditing(cell, input.value);
+                             cell.style.backgroundColor = '#d4edda'; // أخضر فاتح
+                        } else {
+                            cell.textContent = currentValue;
+                            
+                            showMessage('❌ القيمة يجب أن تكون أكبر من أو تساوي ' + The_OldValue);
+                            cell.style.backgroundColor = '#d21313ff'; // لون أحمر فاتح
+                            setTimeout(() => {
+                                cell.style.backgroundColor = '#f6c3efff'; // إعادة اللون بعد ثانيتين
+                                hideMessage();
+                            }, 2000);
+                        }
+                    }
+                    isCancelling = false; // إعادة تعيين المتغير
+                    isConfirmDialogOpen = false;
+                });
+            }
+
+            // دالة لعرض الرسالة
+            function showMessage(message) {
+                let messageDiv = document.getElementById('error-message');
+                if (!messageDiv) {
+                    messageDiv = document.createElement('div');
+                    messageDiv.id = 'error-message';
+                    messageDiv.style.position = 'fixed';
+                    messageDiv.style.top = '20px';
+                    messageDiv.style.left = '50%';
+                    messageDiv.style.transform = 'translateX(-50%)';
+                    messageDiv.style.background = '#ff4444';
+                    messageDiv.style.color = 'white';
+                    messageDiv.style.padding = '10px 20px';
+                    messageDiv.style.borderRadius = '5px';
+                    messageDiv.style.zIndex = '10000';
+                    document.body.appendChild(messageDiv);
+                }
+                messageDiv.textContent = message;
+                messageDiv.style.display = 'block';
+            }
+
+            // دالة لإخفاء الرسالة
+            function hideMessage() {
+                const messageDiv = document.getElementById('error-message');
+                if (messageDiv) {
+                    messageDiv.style.display = 'none';
+                }
+            }
+            // gool
+            function enableTable9Editing() {
+                const table = document.querySelector('table:nth-of-type(9)');
+                if (!table) return;
+
+                // ✅ الصف الثالث فقط - قابل للتعديل
+                const cellRow3 = table.querySelector('tr:nth-child(3) td:nth-child(3)');
+                const cellRow31 = table.querySelector('tr:nth-child(3) td:nth-child(1)');
+                const cellRow41 = table.querySelector('tr:nth-child(4) td:nth-child(1)');
+                const cellRow51 = table.querySelector('tr:nth-child(5) td:nth-child(1)');
+                if (cellRow3 || cellRow31) {
+                    cellRow3.addEventListener('dblclick', function() {
+                        makeCellEditable(this);
+                    });
+                    cellRow31.addEventListener('dblclick', function() {
+                        makeCellEditable(this);
+                    });
+                    cellRow41.addEventListener('dblclick', function() {
+                        makeCellEditable(this);
+                    });
+                    cellRow51.addEventListener('dblclick', function() {
+                        makeCellEditable(this);
+                    });
+                    cellRow3.style.cursor = 'pointer';
+                    cellRow3.style.backgroundColor = '#e3f2fd'; // تمييز بصري
+                    cellRow31.style.cursor = 'pointer';
+                    cellRow31.style.backgroundColor = '#e3f2fd'; // تمييز بصري
+                    cellRow41.style.cursor = 'pointer';
+                    cellRow41.style.backgroundColor = '#e3f2fd'; // تمييز بصري
+                    cellRow51.style.cursor = 'pointer';
+                    cellRow51.style.backgroundColor = '#e3f2fd'; // تمييز بصري
+                }
+
+
+            }
 
             function notAllow() {
                 const table = document.querySelector('table:nth-of-type(9)');
@@ -569,13 +874,28 @@ session_start();
                         cell.parentNode.replaceChild(newCell, cell);
 
                         // تعطيل المظهر
-                        newCell.style.fontWeight = 'bold';
-                        newCell.style.color = '#3f9263ff';
+                        newCell.style.cursor = 'not-allowed';
+                        newCell.style.backgroundColor = '#f0f0f0';
+                        newCell.style.color = '#666';
+                        newCell.title = 'يتم حسابه تلقائياً';
                     }
                 });
                 const table7 = document.querySelector('table:nth-of-type(7)');
                 if (!table7) return;
-
+                const cellRow741 = table7.querySelector('tr:nth-child(4) td:nth-child(1)');
+                const cellRow742 = table7.querySelector('tr:nth-child(4) td:nth-child(2)');
+                const cellRow743 = table7.querySelector('tr:nth-child(4) td:nth-child(3)');
+                const cellRow744 = table7.querySelector('tr:nth-child(4) td:nth-child(4)');
+                const cellRow745 = table7.querySelector('tr:nth-child(4) td:nth-child(5)');
+                const cellRow746 = table7.querySelector('tr:nth-child(4) td:nth-child(6)');
+                const cellRow747 = table7.querySelector('tr:nth-child(4) td:nth-child(7)');
+                const cellRow748 = table7.querySelector('tr:nth-child(4) td:nth-child(8)');
+                const cellRow749 = table7.querySelector('tr:nth-child(4) td:nth-child(9)');
+                const cellRow7410 = table7.querySelector('tr:nth-child(4) td:nth-child(10)');
+                const cellRow7411 = table7.querySelector('tr:nth-child(4) td:nth-child(11)');
+                const cellRow7412 = table7.querySelector('tr:nth-child(4) td:nth-child(12)');
+                const cellRow7413 = table7.querySelector('tr:nth-child(4) td:nth-child(13)');
+                const cellRow7414 = table7.querySelector('tr:nth-child(4) td:nth-child(14)');
 
                 const cellRow761 = table7.querySelector('tr:nth-child(6) td:nth-child(1)');
                 const cellRow762 = table7.querySelector('tr:nth-child(6) td:nth-child(2)');
@@ -592,7 +912,8 @@ session_start();
                 const cellRow7613 = table7.querySelector('tr:nth-child(6) td:nth-child(13)');
                 const cellRow7614 = table7.querySelector('tr:nth-child(6) td:nth-child(14)');
 
-                [
+                [cellRow741, cellRow742, cellRow743, cellRow744, cellRow745, cellRow746, cellRow747, cellRow748,
+                    cellRow749, cellRow7410, cellRow7411, cellRow7412, cellRow7413, cellRow7414,
                     cellRow761, cellRow762, cellRow763, cellRow764, cellRow765, cellRow766, cellRow767, cellRow768,
                     cellRow769, cellRow7610, cellRow7611, cellRow7612, cellRow7613, cellRow7614
                 ].forEach(cell => {
@@ -602,13 +923,1098 @@ session_start();
                         cell.parentNode.replaceChild(newCell7, cell);
 
                         // تعطيل المظهر
-
-                        newCell7.style.fontWeight = 'bold';
-                        newCell7.style.color = '#3f9263ff';
+                        newCell7.style.cursor = 'not-allowed';
+                        newCell7.style.backgroundColor = '#f0f0f0';
+                        newCell7.style.color = '#666';
+                        newCell7.title = 'يتم حسابه تلقائياً';
                     }
                 });
             }
 
+            // دالة للتبديل بين القيم OK و N OK
+            function toggleCellValue(cell) {
+                const currentValue = cell.textContent.trim().toUpperCase();
+                const oldValue = currentValue; // حفظ القيمة القديمة
+
+                // تحديد القيمة الجديدة بناءً على القيمة الحالية
+                let newValue;
+                if (currentValue === 'OK') {
+                    newValue = 'N OK';
+                } else if (currentValue === 'N OK') {
+                    newValue = '';
+                } else {
+                    newValue = 'OK';
+                }
+
+                // تطبيق القيمة الجديدة
+                cell.textContent = newValue;
+
+                // تحديث تنسيق الخلية
+                updateCellStyle(cell);
+
+                // ✅ الإضافة المهمة: حفظ البيانات في الخادم للأعمدة 9-14
+                const table = cell.closest('table');
+                const tableIndex = Array.from(document.querySelectorAll('table')).indexOf(table) + 1;
+                const row = cell.parentElement;
+                const rowIndex = row.rowIndex;
+                const cellIndex = cell.cellIndex + 1;
+
+                const yearSelect = document.getElementById('year-select');
+                const monthSelect = document.getElementById('month-select');
+                const daySelect = document.getElementById('day-select');
+
+                const year = yearSelect.value;
+                const month = monthSelect.value;
+                const day = daySelect.value;
+
+                // الحصول على اسم العمود فقط للأعمدة 9-14 في الجدول 2
+                let columnName = null;
+                if (tableIndex === 2 && (rowIndex === 3 || rowIndex === 4 || rowIndex === 5) &&
+                    cellIndex >= 9 && cellIndex <= 14) {
+                    columnName = getColumnName(cellIndex, rowIndex);
+                }
+
+                // حفظ البيانات إذا كانت الشروط متوفرة
+                if (columnName && year && month && day) {
+                    // استدعاء دالة الحفظ بنفس المعلمات التي تستخدمها finishEditing
+                    saveToDatabase(day, columnName, newValue, day, month, year, cell, oldValue);
+                } else {
+                    console.log('تم تغيير القيمة إلى:', newValue, '(لم تحفظ في الخادم)');
+                }
+            }
+
+            // دالة لتحديث تنسيق الخلية بناءً على قيمتها
+            function updateCellStyle(cell) {
+                const value = cell.textContent.trim().toUpperCase();
+
+                // إعادة تعيين التنسيق
+                cell.style.backgroundColor = '';
+                cell.style.color = '';
+                cell.style.fontWeight = '';
+
+                // تطبيق التنسيق بناءً على القيمة
+                if (value === 'OK') {
+                    cell.style.backgroundColor = '#d4edda'; // أخضر فاتح
+                    cell.style.color = '#155724'; // أخضر غامق
+                    cell.style.fontWeight = 'bold';
+                } else if (value === 'N OK') {
+                    cell.style.backgroundColor = '#f8d7da'; // أحمر فاتح
+                    cell.style.color = '#721c24'; // أحمر غامق
+                    cell.style.fontWeight = 'bold';
+                }
+            }
+
+            function makeCellEditable(cell) {
+                const currentValue = cell.textContent;
+                let The_OldValue = 0;
+
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.value = currentValue;
+                input.style.width = '100%';
+                input.style.height = '100%';
+                input.style.border = 'none';
+                input.style.background = 'transparent';
+                input.style.textAlign = 'center';
+                input.style.fontSize = 'inherit';
+                input.style.backgroundColor = '#dce3efff';
+
+                cell.textContent = '';
+                cell.appendChild(input);
+                input.focus();
+                input.select();
+
+                let isCancelling = false;
+                let isConfirmDialogOpen = false;
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        if (input.value === '') {
+                            isConfirmDialogOpen = true;
+                            // عرض مربع حوار التأكيد
+                            const userConfirmed = confirm('هل تريد فعلاً مسح محتوى الخلية؟');
+
+                            if (userConfirmed) {
+                                // إذا اختار "نعم" - مسح المحتوى
+                                finishEditing(cell, '');
+                                 cell.style.backgroundColor = '';
+                            } else {
+                                // إذا اختار "لا" - إعادة القيمة الأصلية
+                                cell.textContent = currentValue;
+                            }
+                        } else if (input.value < The_OldValue) {
+                            cell.textContent = currentValue;
+                            showMessage('❌ القيمة يجب أن تكون أكبر من أو تساوي ' + The_OldValue);
+                            cell.style.backgroundColor = '#d21313ff'; // لون أحمر فاتح
+                            setTimeout(() => {
+                                cell.style.backgroundColor = ''; // إعادة اللون بعد ثانيتين
+                                hideMessage();
+                            }, 2000);
+                        } else {
+                            finishEditing(cell, input.value);
+                             cell.style.backgroundColor = '#d4edda'; // أخضر فاتح
+                        }
+
+                    } else if (e.key === 'Escape') {
+                        isCancelling = true; // وضع علامة للإلغاء
+                        cell.textContent = currentValue;
+                    }
+                });
+
+                input.addEventListener('blur', function() {
+                    if (!isCancelling && !isConfirmDialogOpen) {
+                        if (input.value === '') {
+                            // عرض مربع حوار التأكيد
+                            const userConfirmed = confirm('هل تريد فعلاً مسح محتوى الخلية؟');
+
+                            if (userConfirmed) {
+                                // إذا اختار "نعم" - مسح المحتوى
+                                finishEditing(cell, '');
+                                cell.style.backgroundColor = ''; 
+                            } else {
+                                // إذا اختار "لا" - إعادة القيمة الأصلية
+                                cell.textContent = currentValue;
+                            }
+                        } else if (input.value < The_OldValue) {
+                            cell.textContent = currentValue;
+                            showMessage('❌ القيمة يجب أن تكون أكبر من أو تساوي ' + The_OldValue);
+                            cell.style.backgroundColor = '#d21313ff'; // لون أحمر فاتح
+                            setTimeout(() => {
+                                cell.style.backgroundColor = ''; // إعادة اللون بعد ثانيتين
+                                hideMessage();
+                            }, 2000);
+                        } else {
+                            finishEditing(cell, input.value);
+                             cell.style.backgroundColor = '#d4edda'; 
+                        }
+                    }
+                    isCancelling = false; // إعادة تعيين المتغير
+                     isConfirmDialogOpen = false;
+                });
+            }
+
+            function saveToDatabase(row, columnName, value, day, month, year, cell, oldValue) {
+                // إنشاء كائن FormData لإرسال البيانات
+                const formData = new FormData();
+                formData.append('row', row);
+                formData.append('column', columnName);
+                formData.append('value', value);
+                formData.append('day', day);
+                formData.append('month', month);
+                formData.append('year', year);
+
+                // إظهار مؤشر تحميل
+                const originalContent = cell.textContent;
+                cell.innerHTML = '<div style="color: blue;">⏳</div>';
+
+                // إرسال البيانات باستخدام fetch
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('تم حفظ البيانات بنجاح:', data.message);
+                            cell.textContent = value; // تأكيد القيمة
+
+                            // إذا كانت الخلية من الأعمدة 9-14، قم بتحديث التنسيق
+                            const cellIndex = cell.cellIndex + 1;
+                            if (cellIndex >= 9 && cellIndex <= 14) {
+                                updateCellStyle(cell);
+                            }
+                        } else {
+                            console.error('خطأ في حفظ البيانات:', data.message);
+                            cell.textContent = oldValue; // استعادة القيمة القديمة
+
+                            // إذا كانت الخلية من الأعمدة 9-14، قم بتحديث التنسيق
+                            const cellIndex = cell.cellIndex + 1;
+                            if (cellIndex >= 9 && cellIndex <= 14) {
+                                updateCellStyle(cell);
+                            }
+
+                            alert('حدث خطأ أثناء حفظ البيانات: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('خطأ في الاتصال:', error);
+                        cell.textContent = oldValue; // استعادة القيمة القديمة
+
+                        // إذا كانت الخلية من الأعمدة 9-14، قم بتحديث التنسيق
+                        const cellIndex = cell.cellIndex + 1;
+                        if (cellIndex >= 9 && cellIndex <= 14) {
+                            updateCellStyle(cell);
+                        }
+
+                        alert('حدث خطأ في الاتصال بالخادم');
+                    });
+            }
+
+            // دالة للحصول على اسم العمود بناءً على رقمه ورقم الصف
+            function getColumnName(columnIndex, rowIndex) {
+                // تحديد اللاحقة بناءً على رقم الصف
+                let suffix;
+                if (rowIndex === 3) { // الصف الرابع (A)
+                    suffix = 'A';
+                } else if (rowIndex === 4) { // الصف الخامس (B)
+                    suffix = 'B';
+                } else if (rowIndex === 5) { // الصف السادس (C)
+                    suffix = 'C';
+                } else {
+                    return null; // للصفوف الأخرى
+                }
+
+                const columnMap = {
+                    // الأعمدة 20-15
+                    20: 'SW_G_CU_INC',
+                    19: 'SW_G_CU_TR_1',
+                    18: 'SW_G_CU_TR_2',
+                    17: 'SW_G_CU_TR_3',
+                    16: 'SW_G_CU_TR_5',
+                    15: 'SW_G_CU_TR_RO',
+
+                    // الأعمدة 14-1
+                    14: 'SW_G_SF6_INC',
+                    13: 'SW_G_SF6_TR_1',
+                    12: 'SW_G_SF6_TR_2',
+                    11: 'SW_G_SF6_TR_3',
+                    10: 'SW_G_SF6_TR_5',
+                    9: 'SW_G_SF6_TR_RO',
+                    8: 'SW_G_ROOM_TEMP',
+                    7: 'LV_SW_G_CU_MCC_1',
+                    6: 'LV_SW_G_CU_MCC_2',
+                    5: 'LV_SW_G_CU_MCC_3A',
+                    4: 'LV_SW_G_CU_MCC_3',
+                    3: 'LV_SW_G_CU_MCC_5',
+                    2: 'LV_SW_G_CU_MCC_RS',
+                    1: 'LV_SW_G_ROOM_TEMP'
+                };
+
+                const baseName = columnMap[columnIndex];
+                return baseName ? baseName + '_' + suffix : null;
+            }
+
+            // دالة للحصول على اسم العمود في الجدول الثالث بناءً على رقمه ورقم الصف
+            function getColumnNameTable3(columnIndex, rowIndex) {
+                // تحديد اللاحقة بناءً على رقم الصف
+                let suffix;
+                if (rowIndex === 3) { // الصف الرابع (A)
+                    suffix = 'A';
+                } else if (rowIndex === 4) { // الصف الخامس (B)
+                    suffix = 'B';
+                } else if (rowIndex === 5) { // الصف السادس (C)
+                    suffix = 'C';
+                } else {
+                    return null; // للصفوف الأخرى
+                }
+
+                const columnMap = {
+                    36: 'M_08130_A',
+                    35: 'M_08130_T',
+                    34: 'M_08140_A',
+                    33: 'M_08140_T',
+                    32: 'M_08150_A',
+                    31: 'M_08150_T',
+                    30: 'M_08160_A',
+                    29: 'M_08160_T',
+                    28: 'M_08230_A',
+                    27: 'M_08230_T',
+                    26: 'M_08240_A',
+                    25: 'M_08240_T',
+                    24: 'M_08330_A',
+                    23: 'M_08330_T',
+                    22: 'M_08340_A',
+                    21: 'M_08340_T',
+                    20: 'M_08430_A',
+                    19: 'M_08430_T',
+                    18: 'M_09130_A',
+                    17: 'M_09130_T',
+                    16: 'M_09140_A',
+                    15: 'M_09140_T',
+                    14: 'M_09230_A',
+                    13: 'M_09230_T',
+                    12: 'M_09380_A',
+                    11: 'M_09380_T',
+                    10: 'M_09430_A',
+                    9: 'M_09430_T',
+                    8: 'M_10160_A',
+                    7: 'M_10160_T',
+                    6: 'M_04240_A',
+                    5: 'M_04240_T',
+                    4: 'M_04250_A',
+                    3: 'M_04250_T',
+                    2: 'M_10020_A',
+                    1: 'M_10020_T'
+                };
+
+                const baseName = columnMap[columnIndex];
+                return baseName ? baseName + '_' + suffix : null;
+            }
+
+            // دالة للحصول على اسم العمود في الجدول الرابع بناءً على رقمه ورقم الصف
+            function getColumnNameTable4(columnIndex, rowIndex) {
+                // تحديد اللاحقة بناءً على رقم الصف
+                let suffix;
+                if (rowIndex === 3) { // الصف الرابع (A)
+                    suffix = 'A';
+                } else if (rowIndex === 4) { // الصف الخامس (B)
+                    suffix = 'B';
+                } else if (rowIndex === 5) { // الصف السادس (C)
+                    suffix = 'C';
+                } else {
+                    return null; // للصفوف الأخرى
+                }
+
+                const columnMap = {
+                    32: 'M_13020_A',
+                    31: 'M_13020_T',
+                    30: 'M_13025_A',
+                    29: 'M_13025_T',
+                    28: 'M_13040_A',
+                    27: 'M_13040_T',
+                    26: 'M_13045_A',
+                    25: 'M_13045_T',
+                    24: 'M_13060_A',
+                    23: 'M_13060_T',
+                    22: 'M_13065_A',
+                    21: 'M_13065_T',
+                    20: 'M_13080_A',
+                    19: 'M_13080_T',
+                    18: 'M_13085_A',
+                    17: 'M_13085_T',
+                    16: 'M_13100_A',
+                    15: 'M_13100_T',
+                    14: 'M_13105_A',
+                    13: 'M_13105_T',
+                    12: 'M_13120_A',
+                    11: 'M_13120_T',
+                    10: 'M_13125_A',
+                    9: 'M_13125_T',
+                    8: 'M_13140_A',
+                    7: 'M_13140_T',
+                    6: 'M_13145_A',
+                    5: 'M_13145_T',
+                    4: 'M_13160_A',
+                    3: 'M_13160_T',
+                    2: 'M_13165_A',
+                    1: 'M_13165_T'
+                };
+
+                const baseName = columnMap[columnIndex];
+                return baseName ? baseName + '_' + suffix : null;
+            }
+
+            // دالة للحصول على اسم العمود في الجدول الخامس بناءً على رقمه ورقم الصف
+            function getColumnNameTable5(columnIndex, rowIndex) {
+                // تحديد اللاحقة بناءً على رقم الصف
+                let suffix;
+                if (rowIndex === 3) { // الصف الرابع (A)
+                    suffix = 'A';
+                } else if (rowIndex === 4) { // الصف الخامس (B)
+                    suffix = 'B';
+                } else if (rowIndex === 5) { // الصف السادس (C)
+                    suffix = 'C';
+                } else {
+                    return null; // للصفوف الأخرى
+                }
+
+                const columnMap = {
+                    // الأعمدة 32-17 (الجزء الأول)
+                    32: 'M_05840_A',
+                    31: 'M_05840_T',
+                    30: 'M_05845_A',
+                    29: 'M_05845_T',
+                    28: 'M_05850_A',
+                    27: 'M_05850_T',
+                    26: 'M_13210_A',
+                    25: 'M_13210_T',
+                    24: 'M_13220_A',
+                    23: 'M_13220_T',
+                    22: 'M_13230_A',
+                    21: 'M_13230_T',
+                    20: 'M_10120_A',
+                    19: 'M_10120_T',
+                    18: 'M_10640_A',
+                    17: 'M_10640_T',
+
+                    // الأعمدة 16-1 (الجزء الثاني)
+                    16: 'TR_TR1_AMP',
+                    15: '', // خلية غير قابلة للتعديل
+                    14: 'TR_TR1_OTI',
+                    13: 'TR_TR2_AMP',
+                    12: '', // خلية غير قابلة للتعديل
+                    11: 'TR_TR2_OTI',
+                    10: 'TR_TR3_AMP',
+                    9: 'TR_TR3_WTI',
+                    8: 'TR_TR3_OTI',
+                    7: 'TR_TR5_AMP',
+                    6: '', // خلية غير قابلة للتعديل
+                    5: 'TR_TR5_OTI',
+                    4: 'TR_TRRO_AMP',
+                    3: '', // خلية غير قابلة للتعديل
+                    2: '', // خلية غير قابلة للتعديل
+                    1: 'TR_REMARKS'
+                };
+
+                const baseName = columnMap[columnIndex];
+                return baseName ? baseName + '_' + suffix : null;
+            }
+
+            // دالة للحصول على اسم العمود في الجدول السادس بناءً على رقمه ورقم الصف
+            function getColumnNameTable6(columnIndex, rowIndex) {
+                // تحديد اللاحقة الزمنية بناءً على رقم الصف
+                let timeSuffix;
+                if (rowIndex === 3) { // الصف الرابع (9_AM)
+                    timeSuffix = '9_AM';
+                } else if (rowIndex === 4) { // الصف الخامس (1_PM)
+                    timeSuffix = '1_PM';
+                } else if (rowIndex === 5) { // الصف السادس (5_PM)
+                    timeSuffix = '5_PM';
+                } else if (rowIndex === 6) { // الصف السابع (9_PM)
+                    timeSuffix = '9_PM';
+                } else if (rowIndex === 7) { // الصف الثامن (1_AM)
+                    timeSuffix = '1_AM';
+                } else if (rowIndex === 8) { // الصف التاسع (5_AM)
+                    timeSuffix = '5_AM';
+                } else {
+                    return null; // للصفوف الأخرى
+                }
+
+                const columnMap = {
+                    18: 'BCVFD_08130_INV',
+                    17: 'BCVFD_08130_CNV',
+                    16: 'BCVFD_08140_INV',
+                    15: 'BCVFD_08140_CNV',
+                    14: 'BCVFD_08150_INV',
+                    13: 'BCVFD_08150_CNV',
+                    12: 'BCVFD_08160_INV',
+                    11: 'BCVFD_08160_CNV',
+                    10: 'BCVFD_08230_INV',
+                    9: 'BCVFD_08230_CNV',
+                    8: 'BCVFD_08240_INV',
+                    7: 'BCVFD_08240_CNV',
+                    6: 'BCVFD_08330_INV',
+                    5: 'BCVFD_08330_CNV',
+                    4: 'BCVFD_08340_INV',
+                    3: 'BCVFD_08340_CNV',
+                    2: 'BCVFD_08430_INV',
+                    1: 'BCVFD_08430_CNV'
+                };
+
+                const baseName = columnMap[columnIndex];
+                return baseName ? baseName + '_' + timeSuffix : null;
+            }
+
+            // دالة للحصول على اسم العمود في الجدول السابع بناءً على رقمه (للصف الخامس فقط)
+            function getColumnNameTable7(columnIndex) {
+                const columnMap = {
+                    14: 'ENE_MCC_1',
+                    13: 'ENE_MCC_2',
+                    12: 'ENE_MCC_3',
+                    11: 'ENE_MCC_3A',
+                    10: 'ENE_MCC_5',
+                    9: 'ENE_AIR_COMPRESSOR',
+                    8: 'ENE_COMP_FROM_MCC_3',
+                    7: 'ENE_RO_PLANT',
+                    6: 'ENE_K_SILO',
+                    5: 'ENE_PACKING',
+                    4: 'ENE_RAW_SUGAR',
+                    3: 'ENE_MCC_2B',
+                    2: 'ENE_B_CONVEYOR',
+                    1: 'ENE_COMPRESSOR'
+                };
+
+                const baseName = columnMap[columnIndex];
+                return baseName ? baseName + '_A' : null; // كلها تنتهي بـ _A
+            }
+            // gool
+
+
+            // دالة للحصول على اسم العمود في الجدول السابع بناءً على رقمه (للصف الخامس فقط)
+            function getColumnNameTable9(columnIndex, rowIndex) {
+                const columnMap = {
+                    // العمود 1 - الصفوف 3، 4، 5
+                    '1_2': 'PLANT_REF_CONS_REMARKS_A',
+                    '1_3': 'PLANT_REF_CONS_REMARKS_B',
+                    '1_4': 'PLANT_REF_CONS_REMARKS_C',
+
+                    // العمود 3 - الصفوف 3، 4، 5 (إذا كنت لا تزال تحتاجها)
+                    '3_2': 'SUGAR_PROD_TON_A',
+                    '3_3': 'SUGAR_PROD_TON_B',
+                    '3_4': 'SUGAR_PROD_TON_C'
+                };
+
+                const key = `${columnIndex}_${rowIndex}`;
+                return columnMap[key] || null;
+            }
+
+            //99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+            function saveTable9DataToDatabase() {
+                // الحصول على القيم من الجدول التاسع
+                const refiningValue = document.querySelector('table:nth-of-type(9) tr:nth-child(3) td:nth-child(5)').textContent;
+                const packingValue = document.querySelector('table:nth-of-type(9) tr:nth-child(3) td:nth-child(4)').textContent;
+
+                const refing_production_A = document.querySelector('table:nth-of-type(9) tr:nth-child(3) td:nth-child(3)').textContent;
+                const refing_production_B = document.querySelector('table:nth-of-type(9) tr:nth-child(4) td:nth-child(3)').textContent;
+                const refing_production_C = document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(3)').textContent;
+
+                const rsfining_month_consumption = document.querySelector('table:nth-of-type(9) tr:nth-child(4) td:nth-child(5)').textContent;
+                const packing_month_consumption = document.querySelector('table:nth-of-type(9) tr:nth-child(4) td:nth-child(4)').textContent;
+
+                // الحصول على التاريخ المحدد
+                const year = yearSelect.value;
+                const month = monthSelect.value;
+                const day = daySelect.value;
+
+                // التأكد من وجود القيم والتاريخ
+                if (!refiningValue || !packingValue || !day || !month || !year) {
+                    console.error('❌ بيانات ناقصة لحفظ بيانات الجدول التاسع');
+                    return;
+                }
+
+                // إنشاء كائن FormData لإرسال البيانات
+                const formData = new FormData();
+                formData.append('row', day); // SR هو يوم الشهر
+                formData.append('column', 'REFINING_KWH_A');
+                formData.append('value', refiningValue);
+                formData.append('day', day);
+                formData.append('month', month);
+                formData.append('year', year);
+
+                // إرسال البيانات الأولى (REFINING_KWH_A)
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ REFINING_KWH_A بنجاح:', refiningValue);
+                        } else {
+                            console.error('❌ فشل حفظ REFINING_KWH_A:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ REFINING_KWH_A:', error);
+                    });
+
+                // إرسال البيانات الثانية (PACKING_KWH_A)
+                const formData2 = new FormData();
+                formData2.append('row', day);
+                formData2.append('column', 'PACKING_KWH_A');
+                formData2.append('value', packingValue);
+                formData2.append('day', day);
+                formData2.append('month', month);
+                formData2.append('year', year);
+
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData2
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ PACKING_KWH_A بنجاح:', packingValue);
+                        } else {
+                            console.error('❌ فشل حفظ PACKING_KWH_A:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ PACKING_KWH_A:', error);
+                    });
+
+
+                // إنشاء كائن FormData لإرسال البيانات
+                const formDat3 = new FormData();
+                formDat3.append('row', day); // SR هو يوم الشهر
+                formDat3.append('column', 'SUGAR_PROD_TON_A');
+                formDat3.append('value', refing_production_A);
+                formDat3.append('day', day);
+                formDat3.append('month', month);
+                formDat3.append('year', year);
+
+                // إرسال البيانات الأولى (REFINING_KWH_A)
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formDat3
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ REFINING_KWH_A بنجاح:', refiningValue);
+                        } else {
+                            console.error('❌ فشل حفظ REFINING_KWH_A:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ REFINING_KWH_A:', error);
+                    });
+
+
+
+                const formData4 = new FormData();
+                formData4.append('row', 1);
+                formData4.append('column', 'SUGAR_PROD_TON_B');
+                formData4.append('value', refing_production_B);
+                formData4.append('day', 1);
+                formData4.append('month', month);
+                formData4.append('year', year);
+
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData4
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ PACKING_KWH_A بنجاح:', packingValue);
+                        } else {
+                            console.error('❌ فشل حفظ PACKING_KWH_A:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ PACKING_KWH_A:', error);
+                    });
+
+                const formData5 = new FormData();
+                formData5.append('row', 1);
+                formData5.append('column', 'SUGAR_PROD_TON_C');
+                formData5.append('value', refing_production_C);
+                formData5.append('day', 1);
+                formData5.append('month', 1);
+                formData5.append('year', year);
+
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData5
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ PACKING_KWH_A بنجاح:', packingValue);
+                        } else {
+                            console.error('❌ فشل حفظ PACKING_KWH_A:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ PACKING_KWH_A:', error);
+                    });
+
+                const formData6 = new FormData();
+                formData6.append('row', 1);
+                formData6.append('column', 'REFINING_KWH_B');
+                formData6.append('value', rsfining_month_consumption);
+                formData6.append('day', 1);
+                formData6.append('month', month);
+                formData6.append('year', year);
+
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData6
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ PACKING_KWH_A بنجاح:', packingValue);
+                        } else {
+                            console.error('❌ فشل حفظ PACKING_KWH_A:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ PACKING_KWH_A:', error);
+                    });
+
+                const formData7 = new FormData();
+                formData7.append('row', 1);
+                formData7.append('column', 'PACKING_KWH_B');
+                formData7.append('value', packing_month_consumption);
+                formData7.append('day', 1);
+                formData7.append('month', month);
+                formData7.append('year', year);
+
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData7
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ PACKING_KWH_A بنجاح:', packingValue);
+                        } else {
+                            console.error('❌ فشل حفظ PACKING_KWH_A:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ PACKING_KWH_A:', error);
+                    });
+            }
+
+            function saveTable9Row4ToDatabase() {
+                // الحصول على القيم من الجدول التاسع - الصف الرابع
+                const refiningValueC = document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(5)').textContent;
+                const packingValueC = document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(4)').textContent;
+
+                // الحصول على السنة والشهر المحددين (اليوم دائماً 1)
+                const year = yearSelect.value;
+                const month = 1;
+                const day = 1; // دائماً الصف الأول
+
+                // التأكد من وجود القيم والتاريخ
+                if (!refiningValueC || !packingValueC || !month || !year) {
+                    console.error('❌ بيانات ناقصة لحفظ بيانات الجدول التاسع - الصف الرابع');
+                    return;
+                }
+
+                // إنشاء كائن FormData لإرسال البيانات الأولى (REFINING_KWH_B)
+                const formData1 = new FormData();
+                formData1.append('row', day);
+                formData1.append('column', 'REFINING_KWH_C');
+                formData1.append('value', refiningValueC);
+                formData1.append('day', day);
+                formData1.append('month', month);
+                formData1.append('year', year);
+
+                // إرسال البيانات الأولى
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData1
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ REFINING_KWH_C بنجاح:', refiningValueC);
+                        } else {
+                            console.error('❌ فشل حفظ REFINING_KWH_C:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ REFINING_KWH_C:', error);
+                    });
+
+                // إنشاء كائن FormData لإرسال البيانات الثانية (PACKING_KWH_B)
+                const formData2 = new FormData();
+                formData2.append('row', day);
+                formData2.append('column', 'PACKING_KWH_C');
+                formData2.append('value', packingValueC);
+                formData2.append('day', day);
+                formData2.append('month', month);
+                formData2.append('year', year);
+
+                // إرسال البيانات الثانية
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData2
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ PACKING_KWH_C بنجاح:', packingValueC);
+                        } else {
+                            console.error('❌ فشل حفظ PACKING_KWH_C:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ PACKING_KWH_C:', error);
+                    });
+            }
+
+            function saveTable9_KW_per_Ton() {
+                // الحصول على القيم من الجدول التاسع - الصف الرابع
+                const KW_Per_TON_A = document.querySelector('table:nth-of-type(9) tr:nth-child(3) td:nth-child(2)').textContent;
+                const KW_Per_TON_B = document.querySelector('table:nth-of-type(9) tr:nth-child(4) td:nth-child(2)').textContent;
+                const KW_Per_TON_C = document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(2)').textContent;
+
+                // الحصول على السنة والشهر المحددين (اليوم دائماً 1)
+                const year = yearSelect.value;
+                const month = monthSelect.value;
+                const day = daySelect.value;
+
+                // التأكد من وجود القيم والتاريخ
+                if (!KW_Per_TON_A || !KW_Per_TON_B || !KW_Per_TON_C || !month || !year) {
+                    console.error('❌ بيانات ناقصة لحفظ بيانات الجدول التاسع - الصف الرابع');
+                    return;
+                }
+
+                // إنشاء كائن FormData لإرسال البيانات الأولى (REFINING_KWH_B)
+                const formData1 = new FormData();
+                formData1.append('row', day);
+                formData1.append('column', 'KW_PER_TON_A');
+                formData1.append('value', KW_Per_TON_A);
+                formData1.append('day', day);
+                formData1.append('month', month);
+                formData1.append('year', year);
+
+                // إرسال البيانات الأولى
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData1
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ KW_PER_TON_A بنجاح:', KW_Per_TON_A);
+                        } else {
+                            console.error('❌ فشل حفظ KW_PER_TON_A:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ REFINING_KWH_B:', error);
+                    });
+
+                // إنشاء كائن FormData لإرسال البيانات الثانية (PACKING_KWH_B)
+
+                const formData2 = new FormData();
+                formData2.append('row', 1);
+                formData2.append('column', 'KW_PER_TON_B');
+                formData2.append('value', KW_Per_TON_B);
+                formData2.append('day', 1);
+                formData2.append('month', month);
+                formData2.append('year', year);
+
+                // إرسال البيانات الثانية
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData2
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ KW_PER_TON_B بنجاح:', KW_Per_TON_B);
+                        } else {
+                            console.error('❌ فشل حفظ KW_PER_TON_B:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ PACKING_KWH_B:', error);
+                    });
+
+
+                // إنشاء كائن FormData لإرسال البيانات الثانية (PACKING_KWH_B)
+
+                const formData3 = new FormData();
+                formData3.append('row', 1);
+                formData3.append('column', 'KW_PER_TON_C');
+                formData3.append('value', KW_Per_TON_C);
+                formData3.append('day', 1);
+                formData3.append('month', 1);
+                formData3.append('year', year);
+
+                // إرسال البيانات الثانية
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData3
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ KW_Per_TON_C بنجاح:', KW_Per_TON_C);
+                        } else {
+                            console.error('❌ فشل حفظ KW_Per_TON_C:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ KW_Per_TON_C:', error);
+                    });
+
+            }
+
+
+            function PLANT_REF_CONS_REMARKS_A_B_C() {
+                // الحصول على القيم من الجدول التاسع - الصف الرابع
+                const PLANT_REF_CONS_REMARKS_A = document.querySelector('table:nth-of-type(9) tr:nth-child(3) td:nth-child(1)').textContent;
+                const PLANT_REF_CONS_REMARKS_B = document.querySelector('table:nth-of-type(9) tr:nth-child(4) td:nth-child(1)').textContent;
+                const PLANT_REF_CONS_REMARKS_C = document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(1)').textContent;
+
+                // الحصول على السنة والشهر المحددين (اليوم دائماً 1)
+                const year = yearSelect.value;
+                const month = monthSelect.value;
+                const day = daySelect.value;
+
+                // التأكد من وجود القيم والتاريخ
+                if (!PLANT_REF_CONS_REMARKS_A || !PLANT_REF_CONS_REMARKS_B || !PLANT_REF_CONS_REMARKS_C || !month || !year) {
+                    console.error('❌ بيانات ناقصة لحفظ بيانات الجدول التاسع - الصف الرابع');
+                    return;
+                }
+
+                // إنشاء كائن FormData لإرسال البيانات الأولى (REFINING_KWH_B)
+                const formData1 = new FormData();
+                formData1.append('row', day);
+                formData1.append('column', 'PLANT_REF_CONS_REMARKS_A');
+                formData1.append('value', PLANT_REF_CONS_REMARKS_A);
+                formData1.append('day', day);
+                formData1.append('month', month);
+                formData1.append('year', year);
+
+                // إرسال البيانات الأولى
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData1
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ  PLANT_REF_CONS_REMARKS_A بنجاح:', PLANT_REF_CONS_REMARKS_A);
+                        } else {
+                            console.error('❌ فشل حفظ  PLANT_REF_CONS_REMARKS_A:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ REFINING_KWH_B:', error);
+                    });
+
+                // إنشاء كائن FormData لإرسال البيانات الثانية (PACKING_KWH_B)
+
+                const formData2 = new FormData();
+                formData2.append('row', 1);
+                formData2.append('column', 'PLANT_REF_CONS_REMARKS_B');
+                formData2.append('value', PLANT_REF_CONS_REMARKS_B);
+                formData2.append('day', 1);
+                formData2.append('month', month);
+                formData2.append('year', year);
+
+                // إرسال البيانات الثانية
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData2
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ  PLANT_REF_CONS_REMARKS_B بنجاح:', PLANT_REF_CONS_REMARKS_B);
+                        } else {
+                            console.error('❌ فشل حفظ  PLANT_REF_CONS_REMARKS_B:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ PLANT_REF_CONS_REMARKS_B:', error);
+                    });
+
+
+                // إنشاء كائن FormData لإرسال البيانات الثانية (PACKING_KWH_B)
+
+                const formData3 = new FormData();
+                formData3.append('row', 1);
+                formData3.append('column', 'PLANT_REF_CONS_REMARKS_C');
+                formData3.append('value', PLANT_REF_CONS_REMARKS_C);
+                formData3.append('day', 1);
+                formData3.append('month', 1);
+                formData3.append('year', year);
+
+                // إرسال البيانات الثانية
+                fetch('save_logbook_data.php', {
+                        method: 'POST',
+                        body: formData3
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('✅ تم حفظ  PLANT_REF_CONS_REMARKS_C بنجاح:', PLANT_REF_CONS_REMARKS_C);
+                        } else {
+                            console.error('❌ فشل حفظ  PLANT_REF_CONS_REMARKS_C:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ خطأ في الاتصال عند حفظ  PLANT_REF_CONS_REMARKS_C:', error);
+                    });
+
+            }
+            //999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+            // تعديل دالة finishEditing لحفظ البيانات تلقائياً
+            async function finishEditing(cell, value) {
+
+
+
+                const oldValue = cell.textContent;
+                cell.textContent = value;
+
+                // حفظ البيانات في الخادم للخلايا المحددة
+                const table = cell.closest('table');
+                const tableIndex = Array.from(document.querySelectorAll('table')).indexOf(table) + 1;
+                const row = cell.parentElement;
+                const rowIndex = row.rowIndex;
+                const cellIndex = cell.cellIndex + 1;
+
+                console.log('=== finishEditing called ===');
+                console.log('Table index:', tableIndex);
+                console.log('Row index:', rowIndex);
+                console.log('Cell index:', cellIndex);
+                console.log('Value:', value);
+
+                const yearSelect = document.getElementById('year-select');
+                const monthSelect = document.getElementById('month-select');
+                const daySelect = document.getElementById('day-select');
+
+                const year = yearSelect.value;
+                const month = monthSelect.value;
+                const day = daySelect.value;
+
+                let columnName = null;
+
+                // الجدول الثاني (الصفوف 3-5، الأعمدة 1-20)
+                if (tableIndex === 2 && (rowIndex === 3 || rowIndex === 4 || rowIndex === 5) && cellIndex >= 1 && cellIndex <= 20) {
+                    columnName = getColumnName(cellIndex, rowIndex);
+                }
+                // الجدول الثالث (الصفوف 3-5، الأعمدة 1-36)
+                else if (tableIndex === 3 && (rowIndex === 3 || rowIndex === 4 || rowIndex === 5) && cellIndex >= 1 && cellIndex <= 36) {
+                    columnName = getColumnNameTable3(cellIndex, rowIndex);
+                }
+                // الجدول الرابع (الصفوف 3-5، الأعمدة 1-32)
+                else if (tableIndex === 4 && (rowIndex === 3 || rowIndex === 4 || rowIndex === 5) && cellIndex >= 1 && cellIndex <= 32) {
+                    columnName = getColumnNameTable4(cellIndex, rowIndex);
+                }
+                // الجدول الخامس (الصفوف 3-5، الأعمدة 1-32)
+                else if (tableIndex === 5 && (rowIndex === 3 || rowIndex === 4 || rowIndex === 5) && cellIndex >= 1 && cellIndex <= 32) {
+                    columnName = getColumnNameTable5(cellIndex, rowIndex);
+                }
+                // الجدول السادس (الصفوف 3-8، الأعمدة 1-18)
+                else if (tableIndex === 6 && (rowIndex >= 3 && rowIndex <= 8) && cellIndex >= 1 && cellIndex <= 18) {
+                    columnName = getColumnNameTable6(cellIndex, rowIndex);
+                }
+                // الجدول السابع (الصف الخامس فقط، الأعمدة 1-14)
+                else if (tableIndex === 7 && rowIndex === 4 && cellIndex >= 1 && cellIndex <= 14) {
+                    columnName = getColumnNameTable7(cellIndex);
+                    await calculatingImproved_Change();
+
+                }
+                // ✅ المعالجة الخاصة للجدول التاسع - العمود الثالث
+                else if (tableIndex === 9 && (rowIndex === 2 || rowIndex === 3 || rowIndex === 4) &&
+                    (cellIndex === 1 || cellIndex === 3)) {
+                    columnName = getColumnNameTable9(cellIndex, rowIndex);
+                    await calculatingImproved_Change();
+                }
+                if (columnName && year && month && day) {
+                    saveToDatabase(day, columnName, value, day, month, year, cell, oldValue);
+                    return;
+                }
+
+                // إذا لم تكن الخلية من الخلايا التي تحفظ تلقائياً
+                console.log('تم تعديل القيمة (لم تحفظ في الخادم):', value);
+            }
+            // تفعيل ميزات التعديل
+            enableDoubleClickEditing();
+            enableToggleEditing();
+            enableTable3Editing();
+            enableTable4Editing();
+            enableTable5Editing();
+            enableTable6Editing();
+            enableTable7Editing(); // إضافة هذا السطر
+            enableTable9Editing();
+            notAllow();
+
+            // تطبيق التنسيق الأولي على الخلايا 9-14
+            function applyInitialStyles() {
+                const table = document.querySelector('table:nth-of-type(2)');
+
+                for (let row = 3; row <= 5; row++) {
+                    for (let col = 9; col <= 14; col++) {
+                        const cell = table.querySelector(`tr:nth-child(${row}) td:nth-child(${col})`);
+                        if (cell) {
+                            updateCellStyle(cell);
+                        }
+                    }
+                }
+            }
+
+            applyInitialStyles();
 
             function changecolor() {
                 // الحصول على الجدول السابع
@@ -642,8 +2048,11 @@ session_start();
                         return; // تخطي العمود 15
                     }
 
+                    cell.style.backgroundColor = '#f6c3efff'; // لون أزرق فاتح
+                    cell.style.border = '2px solid #7b0966ff'; // إطار أزرق
+                    cell.style.padding = '8px';
                     cell.style.fontWeight = 'bold';
-                    cell.style.color = '#bf0f1eff';
+                    cell.style.color = '#71075fff';
 
                 });
                 const table9 = document.querySelector('table:nth-of-type(9)');
@@ -675,19 +2084,46 @@ session_start();
                 }
 
                 // تغيير لون خلفية الخلية
+                cell933.style.backgroundColor = '#f6c3efff'; // لون أزرق فاتح
+                cell933.style.border = '2px solid #7b0966ff'; // إطار أزرق
+                cell933.style.padding = '8px';
                 cell933.style.fontWeight = 'bold';
-                cell933.style.color = '#bf0f1eff';
+                cell933.style.color = '#71075fff';
 
+                const cell931 = row93.querySelector('td:nth-child(1)');
+                cell931.style.backgroundColor = '#f6c3efff'; // لون أزرق فاتح
+                cell931.style.border = '2px solid #7b0966ff'; // إطار أزرق
+                cell931.style.padding = '8px';
+                cell931.style.fontWeight = 'bold';
+                cell931.style.color = '#71075fff';
 
+                const cell941 = row94.querySelector('td:nth-child(1)');
+                cell941.style.backgroundColor = '#f6c3efff'; // لون أزرق فاتح
+                cell941.style.border = '2px solid #7b0966ff'; // إطار أزرق
+                cell941.style.padding = '8px';
+                cell941.style.fontWeight = 'bold';
+                cell941.style.color = '#71075fff';
 
-
-
-
+                const cell951 = row95.querySelector('td:nth-child(1)');
+                cell951.style.backgroundColor = '#f6c3efff'; // لون أزرق فاتح
+                cell951.style.border = '2px solid #7b0966ff'; // إطار أزرق
+                cell951.style.padding = '8px';
+                cell951.style.fontWeight = 'bold';
+                cell951.style.color = '#71075fff';
 
 
             }
 
+            // كود الادخال للبيانات XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
+            // يمكنك وضع هذا الكود هنا لضمان تنفيذه بعد تحميل الصفحة
+            // استهداف خلية الاولى فقط 
+            // document.querySelector('table:nth-of-type(2) tr:nth-child(1) td:nth-child(6)').classList.add('center');
+            // استهداف الصف الاول فقط 
+            // document.querySelectorAll('table:nth-of-type(2) tr:nth-child(1) td').forEach(cell => {
+            //     cell.classList.add('center');
+            // });
+            // استهداف الجدول بالكامل 
             document.querySelectorAll('table:nth-of-type(1) tr td').forEach(cell => {
                 cell.classList.add('wide_font');
                 cell.classList.add('center');
@@ -2091,7 +3527,9 @@ session_start();
                                 document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(3)').textContent = '0';
                                 document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(1)').textContent = '0';
 
-
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(6)').textContent = '0';
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(7)').textContent = '0';
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(5)').textContent = '0';
                             } else {
                                 const mainData = data[0];
 
@@ -2105,9 +3543,11 @@ session_start();
                                     document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(2)').textContent = targetDatay.KW_PER_TON_C || '';
 
                                     document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(3)').textContent = targetDatay.SUGAR_PROD_TON_C || '';
-
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(5)').textContent = targetDatay.SUGAR_PROD_TON_C || '';
                                     document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(1)').textContent = targetDatay.PLANT_REF_CONS_REMARKS_C || '';
 
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(6)').textContent = targetDatay.REFINING_KWH_C || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(7)').textContent = targetDatay.PACKING_KWH_C || '';
                                 }
                             }
                         })
@@ -2130,12 +3570,330 @@ session_start();
                                 document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(3)').textContent = '0';
                                 document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(1)').textContent = '';
 
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(4) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(4) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(5) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(6) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(7) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(8) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(9) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(10) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(11) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(12) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(13) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(14) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(15) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(16) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(17) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(18) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(19) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(20) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(21) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(22) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(23) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(24) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(25) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(26) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(27) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(28) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(29) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(30) td:nth-child(2)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(31) td:nth-child(2)').textContent = '0'
+
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(4) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(4) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(5) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(6) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(7) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(8) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(9) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(10) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(11) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(12) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(13) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(14) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(15) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(16) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(17) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(18) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(19) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(20) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(21) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(22) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(23) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(24) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(25) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(26) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(27) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(28) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(29) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(30) td:nth-child(3)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(31) td:nth-child(3)').textContent = '0'
+
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(4) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(4) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(5) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(6) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(7) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(8) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(9) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(10) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(11) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(12) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(13) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(14) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(15) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(16) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(17) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(18) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(19) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(20) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(21) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(22) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(23) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(24) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(25) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(26) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(27) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(28) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(29) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(30) td:nth-child(8)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(31) td:nth-child(8)').textContent = '0'
+
+
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(4)').textContent = '0'
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(5)').textContent = '0'
+
+                                document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(4)').textContent = '0'
 
 
                             } else {
                                 const mainData = data[0];
 
+                                const targetSRX1 = 1
+                                const targetDataX1 = data.find(item => item.SR == targetSRX1);
+                                if (targetDataX1) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(2)').textContent = targetDataX1.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(3)').textContent = targetDataX1.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(8)').textContent = targetDataX1.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX2 = 2
+                                const targetDataX2 = data.find(item => item.SR == targetSRX2);
+                                if (targetDataX2) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(2)').textContent = targetDataX2.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(3)').textContent = targetDataX2.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(8)').textContent = targetDataX2.SUGAR_PROD_TON_A || '';
 
+                                }
+                                const targetSRX3 = 3
+                                const targetDataX3 = data.find(item => item.SR == targetSRX3);
+                                if (targetDataX3) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(3) td:nth-child(2)').textContent = targetDataX3.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(3) td:nth-child(3)').textContent = targetDataX3.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(3) td:nth-child(8)').textContent = targetDataX3.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX4 = 4
+                                const targetDataX4 = data.find(item => item.SR == targetSRX4);
+                                if (targetDataX4) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(4) td:nth-child(2)').textContent = targetDataX4.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(4) td:nth-child(3)').textContent = targetDataX4.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(4) td:nth-child(8)').textContent = targetDataX4.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX5 = 5
+                                const targetDataX5 = data.find(item => item.SR == targetSRX5);
+                                if (targetDataX5) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(5) td:nth-child(2)').textContent = targetDataX5.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(5) td:nth-child(3)').textContent = targetDataX5.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(5) td:nth-child(8)').textContent = targetDataX5.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX6 = 6
+                                const targetDataX6 = data.find(item => item.SR == targetSRX6);
+                                if (targetDataX6) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(6) td:nth-child(2)').textContent = targetDataX6.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(6) td:nth-child(3)').textContent = targetDataX6.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(6) td:nth-child(8)').textContent = targetDataX6.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX7 = 7
+                                const targetDataX7 = data.find(item => item.SR == targetSRX7);
+                                if (targetDataX7) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(7) td:nth-child(2)').textContent = targetDataX7.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(7) td:nth-child(3)').textContent = targetDataX7.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(7) td:nth-child(8)').textContent = targetDataX7.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX8 = 8
+                                const targetDataX8 = data.find(item => item.SR == targetSRX8);
+                                if (targetDataX8) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(8) td:nth-child(2)').textContent = targetDataX8.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(8) td:nth-child(3)').textContent = targetDataX8.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(8) td:nth-child(8)').textContent = targetDataX8.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX9 = 9
+                                const targetDataX9 = data.find(item => item.SR == targetSRX9);
+                                if (targetDataX9) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(9) td:nth-child(2)').textContent = targetDataX9.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(9) td:nth-child(3)').textContent = targetDataX9.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(9) td:nth-child(8)').textContent = targetDataX9.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX10 = 10
+                                const targetDataX10 = data.find(item => item.SR == targetSRX10);
+                                if (targetDataX10) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(10) td:nth-child(2)').textContent = targetDataX10.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(10) td:nth-child(3)').textContent = targetDataX10.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(10) td:nth-child(8)').textContent = targetDataX10.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX11 = 11
+                                const targetDataX11 = data.find(item => item.SR == targetSRX11);
+                                if (targetDataX11) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(11) td:nth-child(2)').textContent = targetDataX11.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(11) td:nth-child(3)').textContent = targetDataX11.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(11) td:nth-child(8)').textContent = targetDataX11.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX12 = 12
+                                const targetDataX12 = data.find(item => item.SR == targetSRX12);
+                                if (targetDataX12) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(12) td:nth-child(2)').textContent = targetDataX12.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(12) td:nth-child(3)').textContent = targetDataX12.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(12) td:nth-child(8)').textContent = targetDataX12.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX13 = 13
+                                const targetDataX13 = data.find(item => item.SR == targetSRX13);
+                                if (targetDataX13) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(13) td:nth-child(2)').textContent = targetDataX13.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(13) td:nth-child(3)').textContent = targetDataX13.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(13) td:nth-child(8)').textContent = targetDataX13.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX14 = 14
+                                const targetDataX14 = data.find(item => item.SR == targetSRX14);
+                                if (targetDataX14) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(14) td:nth-child(2)').textContent = targetDataX14.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(14) td:nth-child(3)').textContent = targetDataX14.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(14) td:nth-child(8)').textContent = targetDataX14.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX15 = 15
+                                const targetDataX15 = data.find(item => item.SR == targetSRX15);
+                                if (targetDataX15) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(15) td:nth-child(2)').textContent = targetDataX15.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(15) td:nth-child(3)').textContent = targetDataX15.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(16) td:nth-child(8)').textContent = targetDataX15.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX16 = 16
+                                const targetDataX16 = data.find(item => item.SR == targetSRX16);
+                                if (targetDataX16) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(16) td:nth-child(2)').textContent = targetDataX16.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(16) td:nth-child(3)').textContent = targetDataX16.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(16) td:nth-child(8)').textContent = targetDataX16.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX17 = 17
+                                const targetDataX17 = data.find(item => item.SR == targetSRX17);
+                                if (targetDataX17) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(17) td:nth-child(2)').textContent = targetDataX17.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(17) td:nth-child(3)').textContent = targetDataX17.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(17) td:nth-child(8)').textContent = targetDataX17.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX18 = 18
+                                const targetDataX18 = data.find(item => item.SR == targetSRX18);
+                                if (targetDataX18) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(18) td:nth-child(2)').textContent = targetDataX18.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(18) td:nth-child(3)').textContent = targetDataX18.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(18) td:nth-child(8)').textContent = targetDataX18.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX19 = 19
+                                const targetDataX19 = data.find(item => item.SR == targetSRX19);
+                                if (targetDataX19) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(19) td:nth-child(2)').textContent = targetDataX19.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(19) td:nth-child(3)').textContent = targetDataX19.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(19) td:nth-child(8)').textContent = targetDataX19.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX20 = 20
+                                const targetDataX20 = data.find(item => item.SR == targetSRX20);
+                                if (targetDataX20) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(20) td:nth-child(2)').textContent = targetDataX20.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(20) td:nth-child(3)').textContent = targetDataX20.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(20) td:nth-child(8)').textContent = targetDataX20.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX21 = 21
+                                const targetDataX21 = data.find(item => item.SR == targetSRX21);
+                                if (targetDataX21) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(21) td:nth-child(2)').textContent = targetDataX21.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(21) td:nth-child(3)').textContent = targetDataX21.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(21) td:nth-child(8)').textContent = targetDataX21.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX22 = 22
+                                const targetDataX22 = data.find(item => item.SR == targetSRX22);
+                                if (targetDataX22) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(22) td:nth-child(2)').textContent = targetDataX22.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(22) td:nth-child(3)').textContent = targetDataX22.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(22) td:nth-child(8)').textContent = targetDataX22.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX23 = 23
+                                const targetDataX23 = data.find(item => item.SR == targetSRX23);
+                                if (targetDataX23) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(23) td:nth-child(2)').textContent = targetDataX23.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(23) td:nth-child(3)').textContent = targetDataX23.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(23) td:nth-child(8)').textContent = targetDataX23.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX24 = 24
+                                const targetDataX24 = data.find(item => item.SR == targetSRX24);
+                                if (targetDataX24) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(24) td:nth-child(2)').textContent = targetDataX24.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(24) td:nth-child(3)').textContent = targetDataX24.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(24) td:nth-child(8)').textContent = targetDataX24.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX25 = 25
+                                const targetDataX25 = data.find(item => item.SR == targetSRX25);
+                                if (targetDataX25) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(25) td:nth-child(2)').textContent = targetDataX25.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(25) td:nth-child(3)').textContent = targetDataX25.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(25) td:nth-child(8)').textContent = targetDataX25.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX26 = 26
+                                const targetDataX26 = data.find(item => item.SR == targetSRX26);
+                                if (targetDataX26) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(26) td:nth-child(2)').textContent = targetDataX26.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(26) td:nth-child(3)').textContent = targetDataX26.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(26) td:nth-child(8)').textContent = targetDataX26.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX27 = 27
+                                const targetDataX27 = data.find(item => item.SR == targetSRX27);
+                                if (targetDataX27) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(27) td:nth-child(2)').textContent = targetDataX27.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(27) td:nth-child(3)').textContent = targetDataX27.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(27) td:nth-child(8)').textContent = targetDataX27.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX28 = 28
+                                const targetDataX28 = data.find(item => item.SR == targetSRX28);
+                                if (targetDataX28) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(28) td:nth-child(2)').textContent = targetDataX28.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(28) td:nth-child(3)').textContent = targetDataX28.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(28) td:nth-child(8)').textContent = targetDataX28.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX29 = 29
+                                const targetDataX29 = data.find(item => item.SR == targetSRX29);
+                                if (targetDataX29) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(29) td:nth-child(2)').textContent = targetDataX29.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(29) td:nth-child(3)').textContent = targetDataX29.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(29) td:nth-child(8)').textContent = targetDataX29.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX30 = 30
+                                const targetDataX30 = data.find(item => item.SR == targetSRX30);
+                                if (targetDataX30) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(30) td:nth-child(2)').textContent = targetDataX30.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(30) td:nth-child(3)').textContent = targetDataX30.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(30) td:nth-child(8)').textContent = targetDataX30.SUGAR_PROD_TON_A || '';
+                                }
+                                const targetSRX31 = 31
+                                const targetDataX31 = data.find(item => item.SR == targetSRX31);
+                                if (targetDataX31) {
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(31) td:nth-child(2)').textContent = targetDataX31.REFINING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(31) td:nth-child(3)').textContent = targetDataX31.PACKING_KWH_A || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(31) td:nth-child(8)').textContent = targetDataX31.SUGAR_PROD_TON_A || '';
+                                }
 
                                 const targetSRX = 1
                                 const targetDataX = data.find(item => item.SR == targetSRX);
@@ -2147,8 +3905,10 @@ session_start();
 
                                     document.querySelector('table:nth-of-type(9) tr:nth-child(4) td:nth-child(5)').textContent = targetDataX.REFINING_KWH_B || '';
                                     document.querySelector('table:nth-of-type(9) tr:nth-child(4) td:nth-child(4)').textContent = targetDataX.PACKING_KWH_B || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(4)').textContent = targetDataX.REFINING_KWH_B || '';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(1) td:nth-child(5)').textContent = targetDataX.PACKING_KWH_B || '';
 
-
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(4)').textContent = targetDataX.SUGAR_PROD_TON_B || '';
 
 
                                 }
@@ -2211,6 +3971,39 @@ session_start();
                                     document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(3)').textContent = targetData2.ENE_MCC_2B_A || '';
                                     document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(2)').textContent = targetData2.ENE_B_CONVEYOR_A || '';
                                     document.querySelector('table:nth-of-type(7) tr:nth-child(4) td:nth-child(1)').textContent = targetData2.ENE_COMPRESSOR_A || '';
+
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(5) td:nth-child(4)').textContent = targetData2.ENE_MCC_1_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(6) td:nth-child(4)').textContent = targetData2.ENE_MCC_2_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(7) td:nth-child(4)').textContent = targetData2.ENE_MCC_3_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(8) td:nth-child(4)').textContent = targetData2.ENE_MCC_3A_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(9) td:nth-child(4)').textContent = targetData2.ENE_MCC_5_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(10) td:nth-child(4)').textContent = targetData2.ENE_AIR_COMPRESSOR_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(11) td:nth-child(4)').textContent = targetData2.ENE_COMP_FROM_MCC_3_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(12) td:nth-child(4)').textContent = targetData2.ENE_RO_PLANT_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(13) td:nth-child(4)').textContent = targetData2.ENE_K_SILO_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(14) td:nth-child(4)').textContent = targetData2.ENE_PACKING_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(15) td:nth-child(4)').textContent = targetData2.ENE_RAW_SUGAR_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(16) td:nth-child(4)').textContent = targetData2.ENE_MCC_2B_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(17) td:nth-child(4)').textContent = targetData2.ENE_B_CONVEYOR_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(18) td:nth-child(4)').textContent = targetData2.ENE_COMPRESSOR_A || '0';
+                                }
+                                const targetData2_1 = data.find(item => item.SR == targetSR2 + 1);
+                                if (targetData2) {
+
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(5) td:nth-child(5)').textContent = targetData2_1.ENE_MCC_1_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(6) td:nth-child(5)').textContent = targetData2_1.ENE_MCC_2_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(7) td:nth-child(5)').textContent = targetData2_1.ENE_MCC_3_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(8) td:nth-child(5)').textContent = targetData2_1.ENE_MCC_3A_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(9) td:nth-child(5)').textContent = targetData2_1.ENE_MCC_5_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(10) td:nth-child(5)').textContent = targetData2_1.ENE_AIR_COMPRESSOR_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(11) td:nth-child(5)').textContent = targetData2_1.ENE_COMP_FROM_MCC_3_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(12) td:nth-child(5)').textContent = targetData2_1.ENE_RO_PLANT_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(13) td:nth-child(5)').textContent = targetData2_1.ENE_K_SILO_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(14) td:nth-child(5)').textContent = targetData2_1.ENE_PACKING_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(15) td:nth-child(5)').textContent = targetData2_1.ENE_RAW_SUGAR_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(16) td:nth-child(5)').textContent = targetData2_1.ENE_MCC_2B_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(17) td:nth-child(5)').textContent = targetData2_1.ENE_B_CONVEYOR_A || '0';
+                                    document.querySelector('table:nth-of-type(10) tr:nth-child(18) td:nth-child(5)').textContent = targetData2_1.ENE_COMPRESSOR_A || '0';
                                 }
                                 // ✅ بعد تحميل البيانات، قم بالحسابات
 
@@ -2373,121 +4166,476 @@ session_start();
                 if (packingCell) packingCell.textContent = '';
             }
 
-            function calculating() {
+            async function calculating() {
+                return new Promise((resolve) => {
+                    const day = daySelect.value;
+                    const selectedYear = yearSelect.value;
+                    const selectedmonth = monthSelect.value;
+
+                    if (day == 1 && selectedmonth == 1 && selectedYear == 2025) {
+                        for (let col = 1; col <= 14; col++) {
+                            const element4 = document.querySelector(`table:nth-of-type(7) tr:nth-child(4) td:nth-child(${col})`);
+                            const element5 = document.querySelector(`table:nth-of-type(7) tr:nth-child(5) td:nth-child(${col})`);
+
+                            if (element4 && element5) {
+                                element4.textContent = element5.textContent; // هنا التعديل
+                            }
+                        }
+                    }
+
+                    function calculateCell(column) {
+                        const selectorBase = `table:nth-of-type(7) tr:nth-child`;
+
+                        // الحصول على العناصر أولاً
+                        const element5 = document.querySelector(`${selectorBase}(5) td:nth-child(${column})`);
+                        const element4 = document.querySelector(`${selectorBase}(4) td:nth-child(${column})`);
+                        const resultElement = document.querySelector(`${selectorBase}(6) td:nth-child(${column})`);
+
+                        // التحقق من وجود العناصر
+                        if (!element5 || !element4 || !resultElement) {
+                            console.error(`❌ عنصر غير موجود للعمود ${column}`);
+                            return;
+                        }
+
+                        // عرض القيم الفعلية في الكونسول
+                        console.log(`📊 العمود ${column}:`);
+                        console.log(`الصف 5: '${element5.textContent}'`);
+                        console.log(`الصف 4: '${element4.textContent}'`);
+
+                        // تحويل القيم إلى أرقام
+                        const value5 = parseFloat(element5.textContent);
+                        const value4 = parseFloat(element4.textContent);
+                        const Subtract = value5 - value4;
+                        if (Subtract <= 0) {
+
+
+                            resultElement.textContent = 0;
+                        } else {
+                            if (column === 1 || column === 2 || column === 3 || column === 4 || column === 9 || column === 13 || column === 11) {
+                                resultElement.textContent = (Subtract * 1000).toFixed(7);
+                            } else if (column === 12) {
+                                // الحصول على قيمة العمود 8
+                                const element5_col8 = document.querySelector(`${selectorBase}(5) td:nth-child(8)`);
+                                const element4_col8 = document.querySelector(`${selectorBase}(4) td:nth-child(8)`);
+
+                                // التحقق من وجود عناصر العمود 8
+                                if (!element5_col8 || !element4_col8) {
+                                    console.error(`❌ عنصر غير موجود للعمود 8`);
+                                    return;
+                                }
+
+                                const value5_col8 = parseFloat(element5_col8.textContent);
+                                const value4_col8 = parseFloat(element4_col8.textContent);
+
+                                // التحقق من القيم الرقمية للعمود 8
+                                if (isNaN(value5_col8) || isNaN(value4_col8)) {
+                                    console.error(`❌ قيم غير رقمية في العمود 8`);
+                                    return;
+                                }
+
+                                // حساب قيمة العمود 12: ((value5 - value4)*1000) - (value5_col8 - value4_col8)
+                                const result = (Subtract * 1000) - (value5_col8 - value4_col8);
+                                resultElement.textContent = result.toFixed(7);
+                            } else if (column === 10) {
+                                // الحصول على قيمة العمود 9
+                                const element5_col9 = document.querySelector(`${selectorBase}(5) td:nth-child(9)`);
+                                const element4_col9 = document.querySelector(`${selectorBase}(4) td:nth-child(9)`);
+
+                                // التحقق من وجود عناصر العمود 9
+                                if (!element5_col9 || !element4_col9) {
+                                    console.error(`❌ عنصر غير موجود للعمود 9`);
+                                    return;
+                                }
+
+                                const value5_col9 = parseFloat(element5_col9.textContent);
+                                const value4_col9 = parseFloat(element4_col9.textContent);
+
+                                // التحقق من القيم الرقمية للعمود 9
+                                if (isNaN(value5_col9) || isNaN(value4_col9)) {
+                                    console.error(`❌ قيم غير رقمية في العمود 9`);
+                                    return;
+                                }
+
+                                // حساب قيمة العمود 10: ((value5 - value4)*1000) - (value5_col9 - value4_col9) * 1000
+                                const result = (Subtract * 1000) - (value5_col9 - value4_col9) * 1000;
+                                resultElement.textContent = result.toFixed(7);
+                            } else {
+                                resultElement.textContent = Subtract.toFixed(7);
+                            }
+                        }
+
+
+
+
+                        console.log(`✅ النتيجة: ${value5} - ${value4} = ${value5 - value4}`);
+                    }
+
+                    // حساب جميع الأعمدة من 1 إلى 14
+                    for (let column = 1; column <= 14; column++) {
+                        calculateCell(column);
+                    }
+                    resolve();
+                });
+            } // نسخة بديلة باستخدام querySelectorAll لأسلوب أكثر موثوقية
+
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // دالة جديدة لجمع محتوى الصف السادس (مع استثناء الأعمدة 1، 2، 5) ووضعه في الجدول التاسع
+            function calculateSumAndPlaceInTable9() {
+
+                console.log('🧮 بدء جمع نتائج الصف السادس من الجدول السابع (مع استثناء الأعمدة 1، 2، 5)...');
+
+                // الحصول على الجدول السابع
+                const table7 = document.querySelector('table:nth-of-type(7)');
+                if (!table7) {
+                    console.error('❌ لا يوجد جدول سابع');
+                    return;
+                }
+
+                // الحصول على الصف السادس من الجدول السابع
+                const row6 = table7.querySelector('tr:nth-child(6)');
+                if (!row6) {
+                    console.error('❌ لا يوجد صف سادس في الجدول السابع');
+                    return;
+                }
+
+                // الحصول على جميع خلايا الصف السادس
+                const cells = row6.querySelectorAll('td');
+                if (cells.length === 0) {
+                    console.error('❌ لا توجد خلايا في الصف السادس');
+                    return;
+                }
+
+                // جمع قيم جميع الخلايا في الصف السادس مع استثناء الأعمدة 1، 2، 5
+                let sum = 0;
+                let values = [];
+
+                for (let i = 0; i < cells.length; i++) {
+                    // تخطي الأعمدة 1، 2، 5 (الخلايا 0، 1، 4 لأن الفهرس يبدأ من 0)
+                    if (i === 0 || i === 1 || i === 2 || i === 3 || i === 4 || i === 5 || i === 6 || i === 11) {
+                        console.log(`⏭️ تخطي العمود ${i + 1} (مستثنى من الجمع)`);
+                        continue;
+                    }
+
+                    const value = parseFloat(cells[i].textContent || '0');
+                    if (!isNaN(value)) {
+                        sum += value;
+                        values.push(value);
+                        console.log(`📊 الخلية ${i + 1}: ${value}`);
+                    }
+                }
+
+
+
+
+                // الحصول على الجدول التاسع
+                const table9 = document.querySelector('table:nth-of-type(9)');
+                if (!table9) {
+                    console.error('❌ لا يوجد جدول تاسع');
+                    return;
+                }
+
+                // الحصول على الصف الثالث العمود الخامس في الجدول التاسع
+                const targetCell = table9.querySelector('tr:nth-child(3) td:nth-child(5)');
+                if (!targetCell) {
+                    console.error('❌ لا يوجد خلية في الصف الثالث العمود الخامس من الجدول التاسع');
+                    return;
+                }
+
+
+                // وضع نتيجة الجمع في الخلية المستهدفة
+
+                targetCell.textContent = sum.toFixed(7);
+
+
+
+
+
+
+
+                console.log(`✅ تم وضع نتيجة الجمع (${sum}) في الجدول التاسع - الصف الثالث العمود الخامس`);
+
+                return sum;
+                // حساب وتحديث الاستهلاك الشهري
+                // gool2
+
+            }
+
+            function Calcul_month_Consump() {
                 const day = daySelect.value;
                 const selectedYear = yearSelect.value;
                 const selectedmonth = monthSelect.value;
 
-                if (day == 1 && selectedmonth == 1 && selectedYear == 2025) {
-                    for (let col = 1; col <= 14; col++) {
-                        const element4 = document.querySelector(`table:nth-of-type(7) tr:nth-child(4) td:nth-child(${col})`);
-                        const element5 = document.querySelector(`table:nth-of-type(7) tr:nth-child(5) td:nth-child(${col})`);
+                // الحصول على العناصر مرة واحدة لتجنب التكرار
+                const table9 = document.querySelector('table:nth-of-type(9)');
+                const table10 = document.querySelector('table:nth-of-type(10)');
 
-                        if (element4 && element5) {
-                            element4.textContent = element5.textContent; // هنا التعديل
-                        }
-                    }
+                // الحصول على القيم الأساسية مع معالجة القيم الفارغة
+                const dayValue2 = parseFloat(table10.querySelector(`tr:nth-child(${day}) td:nth-child(2)`).textContent) || 0;
+                const dayValue3 = parseFloat(table10.querySelector(`tr:nth-child(${day}) td:nth-child(3)`).textContent) || 0;
+                const dayValue8 = parseFloat(table10.querySelector(`tr:nth-child(${day}) td:nth-child(8)`).textContent) || 0;
+
+                const row3col3 = parseFloat(table9.querySelector('tr:nth-child(3) td:nth-child(3)').textContent) || 0;
+                const row3col4 = parseFloat(table9.querySelector('tr:nth-child(3) td:nth-child(4)').textContent) || 0;
+                const row3col5 = parseFloat(table9.querySelector('tr:nth-child(3) td:nth-child(5)').textContent) || 0;
+
+                // حساب الاستهلاك الشهري
+                const monthlyConsump5 = (parseFloat(table10.querySelector('tr:nth-child(1) td:nth-child(4)').textContent) - dayValue2 + row3col5).toFixed(7);
+                const monthlyConsump4 = (parseFloat(table10.querySelector('tr:nth-child(1) td:nth-child(5)').textContent) - dayValue3 + row3col4).toFixed(7);
+                const monthlyConsump3 = (parseFloat(table10.querySelector('tr:nth-child(2) td:nth-child(4)').textContent) - dayValue8 + row3col3).toFixed(7);
+                // if (day === 1 && selectedmonth === 1 && selectedYear === 2025) {
+
+                // } else {
+                //     const monthlyConsump5 = (parseFloat(table10.querySelector('tr:nth-child(1) td:nth-child(4)').textContent) - dayValue2 + row3col5).toFixed(7);
+                //     const monthlyConsump4 = (parseFloat(table10.querySelector('tr:nth-child(1) td:nth-child(5)').textContent) - dayValue3 + row3col4).toFixed(7);
+                //     const monthlyConsump3 = (parseFloat(table10.querySelector('tr:nth-child(2) td:nth-child(4)').textContent) - dayValue8 + row3col3).toFixed(7);
+                // }
+
+
+                table9.querySelector('tr:nth-child(4) td:nth-child(5)').textContent = monthlyConsump5;
+                table9.querySelector('tr:nth-child(4) td:nth-child(4)').textContent = monthlyConsump4;
+                table9.querySelector('tr:nth-child(4) td:nth-child(3)').textContent = monthlyConsump3;
+
+                // حساب الاستهلاك السنوي
+                const yearlyConsump5 = (parseFloat(table10.querySelector('tr:nth-child(1) td:nth-child(6)').textContent) - dayValue2 + row3col5).toFixed(7);
+                const yearlyConsump4 = (parseFloat(table10.querySelector('tr:nth-child(1) td:nth-child(7)').textContent) - dayValue3 + row3col4).toFixed(7);
+                const yearlyConsump3 = (parseFloat(table10.querySelector('tr:nth-child(2) td:nth-child(5)').textContent) - dayValue8 + row3col3).toFixed(7);
+                // if (day === 1 && selectedmonth === 1 && selectedYear === 2025) {
+
+                // } else {
+                //     const yearlyConsump5 = (parseFloat(table10.querySelector('tr:nth-child(1) td:nth-child(6)').textContent) - dayValue2 + row3col5).toFixed(7);
+                //     const yearlyConsump4 = (parseFloat(table10.querySelector('tr:nth-child(1) td:nth-child(7)').textContent) - dayValue3 + row3col4).toFixed(7);
+                //     const yearlyConsump3 = (parseFloat(table10.querySelector('tr:nth-child(2) td:nth-child(5)').textContent) - dayValue8 + row3col3).toFixed(7);
+                // }
+
+                table9.querySelector('tr:nth-child(5) td:nth-child(5)').textContent = yearlyConsump5;
+                table9.querySelector('tr:nth-child(5) td:nth-child(4)').textContent = yearlyConsump4;
+                table9.querySelector('tr:nth-child(5) td:nth-child(3)').textContent = yearlyConsump3;
+
+                // حساب النسب مع منع القسمة على الصفر والقيم الفارغة
+                if (row3col3 !== 0) {
+                    table9.querySelector('tr:nth-child(3) td:nth-child(2)').textContent = (row3col5 / row3col3).toFixed(7);
+                } else {
+                    table9.querySelector('tr:nth-child(3) td:nth-child(2)').textContent = '0';
                 }
 
-                function calculateCell(column) {
-                    const selectorBase = `table:nth-of-type(7) tr:nth-child`;
+                if (parseFloat(monthlyConsump3) !== 0) {
+                    table9.querySelector('tr:nth-child(4) td:nth-child(2)').textContent = (parseFloat(monthlyConsump5) / parseFloat(monthlyConsump3)).toFixed(7);
+                } else {
+                    table9.querySelector('tr:nth-child(4) td:nth-child(2)').textContent = '0';
+                }
 
-                    // الحصول على العناصر أولاً
-                    const element5 = document.querySelector(`${selectorBase}(5) td:nth-child(${column})`);
-                    const element4 = document.querySelector(`${selectorBase}(4) td:nth-child(${column})`);
-                    const resultElement = document.querySelector(`${selectorBase}(6) td:nth-child(${column})`);
+                if (parseFloat(yearlyConsump3) !== 0) {
+                    table9.querySelector('tr:nth-child(5) td:nth-child(2)').textContent = (parseFloat(yearlyConsump5) / parseFloat(yearlyConsump3)).toFixed(7);
+                } else {
+                    table9.querySelector('tr:nth-child(5) td:nth-child(2)').textContent = '0';
+                }
+            }
 
-                    // التحقق من وجود العناصر
-                    if (!element5 || !element4 || !resultElement) {
-                        console.error(`❌ عنصر غير موجود للعمود ${column}`);
-                        return;
-                    }
+            // دالة جديدة لجمع الأعمدة 1، 2، 5 فقط ووضعها في العمود الرابع
+            function calculateSumOfColumns125() {
+                console.log('🧮 بدء جمع الأعمدة 1، 2، 5 من الصف السادس في الجدول السابع...');
 
-                    // عرض القيم الفعلية في الكونسول
-                    console.log(`📊 العمود ${column}:`);
-                    console.log(`الصف 5: '${element5.textContent}'`);
-                    console.log(`الصف 4: '${element4.textContent}'`);
+                // الحصول على الجدول السابع
+                const table7 = document.querySelector('table:nth-of-type(7)');
+                if (!table7) {
+                    console.error('❌ لا يوجد جدول سابع');
+                    return;
+                }
 
-                    // تحويل القيم إلى أرقام
-                    const value5 = parseFloat(element5.textContent);
-                    const value4 = parseFloat(element4.textContent);
+                // الحصول على الصف السادس من الجدول السابع
+                const row6 = table7.querySelector('tr:nth-child(6)');
+                if (!row6) {
+                    console.error('❌ لا يوجد صف سادس في الجدول السابع');
+                    return;
+                }
 
-                    // التحقق إذا كانت القيم أرقاماً صحيحة
-                    if (isNaN(value5) || isNaN(value4)) {
-                        resultElement.textContent = 0;
-                        console.error(`❌ قيم غير رقمية في العمود ${column}`);
-                        return;
-                    }
+                // الحصول على جميع خلايا الصف السادس
+                const cells = row6.querySelectorAll('td');
+                if (cells.length === 0) {
+                    console.error('❌ لا توجد خلايا في الصف السادس');
+                    return;
+                }
 
-                    // إجراء العملية الحسابية
-                    if (column === 1 || column === 2 || column === 3 || column === 4 || column === 9 || column === 13 || column === 11) {
-                        resultElement.textContent = ((value5 - value4) * 1000).toFixed(7);
-                    } else if (column === 12) {
-                        // الحصول على قيمة العمود 8
-                        const element5_col8 = document.querySelector(`${selectorBase}(5) td:nth-child(8)`);
-                        const element4_col8 = document.querySelector(`${selectorBase}(4) td:nth-child(8)`);
+                // جمع قيم الأعمدة 1، 2، 5 فقط
+                let sum = 0;
+                let values = [];
+                const columnsToSum = [0, 1, 4]; // الفهرس يبدأ من 0 (العمود 1، 2، 5)
 
-                        // التحقق من وجود عناصر العمود 8
-                        if (!element5_col8 || !element4_col8) {
-                            console.error(`❌ عنصر غير موجود للعمود 8`);
-                            return;
+                for (let i = 0; i < cells.length; i++) {
+                    // جمع الأعمدة 1، 2، 5 فقط
+                    if (columnsToSum.includes(i)) {
+                        const value = parseFloat(cells[i].textContent || '0');
+                        if (!isNaN(value)) {
+                            sum += value;
+                            values.push(value);
+                            console.log(`📊 الخلية ${i + 1}: ${value}`);
                         }
-
-                        const value5_col8 = parseFloat(element5_col8.textContent);
-                        const value4_col8 = parseFloat(element4_col8.textContent);
-
-                        // التحقق من القيم الرقمية للعمود 8
-                        if (isNaN(value5_col8) || isNaN(value4_col8)) {
-                            console.error(`❌ قيم غير رقمية في العمود 8`);
-                            return;
-                        }
-
-                        // حساب قيمة العمود 12: ((value5 - value4)*1000) - (value5_col8 - value4_col8)
-                        const result = ((value5 - value4) * 1000) - (value5_col8 - value4_col8);
-                        resultElement.textContent = result.toFixed(7);
-                    } else if (column === 10) {
-                        // الحصول على قيمة العمود 9
-                        const element5_col9 = document.querySelector(`${selectorBase}(5) td:nth-child(9)`);
-                        const element4_col9 = document.querySelector(`${selectorBase}(4) td:nth-child(9)`);
-
-                        // التحقق من وجود عناصر العمود 9
-                        if (!element5_col9 || !element4_col9) {
-                            console.error(`❌ عنصر غير موجود للعمود 9`);
-                            return;
-                        }
-
-                        const value5_col9 = parseFloat(element5_col9.textContent);
-                        const value4_col9 = parseFloat(element4_col9.textContent);
-
-                        // التحقق من القيم الرقمية للعمود 9
-                        if (isNaN(value5_col9) || isNaN(value4_col9)) {
-                            console.error(`❌ قيم غير رقمية في العمود 9`);
-                            return;
-                        }
-
-                        // حساب قيمة العمود 10: ((value5 - value4)*1000) - (value5_col9 - value4_col9) * 1000
-                        const result = ((value5 - value4) * 1000) - (value5_col9 - value4_col9) * 1000;
-                        resultElement.textContent = result.toFixed(7);
                     } else {
-                        resultElement.textContent = (value5 - value4).toFixed(7);
+                        console.log(`⏭️ تخطي العمود ${i + 1} (غير مدرج في الجمع)`);
                     }
-
-                    console.log(`✅ النتيجة: ${value5} - ${value4} = ${value5 - value4}`);
                 }
 
-                // حساب جميع الأعمدة من 1 إلى 14
-                for (let column = 1; column <= 14; column++) {
-                    calculateCell(column);
+                console.log(`📊 قيم الأعمدة 1، 2، 5: ${values.join(' + ')} = ${sum}`);
+
+                // الحصول على الجدول التاسع
+                const table9 = document.querySelector('table:nth-of-type(9)');
+                if (!table9) {
+                    console.error('❌ لا يوجد جدول تاسع');
+                    return;
                 }
-            } // نسخة بديلة باستخدام querySelectorAll لأسلوب أكثر موثوقية
+
+                // الحصول على الصف الثالث العمود الرابع في الجدول التاسع
+                const targetCell = table9.querySelector('tr:nth-child(3) td:nth-child(4)');
+                if (!targetCell) {
+                    console.error('❌ لا يوجد خلية في الصف الثالث العمود الرابع من الجدول التاسع');
+                    return;
+                }
+
+                // وضع نتيجة الجمع في الخلية المستهدفة
+                targetCell.textContent = sum;
+                console.log(`✅ تم وضع نتيجة الجمع (${sum}) في الجدول التاسع - الصف الثالث العمود الرابع`);
+
+                return sum;
+            }
+            // دالة جديدة لقسمة العمود الخامس على العمود الثالث في الصف الثالث من الجدول التاسع
+            function divideColumnsInTable9() {
+                console.log('➗ بدء عملية القسمة في الجدول التاسع...');
+
+                // الحصول على الجدول التاسع
+                const table9 = document.querySelector('table:nth-of-type(9)');
+                if (!table9) {
+                    console.error('❌ لا يوجد جدول تاسع');
+                    return;
+                }
+
+                // الحصول على الصف الثالث من الجدول التاسع
+                const row3 = table9.querySelector('tr:nth-child(3)');
+                const row4 = table9.querySelector('tr:nth-child(4)');
+                const row5 = table9.querySelector('tr:nth-child(5)');
+                if (!row3) {
+                    console.error('❌ لا يوجد صف ثالث في الجدول التاسع');
+                    return;
+                }
+                if (!row4) {
+                    console.error('❌ لا يوجد صف رابع في الجدول التاسع');
+                    return;
+                }
+                if (!row5) {
+                    console.error('❌ لا يوجد صف رابع في الجدول التاسع');
+                    return;
+                }
+
+                // الحصول على خلايا العمود الخامس والعمود الثالث من الصف الثالث
+                const column5Cell = row3.querySelector('td:nth-child(5)');
+                const column3Cell = row3.querySelector('td:nth-child(3)');
+
+                const column4_5Cell = row4.querySelector('td:nth-child(5)');
+                const column4_3Cell = row4.querySelector('td:nth-child(3)');
 
 
+                const column5_5Cell = row5.querySelector('td:nth-child(5)');
+                const column5_3Cell = row5.querySelector('td:nth-child(3)');
 
+                if (!column5Cell || !column3Cell) {
+                    console.error('❌ لا توجد خلايا في العمود الخامس أو الثالث من الصف الثالث');
+                    return;
+                }
+                if (!column4_5Cell || !column4_3Cell) {
+                    console.error('❌ لا توجد خلايا في العمود الخامس أو الثالث من الصف الرابع');
+                    return;
+                }
 
+                if (!column5_5Cell || !column5_3Cell) {
+                    console.error('❌ لا توجد خلايا في العمود الخامس أو الثالث من الصف الرابع');
+                    return;
+                }
 
-            /////////////////////////////////////////////////////////////////////////////////
-            // إضافة الاستدعاء إلى الدالة الرئيسية
-                      function Rea_calculating() {
+                // تحويل القيم إلى أعداد عشرية
+                const value5 = parseFloat(column5Cell.textContent || '0');
+                const value3 = parseFloat(column3Cell.textContent || '1'); // استخدام 1 كقيمة افتراضية لتجنب القسمة على صفر
+
+                const value4_5 = parseFloat(column4_5Cell.textContent || '0');
+                const value4_3 = parseFloat(column4_3Cell.textContent || '1'); // استخدام 1 كقيمة افتراضية لتجنب القسمة على صفر
+
+                const value5_5 = parseFloat(column5_5Cell.textContent || '0');
+                const value5_3 = parseFloat(column5_3Cell.textContent || '1'); // استخدام 1 كقيمة افتراضية لتجنب القسمة على صفر
+
+                console.log(`📊 قيمة العمود الخامس: ${value5}`);
+                console.log(`📊 قيمة العمود الثالث: ${value3}`);
+
+                console.log(`📊 قيمة العمود الخامس: ${value4_5}`);
+                console.log(`📊 قيمة العمود الثالث: ${value4_3}`);
+
+                console.log(`📊 قيمة العمود الخامس: ${value5_5}`);
+                console.log(`📊 قيمة العمود الثالث: ${value5_3}`);
+
+                // التحقق من القسمة على الصفر
+                if (value3 === 0) {
+                    console.error('❌ لا يمكن القسمة على صفر');
+                    return;
+                }
+
+                // التحقق من القسمة على الصفر
+                if (value4_3 === 0) {
+                    console.error('❌ لا يمكن القسمة على صفر');
+                    return;
+                }
+
+                // التحقق من القسمة على الصفر
+                if (value5_3 === 0) {
+                    console.error('❌ لا يمكن القسمة على صفر');
+                    return;
+                }
+                // إجراء عملية القسمة
+                const result = value5 / value3;
+                console.log(`✅ نتيجة القسمة: ${value5} / ${value3} = ${result}`);
+
+                // إجراء عملية القسمة
+                const result4 = value4_5 / value4_3;
+                console.log(`✅ نتيجة القسمة: ${value4_5} / ${value4_3} = ${result4}`);
+
+                // إجراء عملية القسمة
+                const result5 = value5_5 / value5_3;
+                console.log(`✅ نتيجة القسمة: ${value5_5} / ${value5_3} = ${result5}`);
+
+                // الحصول على خلية العمود الثاني من الصف الثالث
+                const column2Cell = row3.querySelector('td:nth-child(2)');
+                if (!column2Cell) {
+                    console.error('❌ لا توجد خلية في العمود الثاني من الصف الثالث');
+                    return;
+                }
+
+                // الحصول على خلية العمود الثاني من الصف الثالث
+                const column4_2Cell = row4.querySelector('td:nth-child(2)');
+                if (!column4_2Cell) {
+                    console.error('❌ لا توجد خلية في العمود الثاني من الصف الرابع');
+                    return;
+                }
+
+                // الحصول على خلية العمود الثاني من الصف الثالث
+                const column5_2Cell = row5.querySelector('td:nth-child(2)');
+                if (!column5_2Cell) {
+                    console.error('❌ لا توجد خلية في العمود الثاني من الصف الرابع');
+                    return;
+                }
+                // وضع نتيجة القسمة في الخلية المستهدفة
+                column2Cell.textContent = result.toFixed(7); // حفظ النتيجة بمنزلتين عشريتين
+                console.log(`✅ تم وضع نتيجة القسمة (${result.toFixed(7)}) في الجدول التاسع - الصف الثالث العمود الثاني`);
+
+                // وضع نتيجة القسمة في الخلية المستهدفة
+                column4_2Cell.textContent = result4.toFixed(7); // حفظ النتيجة بمنزلتين عشريتين
+                console.log(`✅ تم وضع نتيجة القسمة (${result4.toFixed(7)}) في الجدول التاسع - الصف الثالث العمود الثاني`);
+
+                // وضع نتيجة القسمة في الخلية المستهدفة
+                column5_2Cell.textContent = result5.toFixed(7); // حفظ النتيجة بمنزلتين عشريتين
+                console.log(`✅ تم وضع نتيجة القسمة (${result5.toFixed(7)}) في الجدول التاسع - الصف الثالث العمود الثاني`);
+
+                return result;
+
+            }
+
+            function Rea_calculating() {
                 function calculateCell(column) {
                     const selectorBase = `table:nth-of-type(7) tr:nth-child`;
 
@@ -2515,59 +4663,58 @@ session_start();
 
 
                         resultElement.textContent = 0;
-                    } 
-                    else {
-                    if (column === 1 || column === 2 || column === 3 || column === 4 || column === 9 || column === 13 || column === 11) {
-                        resultElement.textContent = (Subtract * 1000).toFixed(7);
-                    } else if (column === 12) {
-                        // الحصول على قيمة العمود 8
-                        const element5_col8 = document.querySelector(`${selectorBase}(5) td:nth-child(8)`);
-                        const element4_col8 = document.querySelector(`${selectorBase}(4) td:nth-child(8)`);
-
-                        // التحقق من وجود عناصر العمود 8
-                        if (!element5_col8 || !element4_col8) {
-                            console.error(`❌ عنصر غير موجود للعمود 8`);
-                            return;
-                        }
-
-                        const value5_col8 = parseFloat(element5_col8.textContent) || 0;
-                        const value4_col8 = parseFloat(element4_col8.textContent) || 0;
-
-                        // التحقق من القيم الرقمية للعمود 8
-                        if (isNaN(value5_col8) || isNaN(value4_col8)) {
-                            console.error(`❌ قيم غير رقمية في العمود 8`);
-                            return;
-                        }
-
-                        // حساب قيمة العمود 12: ((value5 - value4)*1000) - (value5_col8 - value4_col8)
-                        const result = (Subtract * 1000) - (value5_col8 - value4_col8);
-                        resultElement.textContent = result.toFixed(7);
-                    } else if (column === 10) {
-                        // الحصول على قيمة العمود 9
-                        const element5_col9 = document.querySelector(`${selectorBase}(5) td:nth-child(9)`);
-                        const element4_col9 = document.querySelector(`${selectorBase}(4) td:nth-child(9)`);
-
-                        // التحقق من وجود عناصر العمود 9
-                        if (!element5_col9 || !element4_col9) {
-                            console.error(`❌ عنصر غير موجود للعمود 9`);
-                            return;
-                        }
-
-                        const value5_col9 = parseFloat(element5_col9.textContent) || 0;
-                        const value4_col9 = parseFloat(element4_col9.textContent) || 0;
-
-                        // التحقق من القيم الرقمية للعمود 9
-                        if (isNaN(value5_col9) || isNaN(value4_col9)) {
-                            console.error(`❌ قيم غير رقمية في العمود 9`);
-                            return;
-                        }
-
-                        // حساب قيمة العمود 10: ((value5 - value4)*1000) - (value5_col9 - value4_col9) * 1000
-                        const result = (Subtract * 1000) - (value5_col9 - value4_col9) * 1000;
-                        resultElement.textContent = result.toFixed(7);
                     } else {
-                        resultElement.textContent = Subtract.toFixed(7);
-                    }
+                        if (column === 1 || column === 2 || column === 3 || column === 4 || column === 9 || column === 13 || column === 11) {
+                            resultElement.textContent = (Subtract * 1000).toFixed(7);
+                        } else if (column === 12) {
+                            // الحصول على قيمة العمود 8
+                            const element5_col8 = document.querySelector(`${selectorBase}(5) td:nth-child(8)`);
+                            const element4_col8 = document.querySelector(`${selectorBase}(4) td:nth-child(8)`);
+
+                            // التحقق من وجود عناصر العمود 8
+                            if (!element5_col8 || !element4_col8) {
+                                console.error(`❌ عنصر غير موجود للعمود 8`);
+                                return;
+                            }
+
+                            const value5_col8 = parseFloat(element5_col8.textContent) || 0;
+                            const value4_col8 = parseFloat(element4_col8.textContent) || 0;
+
+                            // التحقق من القيم الرقمية للعمود 8
+                            if (isNaN(value5_col8) || isNaN(value4_col8)) {
+                                console.error(`❌ قيم غير رقمية في العمود 8`);
+                                return;
+                            }
+
+                            // حساب قيمة العمود 12: ((value5 - value4)*1000) - (value5_col8 - value4_col8)
+                            const result = (Subtract * 1000) - (value5_col8 - value4_col8);
+                            resultElement.textContent = result.toFixed(7);
+                        } else if (column === 10) {
+                            // الحصول على قيمة العمود 9
+                            const element5_col9 = document.querySelector(`${selectorBase}(5) td:nth-child(9)`);
+                            const element4_col9 = document.querySelector(`${selectorBase}(4) td:nth-child(9)`);
+
+                            // التحقق من وجود عناصر العمود 9
+                            if (!element5_col9 || !element4_col9) {
+                                console.error(`❌ عنصر غير موجود للعمود 9`);
+                                return;
+                            }
+
+                            const value5_col9 = parseFloat(element5_col9.textContent) || 0;
+                            const value4_col9 = parseFloat(element4_col9.textContent) || 0;
+
+                            // التحقق من القيم الرقمية للعمود 9
+                            if (isNaN(value5_col9) || isNaN(value4_col9)) {
+                                console.error(`❌ قيم غير رقمية في العمود 9`);
+                                return;
+                            }
+
+                            // حساب قيمة العمود 10: ((value5 - value4)*1000) - (value5_col9 - value4_col9) * 1000
+                            const result = (Subtract * 1000) - (value5_col9 - value4_col9) * 1000;
+                            resultElement.textContent = result.toFixed(7);
+                        } else {
+                            resultElement.textContent = Subtract.toFixed(7);
+                        }
                     }
 
 
@@ -2582,6 +4729,7 @@ session_start();
                 }
 
             }
+
             /////////////////////////////////////////////////////////////////////////////////
             // إضافة الاستدعاء إلى الدالة الرئيسية
             function calculatingImproved_Load() {
@@ -2598,16 +4746,36 @@ session_start();
                                 updatePageData5();
                                 updatePageData3();
                             }, 500);
-                        }, 2000);
+                        }, 2400);
                     }, 200);
                 }, 200);
             }
 
 
 
+            async function calculatingImproved_Change() {
+                try {
+                    await calculating();
+                    await calculateSumAndPlaceInTable9();
+                    await calculateSumOfColumns125();
+                    await Calcul_month_Consump();
+                    await saveTable9DataToDatabase();
+                    await saveTable9Row4ToDatabase();
+                    await saveTable9_KW_per_Ton();
+                    await PLANT_REF_CONS_REMARKS_A_B_C();
 
+                    // التشغيل المتوازي للدوال التي لا تعتمد على بعضها
+                    await Promise.all([
+                        updatePageData2(),
+                        updatePageData6(),
+                        updatePageData5()
+                    ]);
 
-
+                    console.log("✅ جميع العمليات اكتملت بنجاح");
+                } catch (error) {
+                    console.error("❌ خطأ في التنفيذ:", error);
+                }
+            }
 
 
 
@@ -2626,8 +4794,8 @@ session_start();
                 saveSelection(yearSelect);
                 loadSelection(yearSelect);
 
-
                 calculatingImproved_Load();
+
             });
 
             monthSelect.addEventListener('change', () => {
@@ -2635,18 +4803,17 @@ session_start();
                 loadSelection(monthSelect);
                 calculatingImproved_Load();
 
+
             });
 
             daySelect.addEventListener('change', () => {
                 saveSelection(daySelect);
-                loadSelection(daySelect);
-
                 calculatingImproved_Load();
             });
 
         });
 
-       function clearAllCells() {
+        function clearAllCells() {
             // table2
             document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(1)').textContent = '0';
             document.querySelector('table:nth-of-type(2) tr:nth-child(4) td:nth-child(2)').textContent = '0';
@@ -3229,7 +5396,6 @@ session_start();
             document.querySelector('table:nth-of-type(9) tr:nth-child(5) td:nth-child(5)').textContent = '0';
             document.querySelector('table:nth-of-type(10) tr:nth-child(2) td:nth-child(5)').textContent = '0';
         }
-   
     </script>
     <!-- table1 -->
     <table>
@@ -4260,8 +6426,8 @@ session_start();
             <td>TO THIS YEAR</td>
         </tr>
     </table>
-
-  <table id="hiddenDataTable" style="display: none;"">
+    <!-- أضف هذا في نهاية body قبل إغلاق tag -->
+    <table id="hiddenDataTable" style="display: none;"">
     <!-- <table id="hiddenDataTable" ""> -->
         <thead>
             <tr>
@@ -4593,6 +6759,32 @@ session_start();
             </tr>
         </tbody>
     </table>
+    <!-- <div class="top_div">
+
+        <a href="logbook.php" class="back-btn">العودة للصفحة السابقة</a>
+        <h1>تحديث القرائات</h1>
+
+        <button class="reload-btn" id="reloadButton">
+            تحديث القرائات
+            <span class="icon">🔄</span>
+        </button>
+        <script>
+            const reloadButton = document.getElementById('reloadButton');
+            const icon = document.querySelector('.icon');
+
+            reloadButton.addEventListener('click', function() {
+                // إضافة تأثير الدوران عند النقر
+                icon.classList.add('spinning');
+
+                // تأخير إعادة التحميل قليلاً لرؤية تأثير الدوران
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            });
+        </script>
+
+    </div> -->
+
 
 </body>
 
