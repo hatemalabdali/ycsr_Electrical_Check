@@ -75,7 +75,8 @@ function cleanEmptyData($connection, $tableName) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earth Pit Resistance Check - Data</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+     <style>
+        /* أنماط CSS السابقة تبقى كما هي */
         :root {
             --primary-color: #4a6fa5;
             --secondary-color: #edd456;
@@ -84,32 +85,38 @@ function cleanEmptyData($connection, $tableName) {
             --success-color: #28a745;
             --danger-color: #dc3545;
             --border-color: #dee2e6;
+            --whatsapp-color: #25D366;
+            --telegram-color: #0088cc;
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
+
         body {
+            width: 98%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f5f7fa;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding-top: 2%;
+            padding-left: 1%;
+            padding-right: 1%;
+            
+            margin: 0;
         }
-        
+
         .container {
+            width: 100%;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             margin-bottom: 20px;
         }
-        
+
         .header {
             background-color: var(--primary-color);
             color: white;
@@ -117,17 +124,17 @@ function cleanEmptyData($connection, $tableName) {
             text-align: center;
             border-bottom: 5px solid var(--secondary-color);
         }
-        
+
         .header h1 {
             margin-bottom: 10px;
             font-size: 28px;
         }
-        
+
         .header p {
             font-size: 16px;
             opacity: 0.9;
         }
-        
+
         .controls-container {
             display: flex;
             justify-content: space-between;
@@ -138,7 +145,7 @@ function cleanEmptyData($connection, $tableName) {
             flex-wrap: wrap;
             gap: 15px;
         }
-        
+
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -150,16 +157,16 @@ function cleanEmptyData($connection, $tableName) {
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .back-btn:hover {
             background-color: #385d8a;
             transform: translateY(-2px);
         }
-        
-        .print-btn {
+
+        .whatsapp-btn {
             display: inline-flex;
             align-items: center;
-            background-color: #28a745;
+            background-color: var(--whatsapp-color);
             color: white;
             padding: 10px 20px;
             border: none;
@@ -167,28 +174,49 @@ function cleanEmptyData($connection, $tableName) {
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
-        
-        .print-btn:hover {
-            background-color: #218838;
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
             transform: translateY(-2px);
         }
-        
-        .print-btn i {
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--telegram-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .telegram-btn:hover {
+            background-color: #006699;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn i,
+        .telegram-btn i {
             margin-left: 8px;
         }
-        
+
         .year-selector {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .year-selector label {
             font-weight: 600;
             color: var(--dark-color);
         }
-        
+
         .year-selector select {
             padding: 10px 15px;
             border: 1px solid var(--border-color);
@@ -200,18 +228,24 @@ function cleanEmptyData($connection, $tableName) {
             transition: border-color 0.3s;
             min-width: 150px;
         }
-        
+
         .year-selector select:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
         }
-        
+
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         .table-container {
             overflow-x: auto;
-            padding: 10px;
+            
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -219,13 +253,14 @@ function cleanEmptyData($connection, $tableName) {
             margin: 0 auto;
             font-size: 14px;
         }
-        
-        th, td {
-            border: 1px solid var(--border-color);
-            padding: 10px;
+
+        th,
+        td {
+            border: 4px solid var(--border-color);
+            
             text-align: center;
         }
-        
+
         .titlee {
             background-color: var(--secondary-color);
             font-weight: 800;
@@ -233,27 +268,27 @@ function cleanEmptyData($connection, $tableName) {
             border-radius: 5px;
             padding: 10px;
         }
-        
+
         td {
             font-family: 'Times New Roman', Times, serif;
         }
-        
+
         .status-ok {
             color: var(--success-color);
             font-weight: bold;
         }
-        
+
         .status-repair {
             color: var(--danger-color);
             font-weight: bold;
         }
-        
+
         .footer {
             padding: 20px;
             background-color: var(--light-color);
             border-top: 1px solid var(--border-color);
         }
-        
+
         .notes {
             margin-bottom: 15px;
             padding: 10px;
@@ -261,7 +296,7 @@ function cleanEmptyData($connection, $tableName) {
             border-radius: 5px;
             border-left: 4px solid var(--primary-color);
         }
-        
+
         .signatures {
             display: flex;
             justify-content: space-between;
@@ -269,136 +304,164 @@ function cleanEmptyData($connection, $tableName) {
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .signature-box {
             text-align: center;
             flex: 1;
             min-width: 150px;
         }
-        
+
         .signature-box p {
             font-weight: 600;
             margin-bottom: 5px;
             color: var(--dark-color);
         }
-        
+
         .signature-line {
             height: 1px;
             background-color: #333;
             margin: 15px 0 5px;
         }
-        
+
         img {
             max-height: 100px;
             width: auto;
         }
-        
-        /* تنسيقات الطباعة */
-        @media print {
-            body * {
-                visibility: hidden;
-            }
-            
-            .print-section, .print-section * {
-                visibility: visible;
-            }
-            
-            .print-section {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-            }
-            
-            .controls-container, .header {
-                display: none;
-            }
-            
-            .container {
-                box-shadow: none;
-            }
-            
-            .table-container, .footer {
-                padding: 0;
-            }
+
+        /* New styles for interactive cells */
+        .name-cell{
+            width: 10%;
         }
+        .editable {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .editable:hover {
+            background-color: rgba(74, 111, 165, 0.1);
+        }
+
+        .status-cell {
+            cursor: pointer;
+        }
+
+
         
+        .statusClass,
+        .editable {
+            /* تنسيق أساسي يعمل على الموبايل والكمبيوتر */
+            background-color: white;
+            /* خلفية زرقاء فاتحة */
+            border: 3px solid #202224ff;
+            /* حدود زرقاء */
+            cursor: pointer;
+            /* للكمبيوتر */
+            transition: all 0.2s ease;
+            /* تأثير سلس */
+            position: relative;
+            font-weight: 500;
+            width: 10%;
+            /* نص أكثر سمكاً */
+        }
+
+        /* علامة صغيرة تشير إلى إمكانية التعديل */
+       
+        
+       
+
+
         @media (max-width: 992px) {
             .controls-container {
                 flex-direction: column;
                 align-items: stretch;
             }
-            
+
             .year-selector {
                 width: 100%;
                 justify-content: center;
             }
-            
+
+            .buttons-container {
+                width: 100%;
+                justify-content: center;
+            }
+
             table {
                 font-size: 12px;
             }
-            
-            th, td {
+
+            th,
+            td {
                 padding: 8px 5px;
             }
         }
-        
+
         @media (max-width: 768px) {
             body {
                 padding: 10px;
             }
-            
+
             .header h1 {
                 font-size: 22px;
             }
-            
+
             .header p {
                 font-size: 14px;
             }
-            
+
             .year-selector {
                 flex-direction: column;
                 align-items: stretch;
             }
-            
+
             .year-selector select {
                 width: 100%;
             }
-            
+
+            .buttons-container {
+                flex-direction: column;
+            }
+
+            .whatsapp-btn,
+            .telegram-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
             .signatures {
                 flex-direction: column;
                 gap: 20px;
             }
-            
+
             img {
                 max-height: 80px;
             }
         }
-        
+
         @media (max-width: 480px) {
             .header {
                 padding: 15px;
             }
-            
+
             .header h1 {
                 font-size: 20px;
             }
-            
+
             .controls-container {
                 padding: 15px;
             }
-            
-            .back-btn, .print-btn {
+
+            .back-btn {
                 width: 100%;
                 justify-content: center;
-                margin-bottom: 10px;
             }
-            
-            th, td {
+
+            th,
+            td {
                 padding: 6px 3px;
                 font-size: 11px;
             }
-            
+
             .titlee {
                 padding: 8px 4px;
                 font-size: 11px;

@@ -604,8 +604,10 @@ $Xdbname = 'if0_39426096_mwt';
                     header.classList.remove('selected');
                 } else {
                     // إذا لم يكن محددًا، قم بتحديده
+                    if (selectedDays.length <= 2) {
                     selectedDays.push(day);
                     header.classList.add('selected');
+                    }
                 }
 
                 // يمكنك هنا عرض الأيام المحددة في مكان ما لراحة المستخدم
@@ -618,7 +620,7 @@ $Xdbname = 'if0_39426096_mwt';
             event.preventDefault();
 
             if (selectedDays.length === 0) {
-                alert("الرجاء تحديد الأيام التي تريد إرسال التقرير لها.");
+                alert("الرجاء تحديد 3 أيام على الاكثر التي تريد إرسال التقرير لها.");
                 return;
             }
 
@@ -668,7 +670,7 @@ $Xdbname = 'if0_39426096_mwt';
             event.preventDefault();
 
             if (selectedDays.length === 0) {
-                alert("الرجاء تحديد الأيام التي تريد إرسال التقرير لها.");
+                alert("الرجاء تحديد 3 أيام على الاكثر التي تريد إرسال التقرير لها.");
                 return;
             }
 
@@ -904,7 +906,7 @@ $Xdbname = 'if0_39426096_mwt';
 
 
 
-        document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
 
             // اختيار جميع الخلايا التي لديها الفئة 'clickable-day'
 
@@ -914,7 +916,7 @@ $Xdbname = 'if0_39426096_mwt';
 
             clickableCells.forEach(cell => {
 
-                cell.addEventListener('click', function() {
+                cell.addEventListener('dblclick', function() {
 
                     const rowId = this.dataset.rowId; // معرف الصف (id النشاط)
 
@@ -1023,7 +1025,7 @@ $Xdbname = 'if0_39426096_mwt';
             });
 
         });
-    </script>
+   </script>
 
 
 

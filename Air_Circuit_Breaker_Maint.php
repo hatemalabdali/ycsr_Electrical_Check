@@ -10,7 +10,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air Circuit Breaker Maint Checklist</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -161,7 +161,7 @@ session_start();
         .SR_col {
             width: 5%;
         }
-        
+
         .whatsapp-btn,
         .telegram-btn {
             display: inline-flex;
@@ -221,14 +221,73 @@ session_start();
             /* إضافة padding لجمالية أكثر */
         }
 
+
+        .good-cell,
+        .maintenance-cell {
+            /* تنسيق أساسي يعمل على الموبايل والكمبيوتر */
+            background-color: #e5ecedff;
+            /* خلفية زرقاء فاتحة */
+            border: 1px solid #202224ff;
+            /* حدود زرقاء */
+            cursor: pointer;
+            /* للكمبيوتر */
+            transition: all 0.2s ease;
+            /* تأثير سلس */
+            position: relative;
+            font-weight: 500;
+            /* نص أكثر سمكاً */
+        }
+
+        /* علامة صغيرة تشير إلى إمكانية التعديل */
+        .good-cell::after,
+        .maintenance-cell::after {
+            content: "✎";
+            /* رمز القلم */
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 10px;
+            color: #010912ff;
+            opacity: 0.7;
+        }
+
+        /* تأثير عند المرور (للكمبيوتر فقط) */
+        @media (hover: hover) {
+
+            .good-cell:hover,
+            .maintenance-cell:hover {
+                background-color: #e6f3ff;
+                border-color: #007bff;
+                box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+                transform: translateY(-1px);
+            }
+        }
+
+        /* تأثير عند النقر/اللمس */
+        .good-cell:active,
+        .maintenance-cell:active {
+            background-color: #d1e7ff;
+            transform: scale(0.98);
+        }
+
+        /* تنسيق خاص للخلايا الفارغة */
+        .good-cell:empty,
+        .maintenance-cell:empty {
+            background-color: lightgray;
+            /* خلفية صفراء فاتحة */
+            border: 1px dashed #1e1806ff;
+            /* حدود صفراء منقطة */
+        }
+
+
         @media screen and (max-width: 480px) {
             body {
                 font-family: Arial, sans-serif;
                 padding-left: 1.5%;
-                 padding-right: 1.5%;
-                  padding-top: 1.5%;
-                   padding-bottom: 0;
-                   margin-bottom: 0;
+                padding-right: 1.5%;
+                padding-top: 1.5%;
+                padding-bottom: 0;
+                margin-bottom: 0;
                 width: 300%;
             }
 
@@ -455,14 +514,14 @@ session_start();
         <button id="save-data-btn" class="back-btn" style="margin-right: 2%;">حفظ البيانات</button>
     </div>
     <div class=" whats">
-            <div class="buttons-container" style="display: flex; gap: 10px; margin-right: 2%;">
-                <a href="#" class="whatsapp-btn" id="whatsappSupervisor" style="background-color: #25D366; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: flex; align-items: center;">
-                    <i class="fab fa-whatsapp"></i> إرسال للمشرف
-                </a>
-                <a href="#" class="telegram-btn" id="telegramManager" style="background-color: #0088cc; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: flex; align-items: center;">
-                    <i class="fab fa-telegram"></i> إرسال لرئيس القسم
-                </a>
-            </div>
+        <div class="buttons-container" style="display: flex; gap: 10px; margin-right: 2%;">
+            <a href="#" class="whatsapp-btn" id="whatsappSupervisor" style="background-color: #25D366; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: flex; align-items: center;">
+                <i class="fab fa-whatsapp"></i> إرسال للمشرف
+            </a>
+            <a href="#" class="telegram-btn" id="telegramManager" style="background-color: #0088cc; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; display: flex; align-items: center;">
+                <i class="fab fa-telegram"></i> إرسال لرئيس القسم
+            </a>
+        </div>
     </div>
     <script>
         let isDirty = false;
@@ -664,7 +723,7 @@ session_start();
             // إضافة الكود للتعامل مع النقر على خلايا الصيانة
             const maintenanceCells = document.querySelectorAll('.maintenance-cell');
             maintenanceCells.forEach((cell) => {
-                cell.addEventListener('click', () => {
+                cell.addEventListener('dblclick', () => {
                     const adjacentGoodCell = cell.previousElementSibling;
                     const currentValue = cell.textContent.trim();
                     const row = cell.closest('tr');
@@ -756,7 +815,7 @@ session_start();
             // إضافة الكود للتعامل مع النقر على خلايا "جيد"
             const goodCells = document.querySelectorAll('.good-cell');
             goodCells.forEach((cell, index) => {
-                cell.addEventListener('click', () => {
+                cell.addEventListener('dblclick', () => {
                     const adjacentMaintCell = cell.nextElementSibling;
                     const currentValue = cell.textContent.trim();
                     const row = cell.closest('tr');
@@ -952,10 +1011,31 @@ session_start();
                 });
             });
 
-            // --- كود التعامل مع القوائم المنسدلة وجلب البيانات ---
-
             const yearSelect = document.getElementById('year-select');
             const breakerSelect = document.getElementById('breaker-select');
+
+            // أو إذا كانا يحتويان على class معين
+            // const breakerSelect = document.querySelector('.breaker-select');
+            // const yearSelect = document.querySelector('.year-select');
+
+            if (breakerSelect && yearSelect) {
+                [breakerSelect, yearSelect].forEach(select => {
+                    select.addEventListener('focus', function() {
+                        this.dataset.oldValue = this.value;
+                    });
+
+                    select.addEventListener('change', function() {
+                        if (isDirty && !confirm('⚠️ لديك تغييرات غير محفوظة! هل تريد المتابعة؟')) {
+                            this.value = this.dataset.oldValue;
+                        } else {
+                            saveSelection(yearSelect);
+                            saveSelection(breakerSelect);
+                            isDirty = false;
+                            updatePageData();
+                        }
+                    });
+                });
+            }
 
             function saveSelection(selectElement) {
                 sessionStorage.setItem(selectElement.id, selectElement.value);
@@ -1042,15 +1122,16 @@ session_start();
                 updatePageData();
             });
 
-            yearSelect.addEventListener('change', () => {
-                saveSelection(yearSelect);
-                updatePageData();
-            });
+            // yearSelect.addEventListener('change', () => {
+            //     saveSelection(yearSelect);
+            //     updatePageData();
+            // });
 
-            breakerSelect.addEventListener('change', () => {
-                saveSelection(breakerSelect);
-                updatePageData();
-            });
+            // breakerSelect.addEventListener('change', () => {
+            //     saveSelection(breakerSelect);
+            //     updatePageData();
+            // });
+
         });
 
         // ... (جميع الدوال والمتغيرات الأخرى، مثل isDirty و saveInspectionData) ...
@@ -1062,22 +1143,22 @@ session_start();
                 event.returnValue = '';
             }
         });
-         // دالة إنشاء رسالة التقرير
-            function createTransformerReportMessage() {
-                var currentDate = new Date().toLocaleDateString('ar-EG');
+        // دالة إنشاء رسالة التقرير
+        function createTransformerReportMessage() {
+            var currentDate = new Date().toLocaleDateString('ar-EG');
 
-                // الحصول على اسم المحول المختار
-                var breakerSelect = document.getElementById('breaker-select');
-                var selectedTbreaker = breakerSelect.options[breakerSelect.selectedIndex].text;
+            // الحصول على اسم المحول المختار
+            var breakerSelect = document.getElementById('breaker-select');
+            var selectedTbreaker = breakerSelect.options[breakerSelect.selectedIndex].text;
 
-                // الحصول على السنة المختارة
-                var yearSelect = document.getElementById('year-select');
-                var selectedYear = yearSelect.value;
+            // الحصول على السنة المختارة
+            var yearSelect = document.getElementById('year-select');
+            var selectedYear = yearSelect.value;
 
-                // الحصول على اسم المهندس من الجدول
-                var engineerName = document.querySelector('table:nth-of-type(1) tr:nth-child(4) td:nth-child(3)').textContent.trim();
+            // الحصول على اسم المهندس من الجدول
+            var engineerName = document.querySelector('table:nth-of-type(1) tr:nth-child(4) td:nth-child(3)').textContent.trim();
 
-                var message = `🔧 أشعار فحص القواطع الهوائية
+            var message = `🔧 أشعار فحص القواطع الهوائية
 📅 التاريخ: ${currentDate}
 ⚡ القاطع: ${selectedTbreaker}
 📆 السنة: ${selectedYear}
@@ -1092,28 +1173,28 @@ ${engineerName || 'لم يتم تسجيل اسم المهندس'}
 شكراً لكم 👨‍💼
 فريق الصيانة الكهربائية ⚡`;
 
-                return message;
-            }
+            return message;
+        }
 
-            // دالة إرسال رسالة الواتساب
-            function sendWhatsApp(phoneNumber, message) {
-                var encodedMessage = encodeURIComponent(message);
-                window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-            }
+        // دالة إرسال رسالة الواتساب
+        function sendWhatsApp(phoneNumber, message) {
+            var encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
 
-            // إرسال للمشرف
-            document.getElementById('whatsappSupervisor').addEventListener('click', function(e) {
-                e.preventDefault();
-                var message = createTransformerReportMessage();
-                sendWhatsApp('771598385', message);
-            });
+        // إرسال للمشرف
+        document.getElementById('whatsappSupervisor').addEventListener('click', function(e) {
+            e.preventDefault();
+            var message = createTransformerReportMessage();
+            sendWhatsApp('771598385', message);
+        });
 
-            // إرسال لرئيس القسم
-            document.getElementById('telegramManager').addEventListener('click', function(e) {
-                e.preventDefault();
-                var message = createTransformerReportMessage();
-                sendWhatsApp('776402808', message);
-            });
+        // إرسال لرئيس القسم
+        document.getElementById('telegramManager').addEventListener('click', function(e) {
+            e.preventDefault();
+            var message = createTransformerReportMessage();
+            sendWhatsApp('776402808', message);
+        });
     </script>
     <table>
         <tr>

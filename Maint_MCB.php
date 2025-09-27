@@ -592,7 +592,7 @@ if (!isset($_SESSION['username'])) {
             const tableName = '<?php echo $tableName; ?>';
             const loggedInUser = '<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>';
 
-            tableBody.addEventListener('click', (e) => {
+            tableBody.addEventListener('dblclick', (e) => {
                 const cell = e.target;
                 if (cell.classList.contains('editable')) {
                     const row = cell.closest('tr');

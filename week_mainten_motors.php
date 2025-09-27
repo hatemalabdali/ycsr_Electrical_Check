@@ -210,18 +210,31 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
             let to = document.getElementById('to');
 
 
+            //
+            const storedDataString = localStorage.getItem('chosenDate');
+
+            // التحقق من أن هناك بيانات مخزنة
+            if (storedDataString) {
+                // تحويل النص إلى كائن JavaScript
+                const chosenDateData = JSON.parse(storedDataString);
+
+                day_label.textContent = chosenDateData.ystartday;
+                day_labe2.textContent = chosenDateData.yendday;
+
+                month_label.textContent = chosenDateData.ystartmonth;
+                month_labe2.textContent = chosenDateData.yendmonth;
+
+                year_label.textContent = chosenDateData.ystartyear;
+                year_labe2.textContent = chosenDateData.yendyear;
+                console.log(chosenDateData.ystartday); // مثال
+
+            } else {
+                console.log("لا يوجد بيانات متاحة في Local Storage.");
+            }
+
+            //
 
 
-
-            month_label.textContent = month;
-
-            month_labe2.textContent = month;
-
-
-
-            year_label.textContent = year;
-
-            year_labe2.textContent = year;
 
             ////////////////////////////////////
 
@@ -330,9 +343,6 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
 
             ///////////////////////////////////
 
-            day_label.textContent = getWeekRangeDates(year, week).firstDay.getDate();
-
-            day_labe2.textContent = getWeekRangeDates(year, week).lastDay.getDate();
 
 
 
@@ -341,42 +351,6 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
 
 
 
-
-            if ((day_label.textContent - day_labe2.textContent) > 6) {
-
-
-
-
-
-                let test = day - day_labe2.textContent;
-
-                if (test <= 0) {
-
-
-
-                    month_label.textContent = month_label.textContent - 1;
-
-                } else {
-
-
-
-                    month_labe2.textContent = month_labe2.textContent++ + 1;
-
-                }
-
-            }
-
-            if (month_label.textContent == 0) {
-
-                month_label.textContent = 12;
-
-            }
-
-            if (month_labe2.textContent == 13) {
-
-                month_labe2.textContent = 1;
-
-            }
 
 
 
@@ -393,7 +367,7 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
                 console.log("Received data from Local Storage:");
 
                 console.log(
-                    `Year: ${chosenDateData.year}, Month: ${chosenDateData.month}, Day: ${chosenDateData.day}, Week: ${chosenDateData.week}`
+                    `Year: ${chosenDateData.year}, Month: ${chosenDateData.month}, Day: ${chosenDateData.day}, Week: ${chosenDateData.week}, Start Day: ${chosenDateData.ystartday}, Start Month: ${chosenDateData.ystartmonth}, Start Year: ${chosenDateData.ystartyear}, End Day: ${chosenDateData.yendday}, End Month: ${chosenDateData.yendmonth}, End Year: ${chosenDateData.yendyear}`
                 );
 
                 // يمكنك الآن استخدام chosenDateData.year وهكذا
@@ -703,14 +677,14 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
     // معلومات الاتصال بقاعدة البيانات
 
     $Xservername =  "sql202.infinityfree.com";
-$Xusername = "if0_39426096";
-$Xpassword = "WKa8VQVTNfi";
-$Xdbname = 'if0_39426096_mwt';
+    $Xusername = "if0_39426096";
+    $Xpassword = "WKa8VQVTNfi";
+    $Xdbname = 'if0_39426096_mwt';
 
-// $Xservername =  "localhost";
-// $Xusername = "root";
-// $Xpassword = "";
-// $Xdbname = 'mwt';
+    // $Xservername =  "localhost";
+    // $Xusername = "root";
+    // $Xpassword = "";
+    // $Xdbname = 'mwt';
 
     $servername = $Xservername;
     $username = $Xusername;
@@ -762,63 +736,11 @@ $Xdbname = 'if0_39426096_mwt';
 
         $day = $_GET['tday'];
 
-        // group Tables 2025
-
-        if ($year == 2025) {
-
-            if ($group === "group_a") {
-
-                $table_name = "group_a_2025";
-            } elseif ($group === "group_a1") {
-
-                $table_name = "group_a1_2025";
-            } elseif ($group === "group_a2") {
-
-                $table_name = "group_a2_2025";
-            } elseif ($group === "group_b") {
-
-                $table_name = "group_b_2025";
-            } elseif ($group === "group_b1") {
-
-                $table_name = "group_b1_2025";
-            } elseif ($group === "group_c") {
-
-                $table_name = "group_c_2025";
-            } elseif ($group === "group_c1") {
-
-                $table_name = "group_c1_2025";
-            }
-        }
-
+        $table_name = $group . '_' . $year;
 
 
         // group Tables 2026
 
-        elseif ($year == 2026) {
-
-            if ($group === "group_a") {
-
-                $table_name = "group_a_2026";
-            } elseif ($group === "group_a1") {
-
-                $table_name = "group_a1_2026";
-            } elseif ($group === "group_a2") {
-
-                $table_name = "group_a2_2026";
-            } elseif ($group === "group_b") {
-
-                $table_name = "group_b_2026";
-            } elseif ($group === "group_b1") {
-
-                $table_name = "group_b1_2026";
-            } elseif ($group === "group_c") {
-
-                $table_name = "group_c_2026";
-            } elseif ($group === "group_c1") {
-
-                $table_name = "group_c1_2026";
-            }
-        }
 
 
 
@@ -1570,126 +1492,64 @@ $Xdbname = 'if0_39426096_mwt';
 
 
 
-        document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('DOMContentLoaded', function() {
+    const clickableCells2 = document.querySelectorAll('.clickable-day2');
 
-            const clickableCells2 = document.querySelectorAll('.clickable-day2');
+    clickableCells2.forEach(cell => {
+        cell.addEventListener('dblclick', function() {
+            const rowId = this.dataset.rowId; // معرف الصف (id النشاط)
+            const day = this.dataset.day; // رقم اليوم (اسم العمود)
+            let currentValue = this.dataset.currentValue; // القيمة الحالية في DB (1, 2, أو فارغ)
 
+            let newStateText = ''; // النص الجديد للخلية
+            let newDbValue = ''; // القيمة الجديدة لحفظها في DB
+            let newColor = ''; // اللون الجديد للخلية
 
+            // تحديد الحالة التالية بناءً على القيمة الحالية
+            if (currentValue === '2') { // إذا كانت صح (2)، تصبح خطأ (1)
+                newStateText = '❌'; // علامة X
+                newDbValue = '1';
+                newColor = 'red';
+            } else if (currentValue === '1') { // إذا كانت خطأ (1)، تصبح فارغة
+                newStateText = ''; // فارغ
+                newDbValue = ''; // قيمة فارغة لقاعدة البيانات
+                newColor = 'black'; // لون افتراضي
+            } else { // إذا كانت فارغة، تصبح صح (2)
+                newStateText = '✔️'; // علامة صح
+                newDbValue = '2';
+                newColor = 'blue';
+            }
 
-            clickableCells2.forEach(cell => {
+            // تحديث محتوى الخلية ولونها في الواجهة
+            this.innerHTML = newStateText;
+            this.style.color = newColor;
+            this.dataset.currentValue = newDbValue; // تحديث القيمة في خاصية data-
 
-                cell.addEventListener('click', function() {
+            // إرسال طلب Ajax لتحديث قاعدة البيانات
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'update_status2.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-                    const rowId = this.dataset.rowId; // معرف الصف (id النشاط)
-
-                    const day = this.dataset.day; // رقم اليوم (اسم العمود)
-
-                    let currentValue = this.dataset
-                        .currentValue; // القيمة الحالية في DB (1, 2, أو فارغ)
-
-
-
-                    let newStateText = ''; // النص الجديد للخلية
-
-                    let newDbValue = ''; // القيمة الجديدة لحفظها في DB
-
-                    let newColor = ''; // اللون الجديد للخلية
-
-
-
-                    // تحديد الحالة التالية بناءً على القيمة الحالية
-
-                    if (currentValue === '2') { // إذا كانت صح (2)، تصبح خطأ (1)
-
-                        newStateText = '❌'; // علامة X
-
-                        newDbValue = '1';
-
-                        newColor = 'red';
-
-                    } else if (currentValue === '1') { // إذا كانت خطأ (1)، تصبح فارغة
-
-                        newStateText = ''; // فارغ
-
-                        newDbValue = ''; // قيمة فارغة لقاعدة البيانات
-
-                        newColor = 'black'; // لون افتراضي
-
-                    } else { // إذا كانت فارغة، تصبح صح (2)
-
-                        newStateText = '✔️'; // علامة صح
-
-                        newDbValue = '2';
-
-                        newColor = 'blue';
-
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.status === 'success') {
+                        console.log('Database updated successfully!');
+                    } else {
+                        console.error('Database update failed: ' + response.message);
                     }
+                }
+            };
 
-
-
-                    // تحديث محتوى الخلية ولونها في الواجهة
-
-                    this.innerHTML = newStateText;
-
-                    this.style.color = newColor;
-
-                    this.dataset.currentValue = newDbValue; // تحديث القيمة في خاصية data-
-
-
-
-                    // إرسال طلب Ajax لتحديث قاعدة البيانات
-
-                    const xhr = new XMLHttpRequest();
-
-                    xhr.open('POST', 'update_status2.php',
-                        true); // اسم ملف PHP الذي سيتعامل مع التحديث
-
-                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-
-
-                    xhr.onreadystatechange = function() {
-
-                        if (xhr.readyState === 4 && xhr.status === 200) {
-
-                            // يمكنك معالجة استجابة الخادم هنا (مثلاً، رسالة نجاح أو فشل)
-
-                            const response = JSON.parse(xhr.responseText);
-
-                            if (response.status === 'success') {
-
-                                console.log('Database updated successfully!');
-
-                            } else {
-
-                                console.error('Database update failed: ' + response.message);
-
-                                // في حالة الفشل، يمكنك التفكير في إعادة الخلية إلى حالتها السابقة
-
-                            }
-
-                        }
-
-                    };
-
-                    // إرسال البيانات (id الصف، رقم اليوم، والقيمة الجديدة)
-
-                    const data = 'id=' + encodeURIComponent(rowId) +
-
+            // إرسال البيانات (id الصف، رقم اليوم، والقيمة الجديدة)
+            const data = 'id=' + encodeURIComponent(rowId) +
                         '&day=' + encodeURIComponent(day) +
-
                         '&value=' + encodeURIComponent(newDbValue);
-
-                    xhr.send(data);
-
-                });
-
-
-            });
-
-
+            xhr.send(data);
         });
-    </script>
+    });
+});
+   </script>
 
 
 

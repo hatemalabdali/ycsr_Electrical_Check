@@ -113,16 +113,20 @@ function cleanEmptyData($connection, $tableName)
         }
 
         body {
+            width: 98%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f5f7fa;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding-top: 2%;
+            padding-left: 1%;
+            padding-right: 1%;
+            
+            margin: 0;
         }
 
         .container {
+            width: 100%;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -256,7 +260,7 @@ function cleanEmptyData($connection, $tableName)
 
         .table-container {
             overflow-x: auto;
-            padding: 10px;
+            
         }
 
         table {
@@ -270,7 +274,7 @@ function cleanEmptyData($connection, $tableName)
         th,
         td {
             border: 1px solid var(--border-color);
-            padding: 10px;
+            
             text-align: center;
         }
 
@@ -342,6 +346,9 @@ function cleanEmptyData($connection, $tableName)
         }
 
         /* New styles for interactive cells */
+        .name-cell{
+            width: 10%;
+        }
         .editable {
             cursor: pointer;
             transition: background-color 0.2s;
@@ -354,6 +361,42 @@ function cleanEmptyData($connection, $tableName)
         .status-cell {
             cursor: pointer;
         }
+
+
+        
+        .statusClass,
+        .editable {
+            /* تنسيق أساسي يعمل على الموبايل والكمبيوتر */
+            background-color: white;
+            /* خلفية زرقاء فاتحة */
+            border: 1px solid #202224ff;
+            /* حدود زرقاء */
+            cursor: pointer;
+            /* للكمبيوتر */
+            transition: all 0.2s ease;
+            /* تأثير سلس */
+            position: relative;
+            font-weight: 500;
+            width: 10%;
+            /* نص أكثر سمكاً */
+        }
+
+        /* علامة صغيرة تشير إلى إمكانية التعديل */
+       
+        .statusClass::after,
+        .editable::after {
+            content: "✎";
+            /* رمز القلم */
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 10px;
+            color: black;
+            opacity: 1;
+        }
+
+       
+
 
         @media (max-width: 992px) {
             .controls-container {
@@ -642,7 +685,7 @@ function cleanEmptyData($connection, $tableName)
             });
 
             // Status toggle cell
-            $('.status-cell').on('click', function() {
+            $('.status-cell').on('dblclick', function() {
                 var td = $(this);
                 var sno = td.parent().data('sno');
                 var column = td.data('column');

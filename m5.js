@@ -449,16 +449,238 @@ function getMonthName(monthIndex) {
     return monthNames[monthIndex];
 }
 
+
+
+
+
+
+
 function getWeekNumber(d) {
-    // تتطلب دالة لحساب رقم الأسبوع في السنة
-    // هذا مثال بسيط وغير دقيق لبعض أنظمة حساب الأسبوع (مثل ISO 8601)
-    // قد تحتاج إلى مكتبة خارجية للحصول على حساب دقيق
-    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-    const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-    return weekNo;
+    const year = d.getFullYear();
+    const month = d.getMonth() + 1;
+    const day = d.getDate();
+    
+    // تعريف أسابيع كل سنة من 2025 إلى 2030 بدقة كاملة
+    const weekCalendar = {
+        2025: [
+            { start: [1,1], end: [4,1], week: 1 }, { start: [5,1], end: [11,1], week: 2 },
+            { start: [12,1], end: [18,1], week: 3 }, { start: [19,1], end: [25,1], week: 4 },
+            { start: [26,1], end: [1,2], week: 5 }, { start: [2,2], end: [8,2], week: 6 },
+            { start: [9,2], end: [15,2], week: 7 }, { start: [16,2], end: [22,2], week: 8 },
+            { start: [23,2], end: [1,3], week: 9 }, { start: [2,3], end: [8,3], week: 10 },
+            { start: [9,3], end: [15,3], week: 11 }, { start: [16,3], end: [22,3], week: 12 },
+            { start: [23,3], end: [29,3], week: 13 }, { start: [30,3], end: [5,4], week: 14 },
+            { start: [6,4], end: [12,4], week: 15 }, { start: [13,4], end: [19,4], week: 16 },
+            { start: [20,4], end: [26,4], week: 17 }, { start: [27,4], end: [3,5], week: 18 },
+            { start: [4,5], end: [10,5], week: 19 }, { start: [11,5], end: [17,5], week: 20 },
+            { start: [18,5], end: [24,5], week: 21 }, { start: [25,5], end: [31,5], week: 22 },
+            { start: [1,6], end: [7,6], week: 23 }, { start: [8,6], end: [14,6], week: 24 },
+            { start: [15,6], end: [21,6], week: 25 }, { start: [22,6], end: [28,6], week: 26 },
+            { start: [29,6], end: [5,7], week: 27 }, { start: [6,7], end: [12,7], week: 28 },
+            { start: [13,7], end: [19,7], week: 29 }, { start: [20,7], end: [26,7], week: 30 },
+            { start: [27,7], end: [2,8], week: 31 }, { start: [3,8], end: [9,8], week: 32 },
+            { start: [10,8], end: [16,8], week: 33 }, { start: [17,8], end: [23,8], week: 34 },
+            { start: [24,8], end: [30,8], week: 35 }, { start: [31,8], end: [6,9], week: 36 },
+            { start: [7,9], end: [13,9], week: 37 }, { start: [14,9], end: [20,9], week: 38 },
+            { start: [21,9], end: [27,9], week: 39 }, { start: [28,9], end: [4,10], week: 40 },
+            { start: [5,10], end: [11,10], week: 41 }, { start: [12,10], end: [18,10], week: 42 },
+            { start: [19,10], end: [25,10], week: 43 }, { start: [26,10], end: [1,11], week: 44 },
+            { start: [2,11], end: [8,11], week: 45 }, { start: [9,11], end: [15,11], week: 46 },
+            { start: [16,11], end: [22,11], week: 47 }, { start: [23,11], end: [29,11], week: 48 },
+            { start: [30,11], end: [6,12], week: 49 }, { start: [7,12], end: [13,12], week: 50 },
+            { start: [14,12], end: [20,12], week: 51 }, { start: [21,12], end: [27,12], week: 52 },
+            { start: [28,12], end: [3,1,2026], week: 53 }
+        ],
+        2026: [
+            { start: [4,1], end: [10,1], week: 1 }, { start: [11,1], end: [17,1], week: 2 },
+            { start: [18,1], end: [24,1], week: 3 }, { start: [25,1], end: [31,1], week: 4 },
+            { start: [1,2], end: [7,2], week: 5 }, { start: [8,2], end: [14,2], week: 6 },
+            { start: [15,2], end: [21,2], week: 7 }, { start: [22,2], end: [28,2], week: 8 },
+            { start: [1,3], end: [7,3], week: 9 }, { start: [8,3], end: [14,3], week: 10 },
+            { start: [15,3], end: [21,3], week: 11 }, { start: [22,3], end: [28,3], week: 12 },
+            { start: [29,3], end: [4,4], week: 13 }, { start: [5,4], end: [11,4], week: 14 },
+            { start: [12,4], end: [18,4], week: 15 }, { start: [19,4], end: [25,4], week: 16 },
+            { start: [26,4], end: [2,5], week: 17 }, { start: [3,5], end: [9,5], week: 18 },
+            { start: [10,5], end: [16,5], week: 19 }, { start: [17,5], end: [23,5], week: 20 },
+            { start: [24,5], end: [30,5], week: 21 }, { start: [31,5], end: [6,6], week: 22 },
+            { start: [7,6], end: [13,6], week: 23 }, { start: [14,6], end: [20,6], week: 24 },
+            { start: [21,6], end: [27,6], week: 25 }, { start: [28,6], end: [4,7], week: 26 },
+            { start: [5,7], end: [11,7], week: 27 }, { start: [12,7], end: [18,7], week: 28 },
+            { start: [19,7], end: [25,7], week: 29 }, { start: [26,7], end: [1,8], week: 30 },
+            { start: [2,8], end: [8,8], week: 31 }, { start: [9,8], end: [15,8], week: 32 },
+            { start: [16,8], end: [22,8], week: 33 }, { start: [23,8], end: [29,8], week: 34 },
+            { start: [30,8], end: [5,9], week: 35 }, { start: [6,9], end: [12,9], week: 36 },
+            { start: [13,9], end: [19,9], week: 37 }, { start: [20,9], end: [26,9], week: 38 },
+            { start: [27,9], end: [3,10], week: 39 }, { start: [4,10], end: [10,10], week: 40 },
+            { start: [11,10], end: [17,10], week: 41 }, { start: [18,10], end: [24,10], week: 42 },
+            { start: [25,10], end: [31,10], week: 43 }, { start: [1,11], end: [7,11], week: 44 },
+            { start: [8,11], end: [14,11], week: 45 }, { start: [15,11], end: [21,11], week: 46 },
+            { start: [22,11], end: [28,11], week: 47 }, { start: [29,11], end: [5,12], week: 48 },
+            { start: [6,12], end: [12,12], week: 49 }, { start: [13,12], end: [19,12], week: 50 },
+            { start: [20,12], end: [26,12], week: 51 }, { start: [27,12], end: [2,1,2027], week: 52 }
+        ],
+        2027: [
+            { start: [3,1], end: [9,1], week: 1 }, { start: [10,1], end: [16,1], week: 2 },
+            { start: [17,1], end: [23,1], week: 3 }, { start: [24,1], end: [30,1], week: 4 },
+            { start: [31,1], end: [6,2], week: 5 }, { start: [7,2], end: [13,2], week: 6 },
+            { start: [14,2], end: [20,2], week: 7 }, { start: [21,2], end: [27,2], week: 8 },
+            { start: [28,2], end: [6,3], week: 9 }, { start: [7,3], end: [13,3], week: 10 },
+            { start: [14,3], end: [20,3], week: 11 }, { start: [21,3], end: [27,3], week: 12 },
+            { start: [28,3], end: [3,4], week: 13 }, { start: [4,4], end: [10,4], week: 14 },
+            { start: [11,4], end: [17,4], week: 15 }, { start: [18,4], end: [24,4], week: 16 },
+            { start: [25,4], end: [1,5], week: 17 }, { start: [2,5], end: [8,5], week: 18 },
+            { start: [9,5], end: [15,5], week: 19 }, { start: [16,5], end: [22,5], week: 20 },
+            { start: [23,5], end: [29,5], week: 21 }, { start: [30,5], end: [5,6], week: 22 },
+            { start: [6,6], end: [12,6], week: 23 }, { start: [13,6], end: [19,6], week: 24 },
+            { start: [20,6], end: [26,6], week: 25 }, { start: [27,6], end: [3,7], week: 26 },
+            { start: [4,7], end: [10,7], week: 27 }, { start: [11,7], end: [17,7], week: 28 },
+            { start: [18,7], end: [24,7], week: 29 }, { start: [25,7], end: [31,7], week: 30 },
+            { start: [1,8], end: [7,8], week: 31 }, { start: [8,8], end: [14,8], week: 32 },
+            { start: [15,8], end: [21,8], week: 33 }, { start: [22,8], end: [28,8], week: 34 },
+            { start: [29,8], end: [4,9], week: 35 }, { start: [5,9], end: [11,9], week: 36 },
+            { start: [12,9], end: [18,9], week: 37 }, { start: [19,9], end: [25,9], week: 38 },
+            { start: [26,9], end: [2,10], week: 39 }, { start: [3,10], end: [9,10], week: 40 },
+            { start: [10,10], end: [16,10], week: 41 }, { start: [17,10], end: [23,10], week: 42 },
+            { start: [24,10], end: [30,10], week: 43 }, { start: [31,10], end: [6,11], week: 44 },
+            { start: [7,11], end: [13,11], week: 45 }, { start: [14,11], end: [20,11], week: 46 },
+            { start: [21,11], end: [27,11], week: 47 }, { start: [28,11], end: [4,12], week: 48 },
+            { start: [5,12], end: [11,12], week: 49 }, { start: [12,12], end: [18,12], week: 50 },
+            { start: [19,12], end: [25,12], week: 51 }, { start: [26,12], end: [1,1,2028], week: 52 }
+        ],
+        2028: [
+            { start: [2,1], end: [8,1], week: 1 }, { start: [9,1], end: [15,1], week: 2 },
+            { start: [16,1], end: [22,1], week: 3 }, { start: [23,1], end: [29,1], week: 4 },
+            { start: [30,1], end: [5,2], week: 5 }, { start: [6,2], end: [12,2], week: 6 },
+            { start: [13,2], end: [19,2], week: 7 }, { start: [20,2], end: [26,2], week: 8 },
+            { start: [27,2], end: [4,3], week: 9 }, { start: [5,3], end: [11,3], week: 10 },
+            { start: [12,3], end: [18,3], week: 11 }, { start: [19,3], end: [25,3], week: 12 },
+            { start: [26,3], end: [1,4], week: 13 }, { start: [2,4], end: [8,4], week: 14 },
+            { start: [9,4], end: [15,4], week: 15 }, { start: [16,4], end: [22,4], week: 16 },
+            { start: [23,4], end: [29,4], week: 17 }, { start: [30,4], end: [6,5], week: 18 },
+            { start: [7,5], end: [13,5], week: 19 }, { start: [14,5], end: [20,5], week: 20 },
+            { start: [21,5], end: [27,5], week: 21 }, { start: [28,5], end: [3,6], week: 22 },
+            { start: [4,6], end: [10,6], week: 23 }, { start: [11,6], end: [17,6], week: 24 },
+            { start: [18,6], end: [24,6], week: 25 }, { start: [25,6], end: [1,7], week: 26 },
+            { start: [2,7], end: [8,7], week: 27 }, { start: [9,7], end: [15,7], week: 28 },
+            { start: [16,7], end: [22,7], week: 29 }, { start: [23,7], end: [29,7], week: 30 },
+            { start: [30,7], end: [5,8], week: 31 }, { start: [6,8], end: [12,8], week: 32 },
+            { start: [13,8], end: [19,8], week: 33 }, { start: [20,8], end: [26,8], week: 34 },
+            { start: [27,8], end: [2,9], week: 35 }, { start: [3,9], end: [9,9], week: 36 },
+            { start: [10,9], end: [16,9], week: 37 }, { start: [17,9], end: [23,9], week: 38 },
+            { start: [24,9], end: [30,9], week: 39 }, { start: [1,10], end: [7,10], week: 40 },
+            { start: [8,10], end: [14,10], week: 41 }, { start: [15,10], end: [21,10], week: 42 },
+            { start: [22,10], end: [28,10], week: 43 }, { start: [29,10], end: [4,11], week: 44 },
+            { start: [5,11], end: [11,11], week: 45 }, { start: [12,11], end: [18,11], week: 46 },
+            { start: [19,11], end: [25,11], week: 47 }, { start: [26,11], end: [2,12], week: 48 },
+            { start: [3,12], end: [9,12], week: 49 }, { start: [10,12], end: [16,12], week: 50 },
+            { start: [17,12], end: [23,12], week: 51 }, { start: [24,12], end: [30,12], week: 52 },
+            { start: [31,12], end: [6,1,2029], week: 53 }
+        ],
+        2029: [
+            { start: [7,1], end: [13,1], week: 1 }, { start: [14,1], end: [20,1], week: 2 },
+            { start: [21,1], end: [27,1], week: 3 }, { start: [28,1], end: [3,2], week: 4 },
+            { start: [4,2], end: [10,2], week: 5 }, { start: [11,2], end: [17,2], week: 6 },
+            { start: [18,2], end: [24,2], week: 7 }, { start: [25,2], end: [3,3], week: 8 },
+            { start: [4,3], end: [10,3], week: 9 }, { start: [11,3], end: [17,3], week: 10 },
+            { start: [18,3], end: [24,3], week: 11 }, { start: [25,3], end: [31,3], week: 12 },
+            { start: [1,4], end: [7,4], week: 13 }, { start: [8,4], end: [14,4], week: 14 },
+            { start: [15,4], end: [21,4], week: 15 }, { start: [22,4], end: [28,4], week: 16 },
+            { start: [29,4], end: [5,5], week: 17 }, { start: [6,5], end: [12,5], week: 18 },
+            { start: [13,5], end: [19,5], week: 19 }, { start: [20,5], end: [26,5], week: 20 },
+            { start: [27,5], end: [2,6], week: 21 }, { start: [3,6], end: [9,6], week: 22 },
+            { start: [10,6], end: [16,6], week: 23 }, { start: [17,6], end: [23,6], week: 24 },
+            { start: [24,6], end: [30,6], week: 25 }, { start: [1,7], end: [7,7], week: 26 },
+            { start: [8,7], end: [14,7], week: 27 }, { start: [15,7], end: [21,7], week: 28 },
+            { start: [22,7], end: [28,7], week: 29 }, { start: [29,7], end: [4,8], week: 30 },
+            { start: [5,8], end: [11,8], week: 31 }, { start: [12,8], end: [18,8], week: 32 },
+            { start: [19,8], end: [25,8], week: 33 }, { start: [26,8], end: [1,9], week: 34 },
+            { start: [2,9], end: [8,9], week: 35 }, { start: [9,9], end: [15,9], week: 36 },
+            { start: [16,9], end: [22,9], week: 37 }, { start: [23,9], end: [29,9], week: 38 },
+            { start: [30,9], end: [6,10], week: 39 }, { start: [7,10], end: [13,10], week: 40 },
+            { start: [14,10], end: [20,10], week: 41 }, { start: [21,10], end: [27,10], week: 42 },
+            { start: [28,10], end: [3,11], week: 43 }, { start: [4,11], end: [10,11], week: 44 },
+            { start: [11,11], end: [17,11], week: 45 }, { start: [18,11], end: [24,11], week: 46 },
+            { start: [25,11], end: [1,12], week: 47 }, { start: [2,12], end: [8,12], week: 48 },
+            { start: [9,12], end: [15,12], week: 49 }, { start: [16,12], end: [22,12], week: 50 },
+            { start: [23,12], end: [29,12], week: 51 }, { start: [30,12], end: [5,1,2030], week: 52 }
+        ],
+        2030: [
+            { start: [6,1], end: [12,1], week: 1 }, { start: [13,1], end: [19,1], week: 2 },
+            { start: [20,1], end: [26,1], week: 3 }, { start: [27,1], end: [2,2], week: 4 },
+            { start: [3,2], end: [9,2], week: 5 }, { start: [10,2], end: [16,2], week: 6 },
+            { start: [17,2], end: [23,2], week: 7 }, { start: [24,2], end: [2,3], week: 8 },
+            { start: [3,3], end: [9,3], week: 9 }, { start: [10,3], end: [16,3], week: 10 },
+            { start: [17,3], end: [23,3], week: 11 }, { start: [24,3], end: [30,3], week: 12 },
+            { start: [31,3], end: [6,4], week: 13 }, { start: [7,4], end: [13,4], week: 14 },
+            { start: [14,4], end: [20,4], week: 15 }, { start: [21,4], end: [27,4], week: 16 },
+            { start: [28,4], end: [4,5], week: 17 }, { start: [5,5], end: [11,5], week: 18 },
+            { start: [12,5], end: [18,5], week: 19 }, { start: [19,5], end: [25,5], week: 20 },
+            { start: [26,5], end: [1,6], week: 21 }, { start: [2,6], end: [8,6], week: 22 },
+            { start: [9,6], end: [15,6], week: 23 }, { start: [16,6], end: [22,6], week: 24 },
+            { start: [23,6], end: [29,6], week: 25 }, { start: [30,6], end: [6,7], week: 26 },
+            { start: [7,7], end: [13,7], week: 27 }, { start: [14,7], end: [20,7], week: 28 },
+            { start: [21,7], end: [27,7], week: 29 }, { start: [28,7], end: [3,8], week: 30 },
+            { start: [4,8], end: [10,8], week: 31 }, { start: [11,8], end: [17,8], week: 32 },
+            { start: [18,8], end: [24,8], week: 33 }, { start: [25,8], end: [31,8], week: 34 },
+            { start: [1,9], end: [7,9], week: 35 }, { start: [8,9], end: [14,9], week: 36 },
+            { start: [15,9], end: [21,9], week: 37 }, { start: [22,9], end: [28,9], week: 38 },
+            { start: [29,9], end: [5,10], week: 39 }, { start: [6,10], end: [12,10], week: 40 },
+            { start: [13,10], end: [19,10], week: 41 }, { start: [20,10], end: [26,10], week: 42 },
+            { start: [27,10], end: [2,11], week: 43 }, { start: [3,11], end: [9,11], week: 44 },
+            { start: [10,11], end: [16,11], week: 45 }, { start: [17,11], end: [23,11], week: 46 },
+            { start: [24,11], end: [30,11], week: 47 }, { start: [1,12], end: [7,12], week: 48 },
+            { start: [8,12], end: [14,12], week: 49 }, { start: [15,12], end: [21,12], week: 50 },
+            { start: [22,12], end: [28,12], week: 51 }, { start: [29,12], end: [4,1,2031], week: 52 }
+        ]
+    };
+
+    // البحث عن الأسبوع المناسب بدقة
+    const yearWeeks = weekCalendar[year];
+    if (yearWeeks) {
+        for (const week of yearWeeks) {
+            const [startDay, startMonth] = week.start;
+            const [endDay, endMonth, endYear] = week.end;
+            
+            // التحقق إذا كان التاريخ في نفس الشهر
+            if (month === startMonth && day >= startDay) {
+                if (startMonth === endMonth) {
+                    if (day <= endDay) {
+                        return createWeekResult(week, year);
+                    }
+                } else {
+                    // إذا كان الأسبوع يمتد لشهر آخر
+                    if (day <= 31) { // نهاية الشهر
+                        return createWeekResult(week, year);
+                    }
+                }
+            }
+            
+            // التحقق إذا كان التاريخ في الشهر التالي
+            if (month === endMonth && day <= endDay) {
+                return createWeekResult(week, year);
+            }
+        }
+    }
+
+    return { weekNo: 0, startDay: 0, startMonth: 0, startYear: 0, endDay: 0, endMonth: 0, endYear: 0 };
 }
+
+// دالة مساعدة لإنشاء النتيجة
+function createWeekResult(week, currentYear) {
+    const [startDay, startMonth, startYear] = week.start;
+    const [endDay, endMonth, endYear] = week.end;
+    
+    return {
+        weekNo: week.week,
+        startDay: startDay,
+        startMonth: startMonth,
+        startYear: startYear || currentYear,
+        endDay: endDay,
+        endMonth: endMonth,
+        endYear: endYear || currentYear
+    };
+}
+
 
 function addDayClickListeners() {
     document.querySelectorAll('.calendar-day').forEach(dayElement => {
@@ -476,7 +698,13 @@ function addDayClickListeners() {
             chossyear = parseInt(this.dataset.year);
             chossemonth = parseInt(this.dataset.month);
             chossday = parseInt(this.dataset.day);
-            chossweek = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday));
+             chossweek = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).weekNo;
+            XstarDay = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startDay;
+            XstarMonth = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startMonth;
+            XstarYear = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startYear;
+            XendDay = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endDay;
+            XendMonth = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endMonth;
+            XendYear = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endYear;
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
            
     
@@ -546,28 +774,40 @@ if (!isNaN(chosenYear) && !isNaN(chosenWeek)) {
             weekh.textContent= chossweek;
             dayh.textContent= chossday;
 
-            // تخزين المتغيرات في Local Storage
+             // تخزين المتغيرات في Local Storage
     localStorage.setItem('chosenYear', chossyear);
     localStorage.setItem('chosenMonth', chossemonth);
     localStorage.setItem('chosenDay', chossday);
     localStorage.setItem('chosenWeek', chossweek);
+
+    localStorage.setItem('choseStartDay', XstarDay);
+    localStorage.setItem('choseStartMonth', XstarMonth);
+    localStorage.setItem('choseStartYear', XstarYear);
+    localStorage.setItem('choseEndDay', XendDay);
+    localStorage.setItem('choseEndMonth', XendMonth);
+    localStorage.setItem('choseEndYear', XendYear);
 
     // إذا كنت تريد تخزينها ككائن واحد (أفضل للمتغيرات المتعددة):
     const chosenDateData = {
         year: chossyear,
         month: chossemonth,
         day: chossday,
-        week: chossweek
+        week: chossweek,
+
+        ystartday: XstarDay,
+        ystartmonth: XstarMonth,
+        ystartyear: XstarYear,
+        yendday: XendDay,
+        yendmonth: XendMonth,
+        yendyear: XendYear
     };
     localStorage.setItem('chosenDate', JSON.stringify(chosenDateData)); // يجب تحويل الكائن إلى string
-
-            
-     
+    
 
             
             document.location='show_moror_week_group_a.php';
           
-            console.log(`Year: ${chossyear}, Month: ${chossemonth}, Day: ${chossday}, Week: ${chossweek}`);
+            console.log(`Year: ${chossyear}, Month: ${chossemonth}, Day: ${chossday}, Week: ${chossweek},Start Day: ${XstarDay}, Start Month: ${XstarMonth}, Start Year: ${XstarYear}, End Day: ${XendDay}, End Month: ${XendMonth}, End Year: ${XendYear}`);
             // هنا يمكنك تنفيذ أي كود إضافي بناءً على اليوم المحدد
         });
     });
@@ -590,7 +830,13 @@ function addDayClickListeners2() {
             chossyear = parseInt(this.dataset.year);
             chossemonth = parseInt(this.dataset.month);
             chossday = parseInt(this.dataset.day);
-            chossweek = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday));
+             chossweek = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).weekNo;
+            XstarDay = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startDay;
+            XstarMonth = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startMonth;
+            XstarYear = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startYear;
+            XendDay = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endDay;
+            XendMonth = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endMonth;
+            XendYear = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endYear;
             /**
  * تحسب أول وآخر يوم في أسبوع معين (بناءً على معيار ISO 8601: يبدأ الأسبوع يوم الاثنين).
  * @param {number} year السنة.
@@ -655,24 +901,40 @@ if (!isNaN(chosenYear) && !isNaN(chosenWeek)) {
             weekh.textContent= chossweek;
             dayh.textContent= chossday;
 
+        
+
             // تخزين المتغيرات في Local Storage
     localStorage.setItem('chosenYear', chossyear);
     localStorage.setItem('chosenMonth', chossemonth);
     localStorage.setItem('chosenDay', chossday);
     localStorage.setItem('chosenWeek', chossweek);
 
+    localStorage.setItem('choseStartDay', XstarDay);
+    localStorage.setItem('choseStartMonth', XstarMonth);
+    localStorage.setItem('choseStartYear', XstarYear);
+    localStorage.setItem('choseEndDay', XendDay);
+    localStorage.setItem('choseEndMonth', XendMonth);
+    localStorage.setItem('choseEndYear', XendYear);
+
     // إذا كنت تريد تخزينها ككائن واحد (أفضل للمتغيرات المتعددة):
     const chosenDateData = {
         year: chossyear,
         month: chossemonth,
         day: chossday,
-        week: chossweek
+        week: chossweek,
+
+        ystartday: XstarDay,
+        ystartmonth: XstarMonth,
+        ystartyear: XstarYear,
+        yendday: XendDay,
+        yendmonth: XendMonth,
+        yendyear: XendYear
     };
     localStorage.setItem('chosenDate', JSON.stringify(chosenDateData)); // يجب تحويل الكائن إلى string
     
 
             document.location='week_mainten_motors.php';
-            console.log(`Year: ${chossyear}, Month: ${chossemonth}, Day: ${chossday}, Week: ${chossweek}`);
+            console.log(`Year: ${chossyear}, Month: ${chossemonth}, Day: ${chossday}, Week: ${chossweek},Start Day: ${XstarDay}, Start Month: ${XstarMonth}, Start Year: ${XstarYear}, End Day: ${XendDay}, End Month: ${XendMonth}, End Year: ${XendYear}`);
             // هنا يمكنك تنفيذ أي كود إضافي بناءً على اليوم المحدد
         });
     });
@@ -694,7 +956,13 @@ function addDayClickListeners3() {
             chossyear = parseInt(this.dataset.year);
             chossemonth = parseInt(this.dataset.month);
             chossday = parseInt(this.dataset.day);
-            chossweek = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday));
+             chossweek = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).weekNo;
+            XstarDay = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startDay;
+            XstarMonth = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startMonth;
+            XstarYear = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startYear;
+            XendDay = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endDay;
+            XendMonth = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endMonth;
+            XendYear = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endYear;
             /**
  * تحسب أول وآخر يوم في أسبوع معين (بناءً على معيار ISO 8601: يبدأ الأسبوع يوم الاثنين).
  * @param {number} year السنة.
@@ -799,7 +1067,14 @@ function addDayClickListeners4() {
             chossyear = parseInt(this.dataset.year);
             chossemonth = parseInt(this.dataset.month);
             chossday = parseInt(this.dataset.day);
-            chossweek = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday));
+            chossweek = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).weekNo;
+            XstarDay = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startDay;
+            XstarMonth = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startMonth;
+            XstarYear = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).startYear;
+            XendDay = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endDay;
+            XendMonth = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endMonth;
+            XendYear = getWeekNumber(new Date(chossyear, chossemonth - 1, chossday)).endYear;
+            
             /**
  * تحسب أول وآخر يوم في أسبوع معين (بناءً على معيار ISO 8601: يبدأ الأسبوع يوم الاثنين).
  * @param {number} year السنة.
@@ -864,11 +1139,15 @@ if (!isNaN(chosenYear) && !isNaN(chosenWeek)) {
             weekh.textContent= chossweek;
             dayh.textContent= chossday;
 
+            
+
             // تخزين المتغيرات في Local Storage
     localStorage.setItem('chosenYear', chossyear);
     localStorage.setItem('chosenMonth', chossemonth);
     localStorage.setItem('chosenDay', chossday);
     localStorage.setItem('chosenWeek', chossweek);
+
+    
 
     // إذا كنت تريد تخزينها ككائن واحد (أفضل للمتغيرات المتعددة):
     const chosenDateData = {

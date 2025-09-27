@@ -276,6 +276,7 @@ session_start();
             /* إضافة padding لجمالية أكثر */
         }
 
+
         @media screen and (max-width: 480px) {
             body {
                 font-family: Arial, sans-serif;
@@ -475,6 +476,147 @@ session_start();
                 background-color: bisque;
             }
 
+        }
+
+        /* تنسيقات الخلايا القابلة للنقر المزدوج */
+
+        .COND-cell,
+        .NOTES-cell,
+        .A-GRD,
+        .B-GRD,
+        .C-GRD,
+        .A-B,
+        .B-C,
+        .C-A,
+        .NOTE_VALUE_AND_PHASING {
+            /* تنسيق أساسي يعمل على الموبايل والكمبيوتر */
+             background-color: #e5ecedff;
+            /* خلفية زرقاء فاتحة */
+            border: 1px solid #202224ff;
+            /* حدود زرقاء */
+            cursor: pointer;
+            /* للكمبيوتر */
+            transition: all 0.2s ease;
+            /* تأثير سلس */
+            position: relative;
+            font-weight: 500;
+            /* نص أكثر سمكاً */
+        }
+
+        /* علامة صغيرة تشير إلى إمكانية التعديل */
+        .COND-cell::after,
+        .NOTES-cell::after,
+        .A-GRD::after,
+        .B-GRD::after,
+        .C-GRD::after,
+        .A-B::after,
+        .B-C::after,
+        .C-A::after,
+        .NOTE_VALUE_AND_PHASING::after {
+            content: "✎";
+            /* رمز القلم */
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 10px;
+            color: #010912ff;
+            opacity: 0.7;
+        }
+
+        /* تأثير عند المرور (للكمبيوتر فقط) */
+        @media (hover: hover) {
+
+            .COND-cell:hover,
+            .NOTES-cell:hover,
+            .A-GRD:hover,
+            .B-GRD:hover,
+            .C-GRD:hover,
+            .A-B:hover,
+            .B-C:hover,
+            .C-A:hover,
+            .NOTE_VALUE_AND_PHASING:hover {
+                background-color: #21ee0aff;
+                border-color: #007bff;
+                box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+                transform: translateY(-1px);
+            }
+        }
+
+        /* تأثير عند النقر/اللمس */
+        .COND-cell:active,
+        .NOTES-cell:active,
+        .A-GRD:active,
+        .B-GRD:active,
+        .C-GRD:active,
+        .A-B:active,
+        .B-C:active,
+        .C-A:active,
+        .NOTE_VALUE_AND_PHASING:active {
+            background-color: #d1e7ff;
+            transform: scale(0.98);
+        }
+
+        /* تنسيق خاص للخلايا الفارغة */
+        .COND-cell:empty,
+        .NOTES-cell:empty,
+        .A-GRD:empty,
+        .B-GRD:empty,
+        .C-GRD:empty,
+        .A-B:empty,
+        .B-C:empty,
+        .C-A:empty,
+        .NOTE_VALUE_AND_PHASING:empty {
+            background-color: lightgray;
+            /* خلفية صفراء فاتحة */
+            border: 1px dashed #1e1806ff;
+            /* حدود صفراء منقطة */
+        }
+
+        /* تعديلات للواجهة الموبايل */
+        @media screen and (max-width: 480px) {
+
+            .COND-cell,
+            .NOTES-cell,
+            .A-GRD,
+            .B-GRD,
+            .C-GRD,
+            .A-B,
+            .B-C,
+            .C-A,
+            .NOTE_VALUE_AND_PHASING {
+                background-color: #f8f9fa;
+                /* لون أفتح للموبايل */
+                border: 1px solid #dee2e6;
+                min-height: 25px;
+                /* ارتفاع مناسب لللمس */
+            }
+
+            .COND-cell::after,
+            .NOTES-cell::after,
+            .A-GRD::after,
+            .B-GRD::after,
+            .C-GRD::after,
+            .A-B::after,
+            .B-C::after,
+            .C-A::after,
+            .NOTE_VALUE_AND_PHASING::after {
+                font-size: 8px;
+                /* أصغر قليلاً في الموبايل */
+            }
+
+            /* تأثير اللمس في الموبايل */
+            .COND-cell:active,
+            .NOTES-cell:active,
+            .A-GRD:active,
+            .B-GRD:active,
+            .C-GRD:active,
+            .A-B:active,
+            .B-C:active,
+            .C-A:active,
+            .NOTE_VALUE_AND_PHASING:active {
+                background-color: #e9ecef;
+                transform: scale(0.95);
+            }
         }
     </style>
 </head>
@@ -679,7 +821,9 @@ session_start();
             // عرض نافذة التأكيد للمستخدم
             if (confirm("هل أنت متأكد من حفظ البيانات؟")) {
                 // إذا ضغط المستخدم على "موافق"، يتم استدعاء الدالة الأصلية
+                isDirty = false;
                 saveInspectionData();
+                document.location.reload();
             } else {
                 // إذا ضغط المستخدم على "إلغاء"، يمكن عرض رسالة اختيارية
                 console.log("تم إلغاء عملية الحفظ.");
@@ -833,7 +977,7 @@ session_start();
             // إضافة الكود للتعامل مع النقر على خلايا "جيد"
             const condCells = document.querySelectorAll('.COND-cell');
             condCells.forEach((cell, index) => {
-                cell.addEventListener('click', () => {
+                cell.addEventListener('dblclick', () => {
                     const adjacentMaintCell = cell.nextElementSibling;
                     const currentValue = cell.textContent.trim();
                     const row = cell.closest('tr');
@@ -1162,21 +1306,32 @@ session_start();
                 }
             }
 
+            if (breakerSelect && yearSelect) {
+                [breakerSelect, yearSelect].forEach(select => {
+                    select.addEventListener('focus', function() {
+                        this.dataset.oldValue = this.value;
+                    });
+
+                    select.addEventListener('change', function() {
+                        if (isDirty && !confirm('⚠️ لديك تغييرات غير محفوظة! هل تريد المتابعة؟')) {
+                            this.value = this.dataset.oldValue;
+                        } else {
+                            saveSelection(yearSelect);
+                            saveSelection(breakerSelect);
+                            isDirty = false;
+                            updatePageData();
+                        }
+                    });
+                });
+            }
+
             window.addEventListener('load', () => {
                 loadSelection(yearSelect);
                 loadSelection(breakerSelect);
                 updatePageData();
             });
 
-            yearSelect.addEventListener('change', () => {
-                saveSelection(yearSelect);
-                updatePageData();
-            });
 
-            breakerSelect.addEventListener('change', () => {
-                saveSelection(breakerSelect);
-                updatePageData();
-            });
 
             window.addEventListener('beforeunload', (event) => {
                 if (isDirty) {

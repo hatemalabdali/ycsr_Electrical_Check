@@ -489,15 +489,27 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
 
 
 
-                month_label.textContent = month;
+                 const storedDataString = localStorage.getItem('chosenDate');
 
-                month_labe2.textContent = month;
+            // التحقق من أن هناك بيانات مخزنة
+            if (storedDataString) {
+                // تحويل النص إلى كائن JavaScript
+                const chosenDateData = JSON.parse(storedDataString);
 
+                day_label.textContent = chosenDateData.ystartday;
+                day_labe2.textContent = chosenDateData.yendday;
 
+                month_label.textContent = chosenDateData.ystartmonth;
+                month_labe2.textContent = chosenDateData.yendmonth;
 
-                year_label.textContent = year;
+                year_label.textContent = chosenDateData.ystartyear;
+                 year_labe2.textContent = chosenDateData.yendyear;
+                console.log(chosenDateData.ystartday); // مثال
 
-                year_labe2.textContent = year;
+            } else {
+                console.log("لا يوجد بيانات متاحة في Local Storage.");
+            }
+
 
                 ////////////////////////////////////
 
@@ -606,9 +618,7 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
 
                 ///////////////////////////////////
 
-                day_label.textContent = getWeekRangeDates(year, week).firstDay.getDate();
-
-                day_labe2.textContent = getWeekRangeDates(year, week).lastDay.getDate();
+                
 
 
 
@@ -618,48 +628,11 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
 
 
 
-                if ((day_label.textContent - day_labe2.textContent) > 6) {
+               
 
 
 
-
-
-                    let test = day - day_labe2.textContent;
-
-                    if (test <= 0) {
-
-
-
-                        month_label.textContent = month_label.textContent - 1;
-
-                        year_label.textContent = year_label.textContent - 1;
-
-                    } else {
-
-
-
-                        month_labe2.textContent = month_labe2.textContent++ + 1;
-
-                        year_labe2.textContent = year_labe2.textContent++ + 1;
-
-                    }
-
-                }
-
-
-
-                if (month_label.textContent == 0) {
-
-                    month_label.textContent = 12;
-
-                }
-
-                if (month_labe2.textContent == 13) {
-
-                    month_labe2.textContent = 1;
-
-                }
-
+               
 
 
 
@@ -677,7 +650,7 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
                     console.log("Received data from Local Storage:");
 
                     console.log(
-                        `Year: ${chosenDateData.year}, Month: ${chosenDateData.month}, Day: ${chosenDateData.day}, Week: ${chosenDateData.week}`
+                        `Year: ${chosenDateData.year}, Month: ${chosenDateData.month}, Day: ${chosenDateData.day}, Week: ${chosenDateData.week},`
                     );
 
                     // يمكنك الآن استخدام chosenDateData.year وهكذا
@@ -761,157 +734,9 @@ if ($_SESSION['username'] === "Ameen Al-Shumairi") {
             $week = $_GET['tweek'];
 
             $day = $_GET['tday'];
+        $table_name = $group . '_' . $year;
 
-
-
-
-
-
-
-            // group Tables 2025
-
-            if ($year == 2025) {
-
-                if ($group === "group_a") {
-
-                    $table_name = "group_a_2025";
-
-                    show($table_name);
-                } elseif ($group === "group_a1") {
-
-                    $table_name = "group_a1_2025";
-
-                    show($table_name);
-                } elseif ($group === "group_a2") {
-
-                    $table_name = "group_a2_2025";
-
-                    show($table_name);
-                } elseif ($group === "group_b") {
-
-                    $table_name = "group_b_2025";
-
-                    show($table_name);
-                } elseif ($group === "group_b1") {
-
-                    $table_name = "group_b1_2025";
-
-                    show($table_name);
-                } elseif ($group === "group_c") {
-
-                    $table_name = "group_c_2025";
-
-                    show($table_name);
-                } elseif ($group === "group_c1") {
-
-                    $table_name = "group_c1_2025";
-
-                    show($table_name);
-                }
-
-                //  elseif($group==="all"){
-
-                //      $table_name = "group_a_2025";
-
-                //     show($table_name);
-
-                //      $table_name = "group_a1_2025";
-
-                //     show($table_name);
-
-                //     $table_name = "group_a2_2025";
-
-                //     show($table_name);
-
-                //     $table_name = "group_b_2025";
-
-                //     show($table_name);
-
-                //     $table_name = "group_b1_2025";
-
-                //     show($table_name);
-
-                //     $table_name = "group_c_2025";
-
-                //     show($table_name);
-
-                //     $table_name = "group_c_2025";
-
-                //     show($table_name);
-
-                // }
-
-
-
-            }
-
-
-
-            // group Tables 2026
-
-            elseif ($year == 2026) {
-
-                if ($group === "group_a") {
-
-                    $table_name = "group_a_2026";
-
-                    show($table_name);
-                } elseif ($group === "group_a1") {
-
-                    $table_name = "group_a1_2026";
-
-                    show($table_name);
-                } elseif ($group === "group_a2") {
-
-                    $table_name = "group_a2_2026";
-
-                    show($table_name);
-                } elseif ($group === "group_b") {
-
-                    $table_name = "group_b_2026";
-
-                    show($table_name);
-                } elseif ($group === "group_b1") {
-
-                    $table_name = "group_b1_2026";
-
-                    show($table_name);
-                } elseif ($group === "group_c") {
-
-                    $table_name = "group_c_2026";
-
-                    show($table_name);
-                } elseif ($group === "group_c1") {
-
-                    $table_name = "group_c1_2026";
-
-                    show($table_name);
-                }
-
-                //  elseif($group==="all"){
-
-                //      $table_name = "group_a_2026";
-
-                //     show($table_name);
-
-                //      $table_name = "group_a1_2025";
-
-                //     show($table_name);
-
-                // }
-
-            }
-
-
-
-
-
-
-
-
-
-            // إنشاء الاتصال
-
+ show($table_name);
 
 
         }
